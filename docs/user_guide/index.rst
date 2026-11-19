@@ -7,6 +7,7 @@ User Guide
    getting_started
    simulation_input
    particle_pusher
+   input_data
    magnetic_field
    medium
    simulation_output
