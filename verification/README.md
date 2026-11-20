@@ -54,3 +54,17 @@ accepted. Field coefficient versions are not changed. See the input inventory in
 Geant4 execution, all operating systems and all historical periods were not tested.
 A short field/medium/trajectory smoke check is not scientific model validation.
 Passing this suite does not prove the absence of every possible defect.
+
+## Reuse and integrity checks
+
+Run verification/check_reuse.py after check_expanded_live.py. It downloads fresh
+T89/T96 OMNI inputs, checks raw/input SHA256 for all four model bundles, and
+compares model values in fresh processes with and without Python socket access.
+The offline audit hook is installed before GT import. Network attempts are both
+blocked and counted. Native networking outside Python's audit events is not an
+OS-level sandbox guarantee. Reports go to unique reuse-*/report.json directories.
+
+tests/test_input_reuse.py contains four checks of the checking mechanism itself,
+including tampered files and a real attempted localhost connection. These are
+additional to the 86 addon tests, not a replacement for them. No runtime GT code
+was changed for this verification step.

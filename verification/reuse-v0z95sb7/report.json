@@ -1,0 +1,8 @@
+{
+  "status": "FAIL",
+  "started_at": "2026-11-20T09:06:33.695718+00:00",
+  "scope": "Live T89/T96; source/input SHA256; fresh-process reuse with Python socket network blocked. Not scientific model validation.",
+  "error_type": "ValueError",
+  "error": "Invalid OMNI record at line 4561: 53 fields.",
+  "finished_at": "2026-11-20T09:07:20.710002+00:00"
+}
