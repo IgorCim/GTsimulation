@@ -1,0 +1,92 @@
+{
+  "status": "PASS",
+  "bundles_file": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\verification\\reuse-5z9jejcq\\bundles.json",
+  "models": {
+    "89": {
+      "status": "PASS",
+      "rows": 24,
+      "values_compared": 24,
+      "start": "2024-09-10T00:00:00Z",
+      "end_exclusive": "2024-09-11T00:00:00Z",
+      "max_absolute_error_by_component": {
+        "T89_activity_bin": 0
+      },
+      "first_expected": {
+        "T89_activity_bin": 3
+      },
+      "source_and_input_sha256_verified": true
+    },
+    "96": {
+      "status": "PASS",
+      "rows": 24,
+      "values_compared": 96,
+      "start": "2024-09-10T00:00:00Z",
+      "end_exclusive": "2024-09-11T00:00:00Z",
+      "max_absolute_error_by_component": {
+        "Pdyn_nPa": 0.0,
+        "Dst_nT": 0.0,
+        "By_GSM_nT": 0.0,
+        "Bz_GSM_nT": 0.0
+      },
+      "first_expected": {
+        "Pdyn_nPa": 1.25,
+        "Dst_nT": 1.0,
+        "By_GSM_nT": -4.9,
+        "Bz_GSM_nT": -0.7
+      },
+      "source_and_input_sha256_verified": true
+    },
+    "15B": {
+      "status": "PASS",
+      "rows": 12,
+      "values_compared": 48,
+      "start": "2023-01-01T00:30:00Z",
+      "end_exclusive": "2023-01-01T01:30:00Z",
+      "max_absolute_error_by_component": {
+        "Pdyn_nPa": 0.0,
+        "By_GSW_nT": 0.0,
+        "Bz_GSW_nT": 0.0,
+        "B_index": 0.0
+      },
+      "first_expected": {
+        "Pdyn_nPa": 1.79,
+        "By_GSW_nT": 4.15,
+        "Bz_GSW_nT": -0.41,
+        "B_index": 0.3126
+      },
+      "source_and_input_sha256_verified": true
+    },
+    "nrlmsis": {
+      "status": "PASS",
+      "rows": 24,
+      "values_compared": 216,
+      "start": "2024-09-10T00:00:00Z",
+      "end_exclusive": "2024-09-11T00:00:00Z",
+      "max_absolute_error_by_component": {
+        "previous_day_F107_sfu": 0.0,
+        "center81_F107_sfu": 0.0,
+        "daily_Ap": 0.0,
+        "ap_now": 0.0,
+        "ap_minus3h": 0.0,
+        "ap_minus6h": 0.0,
+        "ap_minus9h": 0.0,
+        "ap_mean12_33h": 0.0,
+        "ap_mean36_57h": 0.0
+      },
+      "first_expected": {
+        "previous_day_F107_sfu": 214.8,
+        "center81_F107_sfu": 221.6,
+        "daily_Ap": 6.0,
+        "ap_now": 9.0,
+        "ap_minus3h": 9.0,
+        "ap_minus6h": 12.0,
+        "ap_minus9h": 12.0,
+        "ap_mean12_33h": 6.375,
+        "ap_mean36_57h": 6.375
+      },
+      "source_and_input_sha256_verified": true
+    }
+  },
+  "method": "Independent stdlib/numpy source reader; no GT or pymsis import; all saved interval rows.",
+  "limitations": "Validates input preparation, not GT field physics, GSW/GSM approximation, Kp generation, or provider 81-day-average computation."
+}

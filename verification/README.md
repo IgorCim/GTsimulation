@@ -68,3 +68,18 @@ tests/test_input_reuse.py contains four checks of the checking mechanism itself,
 including tampered files and a real attempted localhost connection. These are
 additional to the 86 addon tests, not a replacement for them. No runtime GT code
 was changed for this verification step.
+
+## Independent input arithmetic
+
+verification/check_independent_inputs.py imports only stdlib/numpy and reads raw
+sources separately from the addon and pymsis. It checks every interval timestamp,
+T89 groups using an explicit category table, T96/TA15 parameter order, TA15 flags,
+previous-day F107, provider CENTER81, daily Ap, and direct arithmetic historical
+ap means. Numeric comparisons use rtol=0, atol=1e-12; time/flags are exact.
+The recorded independent-rdvbyeo1/report.json covers 24 T89, 24 T96, 12 T15B,
+and 24 atmospheric rows from the user's successful reuse-5z9jejcq run. All passed.
+16 independent-checker tests cover known arithmetic, boundaries, module import
+isolation, and wrong numbers/time even with a recomputed matching input hash.
+The audit is independent implementation validation, not independent measurement
+validation or proof of GT field physics. Provider CENTER81 is retained, not
+recomputed from an 81-day window. GSW/GSM limitations still apply.

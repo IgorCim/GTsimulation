@@ -93,3 +93,44 @@ GT автоматически проверяет манифест при каж�
 ```text
 .venv\Scripts\python.exe -m pytest tests/test_input_reuse.py -q -W error
 ```
+
+## Независимый пересчёт входов
+
+После успешного check_reuse.py:
+
+```text
+.venv\Scripts\python.exe verification\check_independent_inputs.py
+```
+
+Скрипт автоматически выбирает самый свежий успешный reuse-прогон. Для конкретного:
+
+```text
+.venv\Scripts\python.exe verification\check_independent_inputs.py --bundles verification\reuse-5z9jejcq\bundles.json
+```
+
+Он не импортирует GT, его загрузчик или pymsis. Отдельным чтением исходников
+проверяются все временные метки и значения: явные группы Kp для T89; Pdyn,
+Dst, By/Bz GSM для T96; Pdyn, By/Bz GSW, B-index и флаги для T15B; F10.7
+предыдущего дня, среднее CENTER81 источника и семь параметров Ap для NRLMSIS.
+Исторические средние Ap вычисляются прямым суммированием восьми значений
+за 12–33 и 36–57 часов до текущего трёхчасового окна.
+
+Ожидаемый итог: `PASS: independent input audit for 89/96/15B/NRLMSIS.`
+Подробности, первые ожидаемые значения и максимальные ошибки каждого столбца
+сохраняются в новом verification/independent-.../report.json.
+
+Допуск сравнения чисел: абсолютный 1e-12, относительный 0; время и флаги
+должны совпасть точно. Механизм имеет 16 тестов:
+
+```text
+.venv\Scripts\python.exe -m pytest tests/test_independent_inputs.py -q -W error
+```
+
+Эта проверка независима по реализации чтения и вычисления входов. Она не
+проверяет независимыми наблюдениями сами данные провайдера, не пересчитывает
+его CENTER81 из 81 дня и не доказывает физическую точность моделей или
+преобразований GSW/GSM. Связь с описанием NASA:
+https://omniweb.gsfc.nasa.gov/html/ow_data.html
+Формат TA15: https://geo.phys.spbu.ru/~tsyganenko/models/ta15/Data_format.txt
+Определения предыдущего дня F10.7 и истории Ap соответствуют интерфейсу
+get_f107_ap установленного pymsis 0.13.0; расчёт в этой проверке написан отдельно.
