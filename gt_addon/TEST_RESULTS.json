@@ -1,0 +1,118 @@
+{
+  "scope": "Standalone downloader only; no GT import, model change or simulation.",
+  "tests": {
+    "tests.xml": {
+      "tests": 106,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "tests-installed.xml": {
+      "tests": 106,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "GT_installed_in_test_environment": false,
+  "pip_check": "No broken requirements found.",
+  "versions": {
+    "gt-input-addon": "1.0.0",
+    "numpy": "2.5.5",
+    "pymsis": "0.13.0",
+    "pytest": "9.2.0"
+  },
+  "fetcher_sha256": "824fb415e3635bbf7cbca14adebc468d1dab3238e409312370082c1244d7e03d",
+  "wheel_sha256": "78d8c3d8c30490bd88ab53e2739ca02cd4b5bf1f762bc3c3955778ba79ecd11f",
+  "upstream_GT_restored_to": "095dc71b0561cbe19a7ee436f65eda62fc2baff3",
+  "only_delivery_directory": "gt_addon",
+  "previous_materials_archive": "C:/Users/User/Desktop/GTsimulation-addon-archive-20261120_211111",
+  "network_and_replay_evidence": [
+    {
+      "report": "results\\live-gwq58txc\\report.json",
+      "mode": "live network",
+      "status": "FAIL",
+      "models": {
+        "89": {
+          "status": "PASS",
+          "rows": 24
+        },
+        "96": {
+          "status": "PASS",
+          "rows": 24
+        },
+        "15B": {
+          "status": "PASS",
+          "rows": 12
+        },
+        "nrlmsis": {
+          "status": "FAIL",
+          "error_type": "URLError",
+          "error": "<urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>"
+        }
+      }
+    },
+    {
+      "report": "results\\live-u2ma9o9_\\report.json",
+      "mode": "live network",
+      "status": "FAIL",
+      "models": {
+        "89": {
+          "status": "FAIL",
+          "error_type": "URLError",
+          "error": "<urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>"
+        },
+        "96": {
+          "status": "FAIL",
+          "error_type": "URLError",
+          "error": "<urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>"
+        },
+        "15B": {
+          "status": "PASS",
+          "rows": 12
+        },
+        "nrlmsis": {
+          "status": "FAIL",
+          "error_type": "URLError",
+          "error": "<urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>"
+        }
+      }
+    },
+    {
+      "report": "results\\live-8dgobrm6\\report.json",
+      "mode": "live network",
+      "status": "FAIL",
+      "models": {
+        "nrlmsis": {
+          "status": "NOT_CONFIRMED",
+          "error_type": "VerificationTimeout",
+          "error": "Manual verification deadline exceeded after more than 300 seconds; only this verification process was stopped. No successful fresh CelesTrak response recorded."
+        }
+      }
+    },
+    {
+      "report": "results\\live-dozdk74d\\report.json",
+      "mode": "offline captured-response replay",
+      "status": "PASS",
+      "models": {
+        "89": {
+          "status": "PASS",
+          "rows": 24
+        },
+        "96": {
+          "status": "PASS",
+          "rows": 24
+        },
+        "15B": {
+          "status": "PASS",
+          "rows": 12
+        },
+        "nrlmsis": {
+          "status": "PASS",
+          "rows": 24
+        }
+      }
+    }
+  ],
+  "interpretation": "106 tests pass from source and installed wheel. All four model input preparations pass replay with original source SHA256 and independent arithmetic. Fresh 89/96/15B passed in the first live run. Fresh NRLMSIS could not be confirmed due TLS errors/verification timeout; not counted as a live pass."
+}

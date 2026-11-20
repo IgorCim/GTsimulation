@@ -1,6 +1,0 @@
-# Provider responses are evidence: preserve bytes and omit huge textual diffs.
-live/**/*.dat -text -diff
-live/**/*.csv -text -diff
-ta15-format.txt -text -diff
-reuse-*/**/*.dat -text -diff
-reuse-*/response-*.dat -text -diff

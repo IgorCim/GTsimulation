@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import datetime
 from pathlib import Path
 import numpy as np
 
@@ -20,40 +20,23 @@ class Tsyganenko(AbsBfield):
     :type date: datetime.datetime
     :param ModCode: Model version selector (89, 96, 15B)
     :type ModCode: str
-    :param input_file: Optional prepared inputs.npy for T89/T96/T15B. Uses the
-        containing UTC hour (T89/T96) or five-minute slot (T15B) and rejects
-        dates outside the supplied interval. T15B retains the existing GT
-        GSM/GSW convention and emits a compatibility warning.
-        Without this option, bundled data selection is preserved.
     :raises ValueError: If date is outside model's valid range
     """
     to_meters = Units.RE2m
 
-    def __init__(self, date: datetime = datetime(2000, 1, 1), ModCode="96", *, input_file=None):
+    def __init__(self, date: datetime = datetime(2000, 1, 1), ModCode="96"):
         super().__init__()
         self.ModelName = "Tsyganenko"
         self.Region = Regions.Magnetosphere
         self.mod_code = str(ModCode)
-        self._external_inputs = input_file is not None
         self.T_input = None
-        if self._external_inputs:
-            from gtsimulation.input_data.omni import load_inputs
-            if self.mod_code == "15B":
-                import warnings
-                from gtsimulation.input_data.ta15 import load_ta15_inputs, COMPATIBILITY
-                warnings.warn(COMPATIBILITY, UserWarning, stacklevel=2)
-                self.T_input = load_ta15_inputs(input_file)
-            else:
-                self.T_input = load_inputs(input_file, self.mod_code)
-        elif self.mod_code == '15B':
+        if self.mod_code == '15B':
             self.T_input = np.load(Path(__file__).resolve().parent.joinpath("Data", "T_input15B_short.npy"))
         elif self.mod_code in ["89", "96"]:
             self.T_input = np.load(Path(__file__).resolve().parent.joinpath("Data", "T_input_short.npy"))
         else:
             raise ValueError("ModCode must take one of the values '89', '96', '15B'.")
-        if self._external_inputs:
-            date = self._external_date(date)
-        if not self._external_inputs and not self.T_input['date'][0] <= date <= self.T_input['date'][-1]:
+        if not self.T_input['date'][0] <= date <= self.T_input['date'][-1]:
             raise ValueError(f"Input date must be between {self.T_input['date'][0]} and {self.T_input['date'][-1]}.")
         self.Date = date
         self.__set_psi_ind()
@@ -92,10 +75,7 @@ class Tsyganenko(AbsBfield):
         return psi
 
     def _get_ind(self):
-        if self._external_inputs:
-            ia = np.searchsorted(self.T_input['date'], np.datetime64(self.Date), side="right") - 1
-        else:
-            ia = np.argmax(self.T_input['date'] >= self.Date)
+        ia = np.argmax(self.T_input['date'] >= self.Date)
         match self.mod_code:
             case "89":
                 return self.T_input['T89_input'][ia]
@@ -119,19 +99,7 @@ class Tsyganenko(AbsBfield):
         Bx, By, Bz = transformations.geo2gsm(Bx, By, Bz, self.year, self.doy, self.sec, self.g, self.h, inverse=True)
         return Bx, By, Bz
 
-    def _external_date(self, date):
-        if date.tzinfo is not None:
-            date = date.astimezone(timezone.utc).replace(tzinfo=None)
-        stamp = np.datetime64(date)
-        step = np.timedelta64(5, "m") if self.mod_code == "15B" else np.timedelta64(1, "h")
-        end = self.T_input["date"][-1] + step
-        if not self.T_input["date"][0] <= stamp < end:
-            raise ValueError("Date outside the external input interval.")
-        return date
-
     def update_state(self, new_date):
-        if self._external_inputs:
-            new_date = self._external_date(new_date)
         self.Date = new_date
         self.__set_psi_ind()
 

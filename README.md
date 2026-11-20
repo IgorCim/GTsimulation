@@ -41,11 +41,3 @@ $ git clone --depth 1 https://github.com/agmayorov/GTsimulation.git
 $ cd GTsimulation
 $ pip install .
 ```
-
-# External input data
-
-Prepare NASA OMNI drivers for T89/T96, official T15B inputs, and observed
-NRLMSIS atmospheric drivers with `python -m gtsimulation.input_data`
-and pass them using `Tsyganenko(..., input_file=...)`. See the
-[input-data guide](docs/user_guide/input_data.rst) for the API, time conventions,
-validation and supported scope.

@@ -1,7 +1,0 @@
-{
-  "earlier_attempt": "../reuse-v0z95sb7/report.json",
-  "earlier_attempt_raw_response_saved": false,
-  "earlier_attempt_cause": "Unknown: parser reported 53 fields; a separate download had 55 fields in all 8784 rows. No runtime parser change was made.",
-  "successful_run": "report.json",
-  "runner_followup": "Runner additionally preserves raw responses before parsing, including future parse failures. Four checker tests pass."
-}
