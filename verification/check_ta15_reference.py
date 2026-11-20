@@ -24,8 +24,10 @@ def reference(executable,queries):
 def frame(exe,date,velocity):
     row=reference(exe,[(1,[date.year,date.timetuple().tm_yday,date.hour,date.minute,date.second,*velocity])])[0]
     tilt=float(row[0]);rotation=row[1:].reshape(3,3)
-    np.testing.assert_allclose(rotation@rotation.T,np.eye(3),atol=1e-12,rtol=0)
-    if abs(np.linalg.det(rotation)-1)>1e-12:raise ValueError('Invalid handedness.')
+    # Legacy GEOPACK constants yield ~1e-11 orthogonality residuals.
+    # Record them in the report; 1e-9 is a numerical sanity bound, not a field-error allowance.
+    np.testing.assert_allclose(rotation@rotation.T,np.eye(3),atol=1e-9,rtol=0)
+    if abs(np.linalg.det(rotation)-1)>1e-9:raise ValueError('Invalid handedness.')
     return tilt,rotation
 
 
@@ -83,6 +85,8 @@ def main():
                 coordinate.append({'date_UTC':date.isoformat()+'Z','GSM_position_RE':point,
                     'velocity_GSE_km_s':vel.tolist(),'added_to_source_Vy_km_s':vy_correction,
                     'source_GSW_tilt_rad':float(r[15]),'reference_GSW_tilt_rad':ps,'reference_GSM_tilt_rad':gps,
+                    'GSW_rotation_orthogonality_error':float(np.max(abs(gsw@gsw.T-np.eye(3)))),
+                    'GSM_rotation_orthogonality_error':float(np.max(abs(gsm@gsm.T-np.eye(3)))),
                     'source_minus_reference_tilt_rad':float(r[15]-ps),
                     'angle_between_X_axes_deg':float(np.degrees(np.arccos(np.clip(gsm[0]@gsw[0],-1,1)))),
                     'mixed_frame_field_GEO_nT':base_geo.tolist(),'consistent_GSW_field_GEO_nT':correct_geo.tolist(),
