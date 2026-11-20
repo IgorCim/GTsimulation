@@ -83,3 +83,17 @@ isolation, and wrong numbers/time even with a recomputed matching input hash.
 The audit is independent implementation validation, not independent measurement
 validation or proof of GT field physics. Provider CENTER81 is retained, not
 recomputed from an 81-day window. GSW/GSM limitations still apply.
+
+## Failure and recovery matrix
+
+28 deterministic cases in tests/test_input_recovery.py cover four models with
+six injected failure classes followed by success in the same process/output
+parent, plus four transient-503-then-success cases. Transport injection occurs
+at urlopen, using the real retry logic. Atmospheric successful preparation still
+executes the real pymsis worker. Failure scenarios assert exception class,
+attempt count, absence of new files/staging dirs, byte preservation of previous
+bundles, distinct recovered bundle path and equality of recovered input values.
+Disk errors are injected OSError for NPY writing; the atmosphere case injects a
+nonzero worker exit. This is not a physical full-disk/crash test. No GT runtime
+code changes were necessary. recovery-tests.xml records the 28-case run;
+all-addon-tests.xml records the combined 134-case suite with JIT enabled.
