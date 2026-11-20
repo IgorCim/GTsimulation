@@ -47,12 +47,12 @@ def render(state,folder):
         preview=item.get('preview',{})
         actual='<tr>'+''.join('<th>'+e(k)+'</th>' for k in preview.get('headers',[]))+'</tr>'
         actual+=''.join('<tr>'+''.join('<td>'+e(v)+'</td>' for v in row)+'</tr>' for row in preview.get('rows',[]))
-        cards.append(f'<section><h2>{e(model)} — <span class="{e(status)}">{e(status)}</span></h2><p>{e(item.get("phase",""))} · {e(item.get("seconds",0))} с</p><p>{e(item.get("error",""))}</p><p>Строк: {e(values.get("rows","—"))}; UTC: {e(values.get("start","—"))} … {e(values.get("end_exclusive","—"))} (конец исключён).</p><p>{links}</p><h3>Первая строка: ожидаемые входы из источника</h3><table>{rows}</table><h3>Первые пять фактически сохранённых строк</h3><div style="overflow:auto"><table>{actual}</table></div><h3>Максимальные расхождения со всеми сохранёнными строками</h3><table>{err}</table></section>')
+        cards.append(f'<section><h2>{e(model)} — <span class="{e(status)}">{e(status)}</span></h2><p>{e(item.get("phase",""))} · {e(item.get("seconds",0))} с</p><p>{e(item.get("error",""))}</p><p>Строк: {e(values.get("rows","—"))}; UTC: {e(values.get("start","—"))} … {e(values.get("end_exclusive","—"))} (конец исключён).</p><p>Получение: {e(values.get("source_mode","network"))}; данные получены: {e(values.get("source_retrieved_at","см. манифест"))}.</p><p>{links}</p><h3>Первая строка: ожидаемые входы из источника</h3><table>{rows}</table><h3>Первые пять фактически сохранённых строк</h3><div style="overflow:auto"><table>{actual}</table></div><h3>Максимальные расхождения со всеми сохранёнными строками</h3><table>{err}</table></section>')
     status=overall(state)
     content=f'''<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Проверка аддона GT</title>
 <style>body{{font:16px system-ui;margin:28px auto;padding:0 20px;max-width:1000px;background:#f6f8fa;color:#16202a}}section{{background:white;padding:18px;margin:18px 0;border:1px solid #ccd3dc;border-radius:10px}}table{{border-collapse:collapse}}td{{padding:6px 12px;border-bottom:1px solid #ddd}}.PASS{{color:#08733d}}.FAIL,.TIMEOUT,.ERROR{{color:#b71922}}.RUNNING,.PARTIAL{{color:#925900}}a{{color:#145cc5}}p{{overflow-wrap:anywhere}}</style>
 <h1>Проверка самостоятельного аддона</h1><h2>Итог: <span class="{e(status)}">{e(status)}</span></h2>
-<p>Режим: свежая сеть. Проверяются только источники, файлы и подготовка входов. Физические модели GT не запускаются.</p>
+<p>Режим: сеть с явно отмеченным кэшем CelesTrak. Проверяются только источники, файлы и подготовка входов. Физические модели GT не запускаются.</p>
 <p>Автотесты: {e(state['unit'].get('status'))}; {e(state['unit'].get('tests','—'))} случаев. <a href="unit.log">Журнал тестов</a>. <a href="report.json">Общий JSON</a>.</p>
 <p>Лимит на один источник: {e(state['timeout'])} с. TIMEOUT означает отсутствие подтверждённого результата в этот срок. Это не доказательство ошибки расчёта и не успешная загрузка.</p>
 <p>Страница обновляется по F5. Все выбранные источники должны иметь PASS; NOT_RUN не заменяет пройденные автотесты. Прохождение не доказывает отсутствие любых ошибок во всех условиях.</p>
@@ -149,7 +149,7 @@ def main():
                     report=json.loads(path.read_text(encoding='utf-8'))
                     item['check']=report['models'][model]
                     item['report_link']=Path(os.path.relpath(path,folder)).as_posix()
-                    if report.get('mode')!='live network' or item['check'].get('status')!='PASS':item['status']='FAIL'
+                    if report.get('mode') not in ('live network','network with explicit source cache') or item['check'].get('status')!='PASS':item['status']='FAIL'
                     item['error']=item['check'].get('error','')
                     if item['status']=='PASS':add_preview(item,model,folder)
                 else:item.update(status='ERROR',error='Нет завершённого отчёта; см. журнал.')

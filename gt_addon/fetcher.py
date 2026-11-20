@@ -4,6 +4,7 @@ import csv
 from datetime import datetime, timedelta, timezone
 import hashlib
 import io
+import re
 import json
 from pathlib import Path
 import shutil
@@ -12,7 +13,7 @@ import sys
 import tempfile
 import time
 from urllib.error import HTTPError, URLError
-from urllib.request import urlopen
+from urllib.request import urlopen, Request
 import numpy as np
 
 # OMNI INPUTS
@@ -35,9 +36,11 @@ def _utc_hour(value):
     return value
 
 
-def _download(url, timeout, attempts, *, max_bytes=None):
+def _download(url, timeout, attempts, *, max_bytes=None, range_requests=False):
     if max_bytes is None:
         max_bytes = OMNI_MAX_BYTES
+    if range_requests:
+        return _download_ranges(url, timeout, attempts, max_bytes)
     for attempt in range(attempts):
         try:
             with urlopen(url, timeout=timeout) as response:
@@ -52,6 +55,57 @@ def _download(url, timeout, attempts, *, max_bytes=None):
                 raise
             time.sleep(0.5 * (attempt + 1))
 
+
+
+def _download_ranges(url, timeout, attempts, max_bytes):
+    """One stable file, retrieved in bounded HTTP ranges. Never mix versions."""
+    body=bytearray();total=None;etag=None
+    while total is None or len(body)<total:
+        offset=len(body)
+        last=min(offset+65535,max_bytes-1)
+        if total is not None:last=min(last,total-1)
+        headers={"Range":f"bytes={offset}-{last}",
+                 "User-Agent":"gt-input-addon/1.0 (+https://github.com/IgorCim/GTsimulation)",
+                 "Accept-Encoding":"identity"}
+        if etag:headers["If-Range"]=etag
+        for attempt in range(attempts):
+            try:
+                with urlopen(Request(url,headers=headers),timeout=timeout) as response:
+                    if response.headers.get("Content-Encoding","identity").lower()!="identity":
+                        raise ValueError("Encoded range response is not supported.")
+                    if response.status==200:
+                        if offset:raise ValueError("CelesTrak changed file or stopped honoring ranges; refusing mixed data.")
+                        complete=response.read(max_bytes+1)
+                        if len(complete)>max_bytes:raise ValueError("Input response exceeds the size limit.")
+                        declared=response.headers.get("Content-Length")
+                        if declared is not None and int(declared)!=len(complete):raise ValueError("Incomplete CelesTrak file.")
+                        return complete
+                    if response.status!=206:raise ValueError("Unexpected HTTP range status.")
+                    match=re.fullmatch(r"bytes (\d+)-(\d+)/(\d+)",response.headers.get("Content-Range",""))
+                    if not match:raise ValueError("Invalid CelesTrak Content-Range.")
+                    first,end,size=map(int,match.groups())
+                    tag=response.headers.get("ETag")
+                    if first!=offset or end!=min(last,size-1) or not 0<size<=max_bytes or first>end:
+                        raise ValueError("Invalid CelesTrak range offsets or size limit.")
+                    if not tag or tag.startswith('W/'):
+                        raise ValueError("Strong ETag required for stable CelesTrak ranged download.")
+                    if total is not None and (size!=total or tag!=etag):raise ValueError("CelesTrak changed during download.")
+                    declared=response.headers.get("Content-Length")
+                    if declared is not None and int(declared)!=end-first+1:raise ValueError("Range Content-Length mismatch.")
+                    part=response.read(end-first+2)
+                    if len(part)!=end-first+1:raise ValueError("Incomplete CelesTrak range.")
+                # Commit a chunk only after all checks and successful read.
+                body.extend(part);total=size;etag=tag
+                break
+            except (URLError,TimeoutError) as exc:
+                if isinstance(exc,HTTPError) and exc.code not in (408,429,500,502,503,504):raise
+                if attempt+1==attempts:raise
+                retry_after=exc.headers.get("Retry-After") if isinstance(exc,HTTPError) else None
+                if retry_after:
+                    if not retry_after.isdigit() or int(retry_after)>timeout:raise
+                    time.sleep(int(retry_after))
+                else:time.sleep(0.5*(attempt+1))
+    return bytes(body)
 
 def _parse_year(body, year):
     records = {}
@@ -288,6 +342,7 @@ def download_ta15_inputs(start,end,output_dir,*,allow_interpolated=False,timeout
 
 # ATMOSPHERE INPUTS
 MSIS_URL = "https://celestrak.org/SpaceData/SW-All.csv"
+MSIS_RECENT_URL = "https://celestrak.org/SpaceData/SW-Last5Years.csv"
 MSIS_DTYPE = np.dtype([("date", "datetime64[s]"), ("f107", "f8"),
                   ("f107a", "f8"), ("ap", "f8", (7,))])
 
@@ -346,7 +401,50 @@ print(version("pymsis"))
 """
 
 
-def download_atmosphere_inputs(start, end, output_dir, *, timeout=30, attempts=3):
+
+def _atmosphere_source(start, dataset, now=None):
+    if dataset not in ("auto","all","recent"):raise ValueError("dataset must be auto, all or recent.")
+    now=now or datetime.now(timezone.utc)
+    # Conservative subset of the rolling file: four complete calendar years
+    # plus current year. Earlier dates use the full historical file.
+    recent=start-timedelta(days=3)>=datetime(now.year-4,1,1)
+    return MSIS_RECENT_URL if dataset=="recent" or (dataset=="auto" and recent) else MSIS_URL
+
+
+def _cached_weather(cache_dir,url,now):
+    if cache_dir is None:return None
+    root=Path(cache_dir).expanduser().resolve()
+    key=hashlib.sha256(url.encode()).hexdigest()[:16]
+    entry=root/(key+".json")
+    if not entry.is_file():return None
+    meta=json.loads(entry.read_text(encoding="utf-8"))
+    age=(now-datetime.fromisoformat(meta["retrieved_at"])).total_seconds()
+    if meta["url"]!=url or not 0<=age<3*3600:return None
+    if not re.fullmatch(r"[0-9a-f]{64}",meta["sha256"]):raise ValueError("Invalid CelesTrak cache digest.")
+    raw=root/(key+"-"+meta["sha256"]+".csv")
+    body=raw.read_bytes()
+    if hashlib.sha256(body).hexdigest()!=meta["sha256"]:raise ValueError("CelesTrak cache SHA256 mismatch; refusing cached data.")
+    return body,meta["retrieved_at"]
+
+
+def _save_weather_cache(cache_dir,url,body,retrieved_at):
+    if cache_dir is None:return
+    root=Path(cache_dir).expanduser().resolve();root.mkdir(parents=True,exist_ok=True)
+    key=hashlib.sha256(url.encode()).hexdigest()[:16]
+    digest=hashlib.sha256(body).hexdigest()
+    # Immutable hash-addressed data, then atomic metadata: concurrent readers
+    # always reference a complete source, never a mixed CSV/metadata pair.
+    temporary=Path(tempfile.mkdtemp(prefix=".source-",dir=root))
+    try:
+        (temporary/"data.csv").write_bytes(body)
+        (temporary/"meta.json").write_text(json.dumps({"url":url,"retrieved_at":retrieved_at,"sha256":hashlib.sha256(body).hexdigest()},indent=2),encoding="utf-8")
+        (temporary/"data.csv").replace(root/(key+"-"+digest+".csv"))
+        (temporary/"meta.json").replace(root/(key+".json"))
+    finally:
+        if temporary.resolve().parent!=root:raise RuntimeError("Unexpected cache staging directory.")
+        shutil.rmtree(temporary)
+
+def download_atmosphere_inputs(start, end, output_dir, *, timeout=30, attempts=3, dataset="auto", cache_dir=None):
     """Prepare observed-only hourly inputs in [start,end); retain original CSV."""
     start, end = _utc_hour(start), _utc_hour(end)
     if start >= end or end-start > timedelta(days=366):
@@ -355,13 +453,22 @@ def download_atmosphere_inputs(start, end, output_dir, *, timeout=30, attempts=3
         raise ValueError("attempts must be an integer from 1 to 5.")
     if not np.isfinite(timeout) or timeout <= 0:
         raise ValueError("timeout must be positive and finite.")
-    body = _download(MSIS_URL, timeout, attempts)
+    url=_atmosphere_source(start,dataset)
+    now=datetime.now(timezone.utc)
+    cached=_cached_weather(cache_dir,url,now)
+    if cached is None:
+        body=_download(url, timeout, attempts, range_requests=True)
+        source_retrieved_at=datetime.now(timezone.utc).isoformat()
+        source_mode="network"
+    else:
+        body,source_retrieved_at=cached
+        source_mode="validated_cache"
     prepared = _validated_csv(body, start, end)
     parent = Path(output_dir).expanduser().resolve()
     parent.mkdir(parents=True, exist_ok=True)
     staging = Path(tempfile.mkdtemp(prefix=".msis-", dir=parent))
     try:
-        (staging / "SW-All.csv").write_bytes(body)
+        (staging / url.rsplit("/",1)[-1]).write_bytes(body)
         (staging / "selected.csv").write_text(prepared, encoding="utf-8")
         worker = subprocess.run([sys.executable, "-c", _WORKER,
             str(staging / "selected.csv"), start.isoformat(), end.isoformat(),
@@ -371,8 +478,10 @@ def download_atmosphere_inputs(start, end, output_dir, *, timeout=30, attempts=3
         rows = load_atmosphere_inputs(staging / "inputs.npy")
         manifest = {"schema":"gt-msis-inputs-v1", "rows":len(rows),
             "start":start.isoformat()+"Z", "end_exclusive":end.isoformat()+"Z",
-            "source":MSIS_URL, "source_sha256":hashlib.sha256(body).hexdigest(),
-            "retrieved_at":datetime.now(timezone.utc).isoformat(),
+            "source":url, "source_file":url.rsplit("/",1)[-1], "source_sha256":hashlib.sha256(body).hexdigest(),
+            "source_mode":source_mode, "source_retrieved_at":source_retrieved_at,
+            "cache_max_age_seconds":10800 if cache_dir is not None else None,
+            "retrieved_at":source_retrieved_at, "created_at":datetime.now(timezone.utc).isoformat(),
             "input_sha256":hashlib.sha256((staging/"inputs.npy").read_bytes()).hexdigest(),
             "pymsis_version":worker.stdout.strip(), "time_system":"UTC",
             "policy":"observed only; no interpolation; previous-day F107 and 57-hour Ap history via pymsis",
@@ -386,8 +495,15 @@ def download_atmosphere_inputs(start, end, output_dir, *, timeout=30, attempts=3
             raise RuntimeError("Unexpected staging directory.")
         shutil.rmtree(staging)
         raise
+    if source_mode=="network":
+        try:_save_weather_cache(cache_dir,url,body,source_retrieved_at)
+        except BaseException:
+            if bundle.resolve().parent!=parent:raise RuntimeError("Unexpected bundle directory.")
+            shutil.rmtree(bundle)
+            raise
     return {"input_file":str(bundle/"inputs.npy"), "manifest":str(bundle/"manifest.json"),
-            "rows":len(rows), "model":"nrlmsis",
+            "rows":len(rows), "model":"nrlmsis", "source_mode":source_mode,
+            "source_retrieved_at":source_retrieved_at,
             "space_weather_file":str(bundle/"selected.csv")}
 
 
@@ -423,7 +539,7 @@ def main():
         if args.model == "15B":
             result = download_ta15_inputs(args.start, args.end, args.output_dir, allow_interpolated=args.allow_provider_interpolation)
         elif args.model == "nrlmsis":
-            result = download_atmosphere_inputs(args.start, args.end, args.output_dir)
+            result = download_atmosphere_inputs(args.start, args.end, args.output_dir, cache_dir=Path(args.output_dir)/".celestrak-cache")
         else:
             result = download_tsyganenko_inputs(args.start, args.end, args.output_dir, model=args.model)
     except (ValueError, OSError, subprocess.SubprocessError) as exc:

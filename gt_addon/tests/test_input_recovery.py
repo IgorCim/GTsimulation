@@ -10,6 +10,12 @@ import fetcher as omni
 import fetcher as ta15
 import fetcher as atmosphere
 
+class Response(io.BytesIO):
+    status=200
+    def __init__(self,body):
+        super().__init__(body);self.headers={"Content-Length":str(len(body))}
+
+
 TESTS=Path(__file__).resolve().parent
 atmos_source=runpy.run_path(str(TESTS/'test_atmosphere_inputs.py'))['source']
 ta15_source=runpy.run_path(str(TESTS/'test_ta15_inputs.py'))['source']
@@ -52,12 +58,12 @@ def test_failure_then_recovery_preserves_previous_bundle(tmp_path,monkeypatch,mo
         if phase['failure']:
             if failure=='timeout':raise TimeoutError('injected source timeout')
             if failure in ('404','503'):raise HTTPError(url,int(failure),'injected HTTP failure',{},None)
-            if failure=='malformed':return io.BytesIO(b'<html>temporary error</html>')
+            if failure=='malformed':return Response(b'<html>temporary error</html>')
             if failure=='missing':
                 lines=good.splitlines(keepends=True)
                 # Remove one required time slot/day; no invented replacement.
-                return io.BytesIO(b''.join(lines[:-1] if model!='nrlmsis' else lines[:2]+lines[3:]))
-        return io.BytesIO(good)
+                return Response(b''.join(lines[:-1] if model!='nrlmsis' else lines[:2]+lines[3:]))
+        return Response(good)
     monkeypatch.setattr(omni,'urlopen',opening)
     monkeypatch.setattr(omni.time,'sleep',lambda _:None)
     first=download(tmp_path)
@@ -97,7 +103,7 @@ def test_transient_503_recovers_within_attempt_budget(tmp_path,monkeypatch,model
     def opening(url,**kwargs):
         calls.append(url)
         if len(calls)==1:raise HTTPError(url,503,'injected transient error',{},None)
-        return io.BytesIO(body)
+        return Response(body)
     monkeypatch.setattr(omni,'urlopen',opening)
     monkeypatch.setattr(omni.time,'sleep',lambda _:None)
     result=download(tmp_path)

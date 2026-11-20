@@ -25,7 +25,7 @@ def source(change=None):
 
 @pytest.fixture
 def bundle(tmp_path,monkeypatch):
-    monkeypatch.setattr(a,'_download',lambda *args:source())
+    monkeypatch.setattr(a,'_download',lambda *args,**kwargs:source())
     return a.download_atmosphere_inputs('2024-09-10','2024-09-11',tmp_path)
 
 
@@ -50,13 +50,13 @@ def test_history_and_provenance(bundle):
  lambda r,i:r.clear() if i==1 else None,
 ])
 def test_bad_history_fails_without_bundle(tmp_path,monkeypatch,change):
-    monkeypatch.setattr(a,'_download',lambda *args:source(change))
+    monkeypatch.setattr(a,'_download',lambda *args,**kwargs:source(change))
     with pytest.raises(ValueError): a.download_atmosphere_inputs('2024-09-10','2024-09-11',tmp_path)
     assert not list(tmp_path.iterdir())
 
 
 def test_worker_failure_cleans_staging(tmp_path,monkeypatch):
-    monkeypatch.setattr(a,'_download',lambda *args:source())
+    monkeypatch.setattr(a,'_download',lambda *args,**kwargs:source())
     def fail(*args,**kwargs): raise a.subprocess.TimeoutExpired('worker',120)
     monkeypatch.setattr(a.subprocess,'run',fail)
     with pytest.raises(a.subprocess.TimeoutExpired): a.download_atmosphere_inputs('2024-09-10','2024-09-11',tmp_path)
@@ -82,7 +82,7 @@ def test_reordered_csv_rejected(tmp_path,monkeypatch):
     lines=source().decode().splitlines()
     fields=lines[0].split(',');fields[24],fields[25]=fields[25],fields[24]
     body=('\n'.join([','.join(fields)]+lines[1:])+'\n').encode()
-    monkeypatch.setattr(a,'_download',lambda *args:body)
+    monkeypatch.setattr(a,'_download',lambda *args,**kwargs:body)
     with pytest.raises(ValueError,match='column order'):
         a.download_atmosphere_inputs('2024-09-10','2024-09-11',tmp_path)
 
@@ -96,5 +96,5 @@ def test_preparation_does_not_change_parent_source(tmp_path,monkeypatch):
 
 
 def prepare_atmosphere(tmp_path,monkeypatch):
-    monkeypatch.setattr(a,'_download',lambda *args:source())
+    monkeypatch.setattr(a,'_download',lambda *args,**kwargs:source())
     return a.download_atmosphere_inputs('2024-09-10','2024-09-11',tmp_path)

@@ -23,7 +23,7 @@ def test_cli_bad_option(monkeypatch,capsys):
 
 
 def test_cli_worker_timeout(monkeypatch,capsys):
-    def fail(*args): raise subprocess.TimeoutExpired('worker',120)
+    def fail(*args,**kwargs): raise subprocess.TimeoutExpired('worker',120)
     monkeypatch.setattr(cli,'download_atmosphere_inputs',fail)
     monkeypatch.setattr('sys.argv',['input_data','--model','nrlmsis','--start','2024-09-10','--end','2024-09-11','--output-dir','inputs'])
     with pytest.raises(SystemExit) as e: cli.main()

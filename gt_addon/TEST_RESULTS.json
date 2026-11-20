@@ -134,5 +134,111 @@
     },
     "overall_status": "FAIL",
     "note": "Five additional tests verify reporting and process deadlines; the original 106 downloader tests remain. Runtime fetcher and GT unchanged. NRLMSIS timeout is not a successful live download."
+  },
+  "celestrak_fix_1_0_1": {
+    "scope": "Only addon transport, cache, documentation and tests; GT and physical input calculations unchanged.",
+    "tests": {
+      "tests-celestrak.xml": {
+        "tests": 138,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "tests-celestrak-installed.xml": {
+        "tests": 138,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "fetcher_sha256": "0f4819c49e75bde157c8059723f3f56a4e006fa32a50e2f1aa3d333db4c912fc",
+    "wheel_sha256": "d596da8e547ee476984b6cb5a624bc4cc8059871b9d27e069361a210b68bbb9e",
+    "actual_network_download": {
+      "status": "PASS",
+      "url": "https://celestrak.org/SpaceData/SW-Last5Years.csv",
+      "bytes": 266641,
+      "sha256": "16a0c8e8a4a3ee1c4b36c32f4c3a336b5e82cbffdf5d5ed704daeadddc455105",
+      "segments": [
+        {
+          "offset": 0,
+          "bytes": 65536,
+          "etag": "\"6e519ceefb78dd1:0\""
+        },
+        {
+          "offset": 65536,
+          "bytes": 65536,
+          "etag": "\"6e519ceefb78dd1:0\""
+        },
+        {
+          "offset": 131072,
+          "bytes": 65536,
+          "etag": "\"6e519ceefb78dd1:0\""
+        },
+        {
+          "offset": 196608,
+          "bytes": 65536,
+          "etag": "\"6e519ceefb78dd1:0\""
+        },
+        {
+          "offset": 262144,
+          "bytes": 4497,
+          "etag": "\"6e519ceefb78dd1:0\""
+        }
+      ],
+      "seconds": 60.27
+    },
+    "focused_visible_report": "results/visible-f88qanse/report.html",
+    "focused_status": "PASS",
+    "independent_nrlmsis_check": {
+      "status": "PASS",
+      "rows": 24,
+      "values_compared": 216,
+      "start": "2024-09-10T00:00:00Z",
+      "end_exclusive": "2024-09-11T00:00:00Z",
+      "max_absolute_error_by_component": {
+        "previous_day_F107_sfu": 0.0,
+        "center81_F107_sfu": 0.0,
+        "daily_Ap": 0.0,
+        "ap_now": 0.0,
+        "ap_minus3h": 0.0,
+        "ap_minus6h": 0.0,
+        "ap_minus9h": 0.0,
+        "ap_mean12_33h": 0.0,
+        "ap_mean36_57h": 0.0
+      },
+      "first_expected": {
+        "previous_day_F107_sfu": 214.8,
+        "center81_F107_sfu": 221.6,
+        "daily_Ap": 6.0,
+        "ap_now": 9.0,
+        "ap_minus3h": 9.0,
+        "ap_minus6h": 12.0,
+        "ap_minus9h": 12.0,
+        "ap_mean12_33h": 6.375,
+        "ap_mean36_57h": 6.375
+      },
+      "source_and_input_sha256_verified": true,
+      "bundle": {
+        "input_file": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\live-eckfu5q6\\msis-q6hqj36s\\inputs.npy",
+        "manifest": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\live-eckfu5q6\\msis-q6hqj36s\\manifest.json",
+        "rows": 24,
+        "model": "nrlmsis",
+        "source_mode": "validated_cache",
+        "source_retrieved_at": "2026-11-20T15:27:15.310236+00:00",
+        "space_weather_file": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\live-eckfu5q6\\msis-q6hqj36s\\selected.csv"
+      },
+      "source_mode": "validated_cache",
+      "source_retrieved_at": "2026-11-20T15:27:15.310236+00:00",
+      "source_url": "https://celestrak.org/SpaceData/SW-Last5Years.csv"
+    },
+    "full_visible_report": "results/visible-bw55o8s7/report.html",
+    "full_visible_status": "FAIL",
+    "full_source_statuses": {
+      "89": "TIMEOUT",
+      "96": "FAIL",
+      "15B": "PASS",
+      "nrlmsis": "PASS"
+    },
+    "interpretation": "138 tests pass from source and installed wheel. A real complete CelesTrak ranged download succeeded; the subsequent 24-row/216-value independent workflow explicitly used its validated cache, preserving original retrieval time. Full visible run still failed on NASA timeout/TLS; no all-source live success is claimed."
   }
 }

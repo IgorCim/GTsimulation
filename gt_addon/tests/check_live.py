@@ -73,7 +73,7 @@ def compare(model,bundle):
     np.testing.assert_array_equal(data['date'],np.array(times,dtype='datetime64[s]'))
     if len(data)!=m['rows']:raise ValueError('Manifest row count mismatch.')
     if model=='nrlmsis':
-        path=root/'SW-All.csv';digest(path,m['source_sha256'])
+        path=root/m.get('source_file','SW-All.csv');digest(path,m['source_sha256'])
         with path.open(encoding='utf-8-sig',newline='') as f:
             records={datetime.fromisoformat(row['DATE']).date():row for row in csv.DictReader(f)}
         first=(start-timedelta(days=3)).date();last=(end-timedelta(seconds=1)).date()
@@ -123,14 +123,19 @@ def main():
         import io
         allowed={fetcher.OMNI_BASE_URL+'/omni2_2024.dat':'omni2_2024.dat',fetcher.TA15_BASE_URL+'/2023_OMNI_5m_with_TA15_drivers.dat':'2023_OMNI_5m_with_TA15_drivers.dat',fetcher.MSIS_URL:'SW-All.csv'}
         def opening(url,**kwargs):
-            if url not in allowed:raise RuntimeError('Unexpected replay URL: '+url)
-            return io.BytesIO(Path(replay_sources[allowed[url]]['path']).read_bytes())
+            if getattr(url,'full_url',url) not in allowed:raise RuntimeError('Unexpected replay URL: '+str(url))
+            actual_url=getattr(url,'full_url',url)
+            body=Path(replay_sources[allowed[actual_url]]['path']).read_bytes()
+            class Response(io.BytesIO):
+                status=200
+                headers={'Content-Length':str(len(body))}
+            return Response(body)
         fetcher.urlopen=opening
     root=Path(__file__).resolve().parents[1]
     (root/'results').mkdir(exist_ok=True)
     folder=Path(tempfile.mkdtemp(prefix='replay-' if args.replay_dir else 'live-',dir=root/'results'))
     result={'status':'RUNNING','models':{},'scope':'Download/prepare/integrity/independent arithmetic only; no GT import or simulation.',
-            'mode':'offline captured-response replay' if args.replay_dir else 'live network', 'replay_sources':replay_sources}
+            'mode':'offline captured-response replay' if args.replay_dir else 'network (CelesTrak explicit cache allowed)', 'replay_sources':replay_sources}
     print('MODE: '+result['mode'],flush=True)
     for model in dict.fromkeys(args.models):
         print('Download and independent check: '+model,flush=True)
@@ -140,13 +145,19 @@ def main():
             elif model=='15B':
                 b=fetcher.download_ta15_inputs('2023-01-01T00:30','2023-01-01T01:30',folder,allow_interpolated=True)
             else:
-                b=fetcher.download_atmosphere_inputs('2024-09-10','2024-09-11',folder)
+                b=fetcher.download_atmosphere_inputs('2024-09-10','2024-09-11',folder,dataset='all' if args.replay_dir else 'auto',cache_dir=None if args.replay_dir else root/'inputs/.celestrak-cache')
             checked=compare(model,b)
             checked['bundle']=b
+            if model=='nrlmsis':
+                meta=json.loads(Path(b['manifest']).read_text(encoding='utf-8'))
+                checked.update(source_mode=meta.get('source_mode','network'),source_retrieved_at=meta.get('source_retrieved_at'),source_url=meta['source'])
+                print('SOURCE nrlmsis: '+checked['source_mode']+'; retrieved '+str(checked['source_retrieved_at']),flush=True)
             result['models'][model]=checked
         except Exception as exc:
             result['models'][model]={'status':'FAIL','error_type':type(exc).__name__,'error':str(exc)}
             print('FAIL '+model+': '+str(exc),flush=True)
+    if not args.replay_dir:
+        result['mode']='network with explicit source cache' if any(v.get('source_mode')=='validated_cache' for v in result['models'].values()) else 'live network'
     result['status']='PASS' if all(r['status']=='PASS' for r in result['models'].values()) else 'FAIL'
     if any(k=='gtsimulation' or k.startswith('gtsimulation.') for k in sys.modules):
         result['status']='FAIL';result['unexpected_gt_import']=True
