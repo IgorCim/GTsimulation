@@ -124,3 +124,19 @@ case preserves GT's existing date/index handling and interaction defaults.
 Input downloads and failure handling were exercised by preceding stages; this
 workflow reuses their saved bundles. First clean execution was slow and eventually
 passed; its delay was not conclusively attributed to a particular import.
+
+
+## TA15 scientific reference audit
+
+See TA15_REVIEW_RU.md for the four-part scientific audit and its limitations.
+The compiled official TA15 + GEOPACK comparison runs in Linux CI because Windows
+application control blocked the locally built executable. Runtime GT/addon code
+was unchanged. Both interpreted and JIT GT modes were compared. Standard Fortran
+literal precision gives 53/54 cases at the declared componentwise tolerance;
+promoting literals in the same official source gives 54/54, with max error about
+1.21e-8 nT. Both results remain in the evidence. Coordinate sensitivity reaches
+6.15 nT in selected cases; that is not a global error bound or measurement
+validation. A consistent GSW wrapper remains necessary for that scientific use.
+Evidence: ta15-audit/ci-44718536704 (two full numerical reports, compiler version,
+source hashes and CI run metadata). Workflow success means the audit completed,
+not that the findings vanish.

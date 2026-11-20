@@ -1,0 +1,4527 @@
+{
+  "audit_complete": true,
+  "runtime_model_modified": false,
+  "official_sources": {
+    "TA15": "https://geo.phys.spbu.ru/~tsyganenko/models/ta15/TA_2015_B.f",
+    "GEOPACK": "https://geo.phys.spbu.ru/~tsyganenko/Geopack-2008_dp.for"
+  },
+  "sha256": {
+    "TA_2015_B.f": "6330a8c7de291c58cd963de015b8f933d1bff498c8580e0db2599a1330ff2b4b",
+    "geopack08.for": "3c1462627a64feee21f762a1f71970c1a0a28476257d4bbeb16f35faa1d98bd4",
+    "TA15_Model_description.pdf": "a0a51737c0283f45a2e79ba661c85622414ef05292959a7d3c3bbe7f36eb03b5",
+    "reference_driver.f90": "25f2cc5b4370bfe042b37ec95e0b11661e73cf70e94533d2924ecedaceb9fd3c"
+  },
+  "reference_executable_sha256": "4d6694b21fe8ade6e84ff603c662c7c3356ec887826bc7152c747b65665c16ff",
+  "gt_wrapper_module": "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/gtsimulation/magnetic_field/magnetosphere/_tsyganenko.py",
+  "gt_wrapper_sha256": "2c5aa5204084d7a9386408717f2fcfa0e013780f12c10bc9a0503375475cdac4",
+  "gt_kernel_sha256": "d5dba46977c7c216112f104b9d674768496a420e3d89515549db1edae954a3d9",
+  "source_drivers_sha256": "990f7cb50bc302248ea09501a948167d4be7e8701b45c3ddef6d3a6f9d10e872",
+  "kernel_comparisons": [
+    {
+      "parameters": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "tilt_rad": -0.4,
+      "position_RE": [
+        6,
+        1,
+        2
+      ],
+      "official_nT": [
+        -5.406579263823812,
+        0.7396566637770365,
+        14.83662111642434
+      ],
+      "gt_kernel_nT": [
+        -5.406579463758563,
+        0.7396566494649002,
+        14.836621552955789
+      ],
+      "max_abs_error_nT": 4.365314492105199e-07,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        -5.406579463758488,
+        0.7396566494649217,
+        14.83662155295579
+      ],
+      "promoted_literal_max_abs_error_nT": 7.460698725481052e-14,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "tilt_rad": -0.4,
+      "position_RE": [
+        -6,
+        0,
+        1
+      ],
+      "official_nT": [
+        25.7740515216779,
+        0.0023778470956017975,
+        -16.926148444425074
+      ],
+      "gt_kernel_nT": [
+        25.77405047090534,
+        0.002377851487550549,
+        -16.926146731122504
+      ],
+      "max_abs_error_nT": 1.713302570038877e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        25.774050470906218,
+        0.0023778514875507427,
+        -16.92614673112278
+      ],
+      "promoted_literal_max_abs_error_nT": 8.775202786637237e-13,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "tilt_rad": -0.4,
+      "position_RE": [
+        -10,
+        5,
+        2
+      ],
+      "official_nT": [
+        21.733951736572223,
+        -5.630974045739938,
+        -11.83977587595093
+      ],
+      "gt_kernel_nT": [
+        21.733951038385815,
+        -5.63097378229462,
+        -11.839775744058675
+      ],
+      "max_abs_error_nT": 6.981864082433731e-07,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        21.733951038385804,
+        -5.630973782294621,
+        -11.839775744058661
+      ],
+      "promoted_literal_max_abs_error_nT": 1.4210854715202004e-14,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "tilt_rad": -0.4,
+      "position_RE": [
+        -20,
+        -5,
+        0.5
+      ],
+      "official_nT": [
+        13.339170472212263,
+        2.3190770767440347,
+        -1.2529047709440677
+      ],
+      "gt_kernel_nT": [
+        13.339170521898277,
+        2.3190770740279,
+        -1.2529048913128769
+      ],
+      "max_abs_error_nT": 1.2036880914223502e-07,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        13.339170521896467,
+        2.319077074028009,
+        -1.2529048913131067
+      ],
+      "promoted_literal_max_abs_error_nT": 1.8101076193488552e-12,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "tilt_rad": -0.4,
+      "position_RE": [
+        3,
+        3,
+        3
+      ],
+      "official_nT": [
+        1.948989318060798,
+        -0.9569588402701306,
+        -2.87920941409665
+      ],
+      "gt_kernel_nT": [
+        1.9489888831357807,
+        -0.9569588536256013,
+        -2.879208296047651
+      ],
+      "max_abs_error_nT": 1.1180489991602371e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        1.948988883135762,
+        -0.9569588536256043,
+        -2.879208296047669
+      ],
+      "promoted_literal_max_abs_error_nT": 1.865174681370263e-14,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "tilt_rad": -0.4,
+      "position_RE": [
+        -40,
+        10,
+        4
+      ],
+      "official_nT": [
+        9.355190812019337,
+        -1.4480678607003552,
+        0.28778151353981485
+      ],
+      "gt_kernel_nT": [
+        9.355190770453177,
+        -1.4480678355317294,
+        0.28778132223354125
+      ],
+      "max_abs_error_nT": 1.9130627360031127e-07,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        9.355190770452838,
+        -1.448067835531811,
+        0.287781322233622
+      ],
+      "promoted_literal_max_abs_error_nT": 3.3928415632544784e-13,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "tilt_rad": 0,
+      "position_RE": [
+        6,
+        1,
+        2
+      ],
+      "official_nT": [
+        1.7557729856608444,
+        -0.7339965214390466,
+        13.27993380695851
+      ],
+      "gt_kernel_nT": [
+        1.7557729609280646,
+        -0.7339965005105639,
+        13.279934367249869
+      ],
+      "max_abs_error_nT": 5.602913581981284e-07,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        1.7557729609280655,
+        -0.7339965005105639,
+        13.279934367249869
+      ],
+      "promoted_literal_max_abs_error_nT": 8.881784197001252e-16,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "tilt_rad": 0,
+      "position_RE": [
+        -6,
+        0,
+        1
+      ],
+      "official_nT": [
+        12.824277156197157,
+        0.023102145401413258,
+        -27.374592858652335
+      ],
+      "gt_kernel_nT": [
+        12.824277014804123,
+        0.023102137671364723,
+        -27.374591070766996
+      ],
+      "max_abs_error_nT": 1.7878853384445392e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        12.824277014809729,
+        0.02310213767136479,
+        -27.37459107075086
+      ],
+      "promoted_literal_max_abs_error_nT": 1.6136425529111875e-11,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "tilt_rad": 0,
+      "position_RE": [
+        -10,
+        5,
+        2
+      ],
+      "official_nT": [
+        16.589022276146558,
+        -5.390512343413319,
+        -11.920473003302172
+      ],
+      "gt_kernel_nT": [
+        16.589021916750543,
+        -5.390512181605672,
+        -11.92047322616881
+      ],
+      "max_abs_error_nT": 3.593960151704323e-07,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        16.589021916746372,
+        -5.390512181595938,
+        -11.920473226165203
+      ],
+      "promoted_literal_max_abs_error_nT": 9.734435479913373e-12,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "tilt_rad": 0,
+      "position_RE": [
+        -20,
+        -5,
+        0.5
+      ],
+      "official_nT": [
+        3.3212581416470774,
+        0.5968476315414766,
+        -0.7424406138669095
+      ],
+      "gt_kernel_nT": [
+        3.3212581310735683,
+        0.5968476311051941,
+        -0.7424407309258448
+      ],
+      "max_abs_error_nT": 1.170589353227669e-07,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        3.3212581310892157,
+        0.5968476311032325,
+        -0.7424407309176352
+      ],
+      "promoted_literal_max_abs_error_nT": 1.5647483309066956e-11,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "tilt_rad": 0,
+      "position_RE": [
+        3,
+        3,
+        3
+      ],
+      "official_nT": [
+        5.906445681165242,
+        -4.78260195220559,
+        -6.118556167999152
+      ],
+      "gt_kernel_nT": [
+        5.906445573365931,
+        -4.782601884724341,
+        -6.118554918146192
+      ],
+      "max_abs_error_nT": 1.2498529606830289e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        5.9064455733659305,
+        -4.782601884724341,
+        -6.118554918146188
+      ],
+      "promoted_literal_max_abs_error_nT": 3.552713678800501e-15,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "tilt_rad": 0,
+      "position_RE": [
+        -40,
+        10,
+        4
+      ],
+      "official_nT": [
+        7.768875189351013,
+        -1.3461967283862961,
+        0.5161887163395066
+      ],
+      "gt_kernel_nT": [
+        7.768875159788451,
+        -1.3461967132315724,
+        0.5161885423272472
+      ],
+      "max_abs_error_nT": 1.7401225937963005e-07,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        7.768875159788292,
+        -1.346196713231611,
+        0.5161885423271746
+      ],
+      "promoted_literal_max_abs_error_nT": 1.5898393712632242e-13,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "tilt_rad": 0.4,
+      "position_RE": [
+        6,
+        1,
+        2
+      ],
+      "official_nT": [
+        13.964582737358192,
+        -1.2381193505024926,
+        5.543112128914889
+      ],
+      "gt_kernel_nT": [
+        13.964582746042849,
+        -1.2381193060032722,
+        5.543112966307001
+      ],
+      "max_abs_error_nT": 8.373921120963246e-07,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        13.96458274604277,
+        -1.2381193060032936,
+        5.54311296630701
+      ],
+      "promoted_literal_max_abs_error_nT": 7.815970093361102e-14,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "tilt_rad": 0.4,
+      "position_RE": [
+        -6,
+        0,
+        1
+      ],
+      "official_nT": [
+        -17.51884905051146,
+        0.0008283550812942921,
+        -23.392937176222727
+      ],
+      "gt_kernel_nT": [
+        -17.518848526386783,
+        0.0008283565730224079,
+        -23.392935268472815
+      ],
+      "max_abs_error_nT": 1.9077499118225205e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        -17.518848526386783,
+        0.0008283565730224276,
+        -23.392935268473423
+      ],
+      "promoted_literal_max_abs_error_nT": 6.075140390748857e-13,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "tilt_rad": 0.4,
+      "position_RE": [
+        -10,
+        5,
+        2
+      ],
+      "official_nT": [
+        -3.2087512626681316,
+        -0.04967465741136316,
+        -11.957258683787888
+      ],
+      "gt_kernel_nT": [
+        -3.2087516919060772,
+        -0.04967457493353594,
+        -11.957259033092955
+      ],
+      "max_abs_error_nT": 4.292379456316553e-07,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        -3.208751691906167,
+        -0.049674574933482464,
+        -11.957259033093102
+      ],
+      "promoted_literal_max_abs_error_nT": 1.474376176702208e-13,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "tilt_rad": 0.4,
+      "position_RE": [
+        -20,
+        -5,
+        0.5
+      ],
+      "official_nT": [
+        -9.730562365512332,
+        -1.7185762070159238,
+        -1.106095238142298
+      ],
+      "gt_kernel_nT": [
+        -9.730562521002655,
+        -1.7185762273010616,
+        -1.1060953580433364
+      ],
+      "max_abs_error_nT": 1.5549032283956876e-07,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        -9.730562521001,
+        -1.718576227301219,
+        -1.106095358043612
+      ],
+      "promoted_literal_max_abs_error_nT": 1.6555645743210334e-12,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "tilt_rad": 0.4,
+      "position_RE": [
+        3,
+        3,
+        3
+      ],
+      "official_nT": [
+        12.770373678803546,
+        -5.528676072145344,
+        -9.704747409516928
+      ],
+      "gt_kernel_nT": [
+        12.770373722272035,
+        -5.528675889827961,
+        -9.704746166805682
+      ],
+      "max_abs_error_nT": 1.2427112459079126e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        12.770373722272069,
+        -5.528675889827958,
+        -9.704746166805672
+      ],
+      "promoted_literal_max_abs_error_nT": 3.375077994860476e-14,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "tilt_rad": 0.4,
+      "position_RE": [
+        -40,
+        10,
+        4
+      ],
+      "official_nT": [
+        3.915241532892596,
+        -0.7708728480405324,
+        0.626428354204312
+      ],
+      "gt_kernel_nT": [
+        3.9152414316027135,
+        -0.7708728268980818,
+        0.6264281811783563
+      ],
+      "max_abs_error_nT": 1.7302595567425527e-07,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        3.9152414316027153,
+        -0.7708728268980821,
+        0.6264281811783571
+      ],
+      "promoted_literal_max_abs_error_nT": 1.7763568394002505e-15,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        3,
+        -5,
+        1
+      ],
+      "tilt_rad": -0.4,
+      "position_RE": [
+        6,
+        1,
+        2
+      ],
+      "official_nT": [
+        -3.4286428638249125,
+        1.9245735714645347,
+        6.128258932771889
+      ],
+      "gt_kernel_nT": [
+        -3.428643167037644,
+        1.9245734167045043,
+        6.128260034955206
+      ],
+      "max_abs_error_nT": 1.1021833170588025e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        -3.4286431635822128,
+        1.9245734166419333,
+        6.128260033812335
+      ],
+      "promoted_literal_max_abs_error_nT": 3.4554310524015364e-09,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        3,
+        -5,
+        1
+      ],
+      "tilt_rad": -0.4,
+      "position_RE": [
+        -6,
+        0,
+        1
+      ],
+      "official_nT": [
+        47.112599811290224,
+        3.0607582103314614,
+        -29.210056253789002
+      ],
+      "gt_kernel_nT": [
+        47.11259761782855,
+        3.060758661043848,
+        -29.210054978964024
+      ],
+      "max_abs_error_nT": 2.193461675403796e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        47.11259761901582,
+        3.060758661043849,
+        -29.210054979465678
+      ],
+      "promoted_literal_max_abs_error_nT": 1.1872742788909818e-09,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        3,
+        -5,
+        1
+      ],
+      "tilt_rad": -0.4,
+      "position_RE": [
+        -10,
+        5,
+        2
+      ],
+      "official_nT": [
+        32.74557695621603,
+        -8.97117605631345,
+        -14.808531293649605
+      ],
+      "gt_kernel_nT": [
+        32.74557525698195,
+        -8.97117612914392,
+        -14.808531519476135
+      ],
+      "max_abs_error_nT": 1.6992340761134983e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        32.745575257220565,
+        -8.97117612923531,
+        -14.808531519543548
+      ],
+      "promoted_literal_max_abs_error_nT": 2.3861446152295684e-10,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        3,
+        -5,
+        1
+      ],
+      "tilt_rad": -0.4,
+      "position_RE": [
+        -20,
+        -5,
+        0.5
+      ],
+      "official_nT": [
+        19.86007203353049,
+        5.364103968323784,
+        -2.00295898495617
+      ],
+      "gt_kernel_nT": [
+        19.860071812380887,
+        5.364103904536488,
+        -2.002959375158073
+      ],
+      "max_abs_error_nT": 3.9020190323313386e-07,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        19.860071812402975,
+        5.3641039045510635,
+        -2.002959375158426
+      ],
+      "promoted_literal_max_abs_error_nT": 2.2087220941102714e-11,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        3,
+        -5,
+        1
+      ],
+      "tilt_rad": -0.4,
+      "position_RE": [
+        3,
+        3,
+        3
+      ],
+      "official_nT": [
+        2.1433521968226517,
+        3.5903924802232883,
+        -16.820810485011453
+      ],
+      "gt_kernel_nT": [
+        2.1433515269843526,
+        3.590392614453294,
+        -16.820809875869415
+      ],
+      "max_abs_error_nT": 6.698382990499852e-07,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        2.1433515288439597,
+        3.5903926143513942,
+        -16.820809876840563
+      ],
+      "promoted_literal_max_abs_error_nT": 1.8596071349463728e-09,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        3,
+        -5,
+        1
+      ],
+      "tilt_rad": -0.4,
+      "position_RE": [
+        -40,
+        10,
+        4
+      ],
+      "official_nT": [
+        9.570195227630927,
+        -0.044669687251315926,
+        -2.481747156664523
+      ],
+      "gt_kernel_nT": [
+        9.570195235758069,
+        -0.04466964149674868,
+        -2.481747685081197
+      ],
+      "max_abs_error_nT": 5.284166739727425e-07,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        9.570195235767981,
+        -0.04466964150168096,
+        -2.48174768508929
+      ],
+      "promoted_literal_max_abs_error_nT": 9.912071163853398e-12,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        3,
+        -5,
+        1
+      ],
+      "tilt_rad": 0,
+      "position_RE": [
+        6,
+        1,
+        2
+      ],
+      "official_nT": [
+        5.888932662360276,
+        2.990599175597346,
+        0.7265018415186191
+      ],
+      "gt_kernel_nT": [
+        5.888932310813907,
+        2.9905995018147995,
+        0.7265029986466978
+      ],
+      "max_abs_error_nT": 1.1571280786881744e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        5.8889323108139076,
+        2.9905995018147995,
+        0.7265029986466978
+      ],
+      "promoted_literal_max_abs_error_nT": 8.881784197001252e-16,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        3,
+        -5,
+        1
+      ],
+      "tilt_rad": 0,
+      "position_RE": [
+        -6,
+        0,
+        1
+      ],
+      "official_nT": [
+        21.899881069362284,
+        1.8464525283995066,
+        -54.75003966844271
+      ],
+      "gt_kernel_nT": [
+        21.899879537634433,
+        1.846452589442995,
+        -54.75003740448909
+      ],
+      "max_abs_error_nT": 2.2639536183532982e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        21.899879537785417,
+        1.8464525894429948,
+        -54.75003740536687
+      ],
+      "promoted_literal_max_abs_error_nT": 8.777760740485974e-10,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        3,
+        -5,
+        1
+      ],
+      "tilt_rad": 0,
+      "position_RE": [
+        -10,
+        5,
+        2
+      ],
+      "official_nT": [
+        31.374871985558492,
+        -10.77372045215921,
+        -16.198054470309863
+      ],
+      "gt_kernel_nT": [
+        31.37487062969946,
+        -10.773720063389817,
+        -16.19805557207583
+      ],
+      "max_abs_error_nT": 1.355859033935758e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        31.37487062973277,
+        -10.77372006343542,
+        -16.1980555720373
+      ],
+      "promoted_literal_max_abs_error_nT": 4.560263278108323e-11,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        3,
+        -5,
+        1
+      ],
+      "tilt_rad": 0,
+      "position_RE": [
+        -20,
+        -5,
+        0.5
+      ],
+      "official_nT": [
+        7.049549124357991,
+        3.0085868844662307,
+        -0.9968893861837231
+      ],
+      "gt_kernel_nT": [
+        7.049548905203551,
+        3.0085868208915403,
+        -0.996889826085027
+      ],
+      "max_abs_error_nT": 4.399013038280941e-07,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        7.049548905205137,
+        3.0085868208900908,
+        -0.9968898260802999
+      ],
+      "promoted_literal_max_abs_error_nT": 4.7271075942489915e-12,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        3,
+        -5,
+        1
+      ],
+      "tilt_rad": 0,
+      "position_RE": [
+        3,
+        3,
+        3
+      ],
+      "official_nT": [
+        -0.1372205731039855,
+        3.771911734464963,
+        -24.360449195397372
+      ],
+      "gt_kernel_nT": [
+        -0.13722168765980403,
+        3.7719122434489245,
+        -24.36044767893122
+      ],
+      "max_abs_error_nT": 1.516466152651219e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        -0.1372216876598109,
+        3.7719122434489236,
+        -24.36044767893123
+      ],
+      "promoted_literal_max_abs_error_nT": 1.0658141036401503e-14,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        3,
+        -5,
+        1
+      ],
+      "tilt_rad": 0,
+      "position_RE": [
+        -40,
+        10,
+        4
+      ],
+      "official_nT": [
+        9.025317299475768,
+        -0.15011047910743858,
+        -2.2916831337973718
+      ],
+      "gt_kernel_nT": [
+        9.025317208634151,
+        -0.15011046422841745,
+        -2.291683697524258
+      ],
+      "max_abs_error_nT": 5.637268860603228e-07,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        9.025317208634192,
+        -0.15011046422845387,
+        -2.2916836975322017
+      ],
+      "promoted_literal_max_abs_error_nT": 7.94386778579792e-12,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        3,
+        -5,
+        1
+      ],
+      "tilt_rad": 0.4,
+      "position_RE": [
+        6,
+        1,
+        2
+      ],
+      "official_nT": [
+        19.905595085546906,
+        3.0090764492225484,
+        -10.965577050410197
+      ],
+      "gt_kernel_nT": [
+        19.905595014819546,
+        3.0090768407660957,
+        -10.965576118748189
+      ],
+      "max_abs_error_nT": 9.316620079857785e-07,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        19.90559501136408,
+        3.0090768408286857,
+        -10.96557611760537
+      ],
+      "promoted_literal_max_abs_error_nT": 3.455465247270695e-09,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        3,
+        -5,
+        1
+      ],
+      "tilt_rad": 0.4,
+      "position_RE": [
+        -6,
+        0,
+        1
+      ],
+      "official_nT": [
+        -35.32889808922915,
+        1.182983866194059,
+        -47.42212587004307
+      ],
+      "gt_kernel_nT": [
+        -35.328895979748204,
+        1.1829837466129447,
+        -47.42212368890097
+      ],
+      "max_abs_error_nT": 2.181142100710076e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        -35.32889598063156,
+        1.182983746612945,
+        -47.422123689594855
+      ],
+      "promoted_literal_max_abs_error_nT": 8.833538345243142e-10,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        3,
+        -5,
+        1
+      ],
+      "tilt_rad": 0.4,
+      "position_RE": [
+        -10,
+        5,
+        2
+      ],
+      "official_nT": [
+        -12.619755032795474,
+        5.00618834142667,
+        -15.73559234835971
+      ],
+      "gt_kernel_nT": [
+        -12.619755900721408,
+        5.006188379177038,
+        -15.735593664508986
+      ],
+      "max_abs_error_nT": 1.31614927667556e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        -12.619755900911507,
+        5.006188379207791,
+        -15.735593664393408
+      ],
+      "promoted_literal_max_abs_error_nT": 1.900986035252572e-10,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        3,
+        -5,
+        1
+      ],
+      "tilt_rad": 0.4,
+      "position_RE": [
+        -20,
+        -5,
+        0.5
+      ],
+      "official_nT": [
+        -17.525578136111985,
+        -2.0627621535605667,
+        -1.6259397687460608
+      ],
+      "gt_kernel_nT": [
+        -17.525577998433093,
+        -2.0627621282617676,
+        -1.6259401686368546
+      ],
+      "max_abs_error_nT": 3.9989079381186343e-07,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        -17.525577998464428,
+        -2.062762128267908,
+        -1.6259401686302493
+      ],
+      "promoted_literal_max_abs_error_nT": 3.133493464702042e-11,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        3,
+        -5,
+        1
+      ],
+      "tilt_rad": 0.4,
+      "position_RE": [
+        3,
+        3,
+        3
+      ],
+      "official_nT": [
+        11.581515963894939,
+        -2.410372202792428,
+        -27.000774495162283
+      ],
+      "gt_kernel_nT": [
+        11.581514172985052,
+        -2.4103707529730434,
+        -27.000772764996604
+      ],
+      "max_abs_error_nT": 1.790909886167924e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        11.58151417112547,
+        -2.410370752871139,
+        -27.000772764025438
+      ],
+      "promoted_literal_max_abs_error_nT": 1.859582710039831e-09,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        2,
+        3,
+        -5,
+        1
+      ],
+      "tilt_rad": 0.4,
+      "position_RE": [
+        -40,
+        10,
+        4
+      ],
+      "official_nT": [
+        5.38547920595231,
+        0.3937141081420552,
+        -1.9187729103860764
+      ],
+      "gt_kernel_nT": [
+        5.385478822833224,
+        0.39371413953057366,
+        -1.9187733976288115
+      ],
+      "max_abs_error_nT": 4.872427350477437e-07,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        5.385478822831633,
+        0.39371413953084433,
+        -1.9187733976358359
+      ],
+      "promoted_literal_max_abs_error_nT": 7.0243810768033654e-12,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        5,
+        -6,
+        -10,
+        2
+      ],
+      "tilt_rad": -0.4,
+      "position_RE": [
+        6,
+        1,
+        2
+      ],
+      "official_nT": [
+        -18.97263618402251,
+        -0.9747910638750077,
+        39.599097227225506
+      ],
+      "gt_kernel_nT": [
+        -18.97263708363131,
+        -0.9747911648727183,
+        39.5991003709994
+      ],
+      "max_abs_error_nT": 3.143773895430968e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        -18.972637095697735,
+        -0.9747911645873355,
+        39.59910037628796
+      ],
+      "promoted_literal_max_abs_error_nT": 1.2066426080536985e-08,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        5,
+        -6,
+        -10,
+        2
+      ],
+      "tilt_rad": -0.4,
+      "position_RE": [
+        -6,
+        0,
+        1
+      ],
+      "official_nT": [
+        64.93262908896726,
+        -2.568977396956047,
+        -35.46151120796891
+      ],
+      "gt_kernel_nT": [
+        64.93262482746327,
+        -2.568976935350395,
+        -35.46151135520361
+      ],
+      "max_abs_error_nT": 4.261503988800541e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        64.93262482693024,
+        -2.568976935350394,
+        -35.46151135517638
+      ],
+      "promoted_literal_max_abs_error_nT": 5.33034949512512e-10,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        5,
+        -6,
+        -10,
+        2
+      ],
+      "tilt_rad": -0.4,
+      "position_RE": [
+        -10,
+        5,
+        2
+      ],
+      "official_nT": [
+        42.462502166089784,
+        -14.219502664614376,
+        -15.458869324324965
+      ],
+      "gt_kernel_nT": [
+        42.462498762666975,
+        -14.219502862436286,
+        -15.45886849430022
+      ],
+      "max_abs_error_nT": 3.403422809356016e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        42.46249876239325,
+        -14.219502862428218,
+        -15.458868494175402
+      ],
+      "promoted_literal_max_abs_error_nT": 2.737223780968634e-10,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        5,
+        -6,
+        -10,
+        2
+      ],
+      "tilt_rad": -0.4,
+      "position_RE": [
+        -20,
+        -5,
+        0.5
+      ],
+      "official_nT": [
+        26.171710918324347,
+        1.404249802609776,
+        -8.56988385395224
+      ],
+      "gt_kernel_nT": [
+        26.171708632167235,
+        1.4042494639043275,
+        -8.569882611617738
+      ],
+      "max_abs_error_nT": 2.2861571125076807e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        26.17170863212067,
+        1.4042494639132972,
+        -8.569882611614691
+      ],
+      "promoted_literal_max_abs_error_nT": 4.6565418188038166e-11,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        5,
+        -6,
+        -10,
+        2
+      ],
+      "tilt_rad": -0.4,
+      "position_RE": [
+        3,
+        3,
+        3
+      ],
+      "official_nT": [
+        6.648622247877173,
+        0.27603388137546103,
+        1.1041600167390904
+      ],
+      "gt_kernel_nT": [
+        6.648620382287541,
+        0.2760345024952855,
+        1.1041643236650778
+      ],
+      "max_abs_error_nT": 4.3069259874073396e-06,
+      "within_1e-6nT_plus_1e-6relative": false,
+      "official_with_promoted_literals_nT": [
+        6.648620377075774,
+        0.27603450287049025,
+        1.1041643274185526
+      ],
+      "promoted_literal_max_abs_error_nT": 5.2117670179541165e-09,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        5,
+        -6,
+        -10,
+        2
+      ],
+      "tilt_rad": -0.4,
+      "position_RE": [
+        -40,
+        10,
+        4
+      ],
+      "official_nT": [
+        17.154578204854538,
+        -6.158323081446996,
+        -5.435093563587438
+      ],
+      "gt_kernel_nT": [
+        17.15457670048042,
+        -6.1583226054632725,
+        -5.435092597083379
+      ],
+      "max_abs_error_nT": 1.5043741186104853e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        17.154576700493127,
+        -6.158322605469837,
+        -5.435092597085856
+      ],
+      "promoted_literal_max_abs_error_nT": 1.2708056829069392e-11,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        5,
+        -6,
+        -10,
+        2
+      ],
+      "tilt_rad": 0,
+      "position_RE": [
+        6,
+        1,
+        2
+      ],
+      "official_nT": [
+        19.02012219856893,
+        -2.7910098266588785,
+        34.286273568902935
+      ],
+      "gt_kernel_nT": [
+        19.020122373872276,
+        -2.7910093265290614,
+        34.28627662123258
+      ],
+      "max_abs_error_nT": 3.052329645925056e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        19.02012237387229,
+        -2.79100932652906,
+        34.28627662123257
+      ],
+      "promoted_literal_max_abs_error_nT": 1.4210854715202004e-14,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        5,
+        -6,
+        -10,
+        2
+      ],
+      "tilt_rad": 0,
+      "position_RE": [
+        -6,
+        0,
+        1
+      ],
+      "official_nT": [
+        42.16423449332384,
+        -2.960331128879096,
+        -58.62171008141108
+      ],
+      "gt_kernel_nT": [
+        42.16422725323158,
+        -2.960330983608028,
+        -58.621714955218415
+      ],
+      "max_abs_error_nT": 7.240092259053199e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        42.1642272533476,
+        -2.9603309836080265,
+        -58.62171495549031
+      ],
+      "promoted_literal_max_abs_error_nT": 2.7189628326595994e-10,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        5,
+        -6,
+        -10,
+        2
+      ],
+      "tilt_rad": 0,
+      "position_RE": [
+        -10,
+        5,
+        2
+      ],
+      "official_nT": [
+        39.787569146034244,
+        -15.567918240264282,
+        -15.685515935261789
+      ],
+      "gt_kernel_nT": [
+        39.78756530608872,
+        -15.56791821338379,
+        -15.685514839157301
+      ],
+      "max_abs_error_nT": 3.839945520667243e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        39.78756530610226,
+        -15.567918213403273,
+        -15.685514839146517
+      ],
+      "promoted_literal_max_abs_error_nT": 1.9483081814541947e-11,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        5,
+        -6,
+        -10,
+        2
+      ],
+      "tilt_rad": 0,
+      "position_RE": [
+        -20,
+        -5,
+        0.5
+      ],
+      "official_nT": [
+        9.589497709636492,
+        -1.2579125486364167,
+        -8.927748908394356
+      ],
+      "gt_kernel_nT": [
+        9.589496371969034,
+        -1.25791275802588,
+        -8.927747204992855
+      ],
+      "max_abs_error_nT": 1.703401501629287e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        9.589496371970295,
+        -1.2579127580270735,
+        -8.927747204990977
+      ],
+      "promoted_literal_max_abs_error_nT": 1.8776091792460647e-12,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        5,
+        -6,
+        -10,
+        2
+      ],
+      "tilt_rad": 0,
+      "position_RE": [
+        3,
+        3,
+        3
+      ],
+      "official_nT": [
+        25.82133260080647,
+        -4.8078093214743705,
+        -12.968769302250282
+      ],
+      "gt_kernel_nT": [
+        25.82133010011299,
+        -4.8078079020151705,
+        -12.968764344009584
+      ],
+      "max_abs_error_nT": 4.958240698016425e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        25.82133010011299,
+        -4.807807902015176,
+        -12.968764344009543
+      ],
+      "promoted_literal_max_abs_error_nT": 4.085620730620576e-14,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        5,
+        -6,
+        -10,
+        2
+      ],
+      "tilt_rad": 0,
+      "position_RE": [
+        -40,
+        10,
+        4
+      ],
+      "official_nT": [
+        17.017113636653665,
+        -6.312964334885325,
+        -5.702166910410201
+      ],
+      "gt_kernel_nT": [
+        17.017112230789284,
+        -6.312963927587974,
+        -5.7021655396150654
+      ],
+      "max_abs_error_nT": 1.4058643813541494e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        17.01711223079178,
+        -6.312963927589118,
+        -5.702165539618319
+      ],
+      "promoted_literal_max_abs_error_nT": 3.2533975513615587e-12,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        5,
+        -6,
+        -10,
+        2
+      ],
+      "tilt_rad": 0.4,
+      "position_RE": [
+        6,
+        1,
+        2
+      ],
+      "official_nT": [
+        57.007879462059535,
+        -4.551981927692609,
+        16.372123694196286
+      ],
+      "gt_kernel_nT": [
+        57.00787935855403,
+        -4.5519812945990195,
+        16.372126812833564
+      ],
+      "max_abs_error_nT": 3.118637277310654e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        57.007879370620365,
+        -4.551981294884423,
+        16.372126807545037
+      ],
+      "promoted_literal_max_abs_error_nT": 1.2066337262695015e-08,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        5,
+        -6,
+        -10,
+        2
+      ],
+      "tilt_rad": 0.4,
+      "position_RE": [
+        -6,
+        0,
+        1
+      ],
+      "official_nT": [
+        -44.35718918502427,
+        -3.2407504442893553,
+        -51.46591417953562
+      ],
+      "gt_kernel_nT": [
+        -44.357186291844954,
+        -3.240750457125917,
+        -51.46591920384877
+      ],
+      "max_abs_error_nT": 5.024313146861914e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        -44.35718629119116,
+        -3.240750457125916,
+        -51.465919204282045
+      ],
+      "promoted_literal_max_abs_error_nT": 6.53791687454941e-10,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        5,
+        -6,
+        -10,
+        2
+      ],
+      "tilt_rad": 0.4,
+      "position_RE": [
+        -10,
+        5,
+        2
+      ],
+      "official_nT": [
+        1.9210755332650795,
+        -4.3302918584204395,
+        -14.612510722621238
+      ],
+      "gt_kernel_nT": [
+        1.9210735174731104,
+        -4.330291400652728,
+        -14.612509867333184
+      ],
+      "max_abs_error_nT": 2.0157919691232706e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        1.9210735177669669,
+        -4.330291400687951,
+        -14.612509867443263
+      ],
+      "promoted_literal_max_abs_error_nT": 2.9385649469304553e-10,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        5,
+        -6,
+        -10,
+        2
+      ],
+      "tilt_rad": 0.4,
+      "position_RE": [
+        -20,
+        -5,
+        0.5
+      ],
+      "official_nT": [
+        -21.00335696630138,
+        -6.930025830556415,
+        -8.536736986622662
+      ],
+      "gt_kernel_nT": [
+        -21.003355029612578,
+        -6.930025399598968,
+        -8.53673571198067
+      ],
+      "max_abs_error_nT": 1.9366888004412885e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        -21.003355029576973,
+        -6.930025399597878,
+        -8.536735711982656
+      ],
+      "promoted_literal_max_abs_error_nT": 3.560529648893862e-11,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        5,
+        -6,
+        -10,
+        2
+      ],
+      "tilt_rad": 0.4,
+      "position_RE": [
+        3,
+        3,
+        3
+      ],
+      "official_nT": [
+        43.385391389508015,
+        -10.98357318965159,
+        -22.893849982117786
+      ],
+      "gt_kernel_nT": [
+        43.38538816519215,
+        -10.983570986920583,
+        -22.89384519930792
+      ],
+      "max_abs_error_nT": 4.782809867265314e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        43.38538817040385,
+        -10.983570987295796,
+        -22.89384520306138
+      ],
+      "promoted_literal_max_abs_error_nT": 5.211703069107898e-09,
+      "promoted_literals_within_same_tolerance": true
+    },
+    {
+      "parameters": [
+        5,
+        -6,
+        -10,
+        2
+      ],
+      "tilt_rad": 0.4,
+      "position_RE": [
+        -40,
+        10,
+        4
+      ],
+      "official_nT": [
+        11.92496667759323,
+        -5.627418940275486,
+        -5.306779278633867
+      ],
+      "gt_kernel_nT": [
+        11.924965256325269,
+        -5.627418496154913,
+        -5.3067782841415765
+      ],
+      "max_abs_error_nT": 1.4212679619873825e-06,
+      "within_1e-6nT_plus_1e-6relative": true,
+      "official_with_promoted_literals_nT": [
+        11.924965256325136,
+        -5.627418496154817,
+        -5.306778284145006
+      ],
+      "promoted_literal_max_abs_error_nT": 3.4292568784621835e-12,
+      "promoted_literals_within_same_tolerance": true
+    }
+  ],
+  "frame_sensitivity": [
+    {
+      "date_UTC": "2023-01-01T11:35:00Z",
+      "GSM_position_RE": [
+        6,
+        1,
+        2
+      ],
+      "velocity_GSE_km_s": [
+        -534.1,
+        21.5,
+        -48.4
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": -0.2738,
+      "reference_GSW_tilt_rad": -0.27383482700017475,
+      "reference_GSM_tilt_rad": -0.36758035481237517,
+      "GSW_rotation_orthogonality_error": 1.0885514711844735e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": 3.4827000174764144e-05,
+      "angle_between_X_axes_deg": 5.662841739208147,
+      "mixed_frame_field_GEO_nT": [
+        1.5315303597136016,
+        -1.2068613506635641,
+        10.13091777997654
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        1.274547669346469,
+        -1.2489011857273988,
+        10.088708648298194
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.2630248444322746,
+      "difference_norm_nT": 0.2637973875487851,
+      "difference_relative_to_consistent_norm": 0.025748125176905442
+    },
+    {
+      "date_UTC": "2023-01-01T11:35:00Z",
+      "GSM_position_RE": [
+        -6,
+        0,
+        1
+      ],
+      "velocity_GSE_km_s": [
+        -534.1,
+        21.5,
+        -48.4
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": -0.2738,
+      "reference_GSW_tilt_rad": -0.27383482700017475,
+      "reference_GSM_tilt_rad": -0.36758035481237517,
+      "GSW_rotation_orthogonality_error": 1.0885514711844735e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": 3.4827000174764144e-05,
+      "angle_between_X_axes_deg": 5.662841739208147,
+      "mixed_frame_field_GEO_nT": [
+        15.773571034754223,
+        4.299126984887465,
+        -22.87028224074203
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        17.4892091923477,
+        4.154288598256369,
+        -22.370937818141897
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 1.7820701089933761,
+      "difference_norm_nT": 1.7926899615980734,
+      "difference_relative_to_consistent_norm": 0.062466879215073934
+    },
+    {
+      "date_UTC": "2023-01-01T11:35:00Z",
+      "GSM_position_RE": [
+        -10,
+        5,
+        2
+      ],
+      "velocity_GSE_km_s": [
+        -534.1,
+        21.5,
+        -48.4
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": -0.2738,
+      "reference_GSW_tilt_rad": -0.27383482700017475,
+      "reference_GSM_tilt_rad": -0.36758035481237517,
+      "GSW_rotation_orthogonality_error": 1.0885514711844735e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": 3.4827000174764144e-05,
+      "angle_between_X_axes_deg": 5.662841739208147,
+      "mixed_frame_field_GEO_nT": [
+        13.55803673893209,
+        -1.9105840727184897,
+        -17.074585430974224
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        15.782207244493122,
+        -2.5197972193192744,
+        -15.848864036291939
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 2.59621578118064,
+      "difference_norm_nT": 2.611602579486537,
+      "difference_relative_to_consistent_norm": 0.11602952739088626
+    },
+    {
+      "date_UTC": "2023-01-01T11:35:00Z",
+      "GSM_position_RE": [
+        -20,
+        -5,
+        0.5
+      ],
+      "velocity_GSE_km_s": [
+        -534.1,
+        21.5,
+        -48.4
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": -0.2738,
+      "reference_GSW_tilt_rad": -0.27383482700017475,
+      "reference_GSM_tilt_rad": -0.36758035481237517,
+      "GSW_rotation_orthogonality_error": 1.0885514711844735e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": 3.4827000174764144e-05,
+      "angle_between_X_axes_deg": 5.662841739208147,
+      "mixed_frame_field_GEO_nT": [
+        10.247336206897813,
+        3.098886268675793,
+        -4.590663222895015
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        13.61953983116973,
+        3.60399969279283,
+        -4.628056338160216
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 3.387349848112506,
+      "difference_norm_nT": 3.4100286068954206,
+      "difference_relative_to_consistent_norm": 0.22995656779163742
+    },
+    {
+      "date_UTC": "2023-01-01T11:35:00Z",
+      "GSM_position_RE": [
+        3,
+        3,
+        3
+      ],
+      "velocity_GSE_km_s": [
+        -534.1,
+        21.5,
+        -48.4
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": -0.2738,
+      "reference_GSW_tilt_rad": -0.27383482700017475,
+      "reference_GSM_tilt_rad": -0.36758035481237517,
+      "GSW_rotation_orthogonality_error": 1.0885514711844735e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": 3.4827000174764144e-05,
+      "angle_between_X_axes_deg": 5.662841739208147,
+      "mixed_frame_field_GEO_nT": [
+        0.30264776097778423,
+        -0.6442700914903522,
+        -6.567631180312315
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        0.6476162539991739,
+        -1.1627790551661317,
+        -6.690097679016432
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.6334343828957275,
+      "difference_norm_nT": 0.6347069007773785,
+      "difference_relative_to_consistent_norm": 0.09304905623852562
+    },
+    {
+      "date_UTC": "2023-01-01T11:35:00Z",
+      "GSM_position_RE": [
+        -40,
+        10,
+        4
+      ],
+      "velocity_GSE_km_s": [
+        -534.1,
+        21.5,
+        -48.4
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": -0.2738,
+      "reference_GSW_tilt_rad": -0.27383482700017475,
+      "reference_GSM_tilt_rad": -0.36758035481237517,
+      "GSW_rotation_orthogonality_error": 1.0885514711844735e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": 3.4827000174764144e-05,
+      "angle_between_X_axes_deg": 5.662841739208147,
+      "mixed_frame_field_GEO_nT": [
+        8.208338819315113,
+        -0.7044936289358965,
+        -2.2992326135342296
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        9.18262425372696,
+        -0.7674463404799352,
+        -2.3421523534844515
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.9661183606891225,
+      "difference_norm_nT": 0.9772600757604002,
+      "difference_relative_to_consistent_norm": 0.1027868072796411
+    },
+    {
+      "date_UTC": "2023-01-01T11:35:00Z",
+      "GSM_position_RE": [
+        6,
+        1,
+        2
+      ],
+      "velocity_GSE_km_s": [
+        -534.1,
+        51.269999999999996,
+        -48.4
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": -0.2738,
+      "reference_GSW_tilt_rad": -0.26796346067275906,
+      "reference_GSM_tilt_rad": -0.36758035481237517,
+      "GSW_rotation_orthogonality_error": 1.0804024341837248e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": -0.0058365393272409305,
+      "angle_between_X_axes_deg": 7.520133898466712,
+      "mixed_frame_field_GEO_nT": [
+        1.5315303597136016,
+        -1.2068613506635641,
+        10.13091777997654
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        1.2290487469888842,
+        -1.123252339220294,
+        9.948296385999951
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.3644792364730299,
+      "difference_norm_nT": 0.36309250387335107,
+      "difference_relative_to_consistent_norm": 0.035997271681054405
+    },
+    {
+      "date_UTC": "2023-01-01T11:35:00Z",
+      "GSM_position_RE": [
+        -6,
+        0,
+        1
+      ],
+      "velocity_GSE_km_s": [
+        -534.1,
+        51.269999999999996,
+        -48.4
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": -0.2738,
+      "reference_GSW_tilt_rad": -0.26796346067275906,
+      "reference_GSM_tilt_rad": -0.36758035481237517,
+      "GSW_rotation_orthogonality_error": 1.0804024341837248e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": -0.0058365393272409305,
+      "angle_between_X_axes_deg": 7.520133898466712,
+      "mixed_frame_field_GEO_nT": [
+        15.773571034754223,
+        4.299126984887465,
+        -22.87028224074203
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        17.56291207587782,
+        3.898380686717826,
+        -22.340691238575353
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 1.8986752905509514,
+      "difference_norm_nT": 1.9086135246617755,
+      "difference_relative_to_consistent_norm": 0.06653979851428463
+    },
+    {
+      "date_UTC": "2023-01-01T11:35:00Z",
+      "GSM_position_RE": [
+        -10,
+        5,
+        2
+      ],
+      "velocity_GSE_km_s": [
+        -534.1,
+        51.269999999999996,
+        -48.4
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": -0.2738,
+      "reference_GSW_tilt_rad": -0.26796346067275906,
+      "reference_GSM_tilt_rad": -0.36758035481237517,
+      "GSW_rotation_orthogonality_error": 1.0804024341837248e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": -0.0058365393272409305,
+      "angle_between_X_axes_deg": 7.520133898466712,
+      "mixed_frame_field_GEO_nT": [
+        13.55803673893209,
+        -1.9105840727184897,
+        -17.074585430974224
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        16.01903813758208,
+        -2.9653575749895755,
+        -16.0709478862008
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 2.846235736362054,
+      "difference_norm_nT": 2.859434095503732,
+      "difference_relative_to_consistent_norm": 0.12495332138850025
+    },
+    {
+      "date_UTC": "2023-01-01T11:35:00Z",
+      "GSM_position_RE": [
+        -20,
+        -5,
+        0.5
+      ],
+      "velocity_GSE_km_s": [
+        -534.1,
+        51.269999999999996,
+        -48.4
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": -0.2738,
+      "reference_GSW_tilt_rad": -0.26796346067275906,
+      "reference_GSM_tilt_rad": -0.36758035481237517,
+      "GSW_rotation_orthogonality_error": 1.0804024341837248e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": -0.0058365393272409305,
+      "angle_between_X_axes_deg": 7.520133898466712,
+      "mixed_frame_field_GEO_nT": [
+        10.247336206897813,
+        3.098886268675793,
+        -4.590663222895015
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        13.803983139550022,
+        3.312060290333202,
+        -4.477286665251478
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 3.5429734259476597,
+      "difference_norm_nT": 3.5648330691460233,
+      "difference_relative_to_consistent_norm": 0.23949025438143884
+    },
+    {
+      "date_UTC": "2023-01-01T11:35:00Z",
+      "GSM_position_RE": [
+        3,
+        3,
+        3
+      ],
+      "velocity_GSE_km_s": [
+        -534.1,
+        51.269999999999996,
+        -48.4
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": -0.2738,
+      "reference_GSW_tilt_rad": -0.26796346067275906,
+      "reference_GSM_tilt_rad": -0.36758035481237517,
+      "GSW_rotation_orthogonality_error": 1.0804024341837248e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": -0.0058365393272409305,
+      "angle_between_X_axes_deg": 7.520133898466712,
+      "mixed_frame_field_GEO_nT": [
+        0.30264776097778423,
+        -0.6442700914903522,
+        -6.567631180312315
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        0.5769426444408248,
+        -1.337127801767425,
+        -7.139231008528493
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.9423131600304108,
+      "difference_norm_nT": 0.9391569908173797,
+      "difference_relative_to_consistent_norm": 0.12889447912712548
+    },
+    {
+      "date_UTC": "2023-01-01T11:35:00Z",
+      "GSM_position_RE": [
+        -40,
+        10,
+        4
+      ],
+      "velocity_GSE_km_s": [
+        -534.1,
+        51.269999999999996,
+        -48.4
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": -0.2738,
+      "reference_GSW_tilt_rad": -0.26796346067275906,
+      "reference_GSM_tilt_rad": -0.36758035481237517,
+      "GSW_rotation_orthogonality_error": 1.0804024341837248e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": -0.0058365393272409305,
+      "angle_between_X_axes_deg": 7.520133898466712,
+      "mixed_frame_field_GEO_nT": [
+        8.208338819315113,
+        -0.7044936289358965,
+        -2.2992326135342296
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        9.129698134311573,
+        -1.039773807743619,
+        -2.4686816210122364
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.9861836801166638,
+      "difference_norm_nT": 0.9950018853084479,
+      "difference_relative_to_consistent_norm": 0.10457673140300679
+    },
+    {
+      "date_UTC": "2023-03-21T11:40:00Z",
+      "GSM_position_RE": [
+        6,
+        1,
+        2
+      ],
+      "velocity_GSE_km_s": [
+        -407.4,
+        -20.8,
+        3.9
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": 0.0368,
+      "reference_GSW_tilt_rad": 0.03665849332271946,
+      "reference_GSM_tilt_rad": 0.033371033053571184,
+      "GSW_rotation_orthogonality_error": 3.1332714200971168e-12,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": 0.00014150667728053679,
+      "angle_between_X_axes_deg": 2.9735670352066967,
+      "mixed_frame_field_GEO_nT": [
+        2.6180690827140936,
+        -0.698539234184802,
+        13.240576174308607
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        2.486590201317392,
+        -0.38468979912345413,
+        13.41820979942211
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.3817692419617816,
+      "difference_norm_nT": 0.38385136304645245,
+      "difference_relative_to_consistent_norm": 0.02811668072821398
+    },
+    {
+      "date_UTC": "2023-03-21T11:40:00Z",
+      "GSM_position_RE": [
+        -6,
+        0,
+        1
+      ],
+      "velocity_GSE_km_s": [
+        -407.4,
+        -20.8,
+        3.9
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": 0.0368,
+      "reference_GSW_tilt_rad": 0.03665849332271946,
+      "reference_GSM_tilt_rad": 0.033371033053571184,
+      "GSW_rotation_orthogonality_error": 3.1332714200971168e-12,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": 0.00014150667728053679,
+      "angle_between_X_axes_deg": 2.9735670352066967,
+      "mixed_frame_field_GEO_nT": [
+        10.106695734196535,
+        8.053715414148199,
+        -29.716053275298336
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        10.048159594237019,
+        8.294255875511697,
+        -29.561471353445047
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.30150232892783413,
+      "difference_norm_nT": 0.2918591506158079,
+      "difference_relative_to_consistent_norm": 0.009034368352669225
+    },
+    {
+      "date_UTC": "2023-03-21T11:40:00Z",
+      "GSM_position_RE": [
+        -10,
+        5,
+        2
+      ],
+      "velocity_GSE_km_s": [
+        -407.4,
+        -20.8,
+        3.9
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": 0.0368,
+      "reference_GSW_tilt_rad": 0.03665849332271946,
+      "reference_GSM_tilt_rad": 0.033371033053571184,
+      "GSW_rotation_orthogonality_error": 3.1332714200971168e-12,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": 0.00014150667728053679,
+      "angle_between_X_axes_deg": 2.9735670352066967,
+      "mixed_frame_field_GEO_nT": [
+        20.782824424707364,
+        -0.2721881321743791,
+        -12.168831595228102
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        19.821540617180556,
+        0.16325476885695567,
+        -11.775524102954119
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 1.2498108937939436,
+      "difference_norm_nT": 1.1262183900783505,
+      "difference_relative_to_consistent_norm": 0.04884690314760932
+    },
+    {
+      "date_UTC": "2023-03-21T11:40:00Z",
+      "GSM_position_RE": [
+        -20,
+        -5,
+        0.5
+      ],
+      "velocity_GSE_km_s": [
+        -407.4,
+        -20.8,
+        3.9
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": 0.0368,
+      "reference_GSW_tilt_rad": 0.03665849332271946,
+      "reference_GSM_tilt_rad": 0.033371033053571184,
+      "GSW_rotation_orthogonality_error": 3.1332714200971168e-12,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": 0.00014150667728053679,
+      "angle_between_X_axes_deg": 2.9735670352066967,
+      "mixed_frame_field_GEO_nT": [
+        2.0960646334225315,
+        2.3250698196579043,
+        1.679890918623932
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        2.4466790929516655,
+        2.4945686714585364,
+        1.6291230030089776
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.09184571329611378,
+      "difference_norm_nT": 0.3927311309897989,
+      "difference_relative_to_consistent_norm": 0.10186848589641742
+    },
+    {
+      "date_UTC": "2023-03-21T11:40:00Z",
+      "GSM_position_RE": [
+        3,
+        3,
+        3
+      ],
+      "velocity_GSE_km_s": [
+        -407.4,
+        -20.8,
+        3.9
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": 0.0368,
+      "reference_GSW_tilt_rad": 0.03665849332271946,
+      "reference_GSM_tilt_rad": 0.033371033053571184,
+      "GSW_rotation_orthogonality_error": 3.1332714200971168e-12,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": 0.00014150667728053679,
+      "angle_between_X_axes_deg": 2.9735670352066967,
+      "mixed_frame_field_GEO_nT": [
+        6.1491461484305985,
+        -1.3615167409637283,
+        -6.274696149341539
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        6.106421745409093,
+        -0.7753449863504027,
+        -5.753495114793405
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.7746536776449392,
+      "difference_norm_nT": 0.7855400810487354,
+      "difference_relative_to_consistent_norm": 0.09323154288984652
+    },
+    {
+      "date_UTC": "2023-03-21T11:40:00Z",
+      "GSM_position_RE": [
+        -40,
+        10,
+        4
+      ],
+      "velocity_GSE_km_s": [
+        -407.4,
+        -20.8,
+        3.9
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": 0.0368,
+      "reference_GSW_tilt_rad": 0.03665849332271946,
+      "reference_GSM_tilt_rad": 0.033371033053571184,
+      "GSW_rotation_orthogonality_error": 3.1332714200971168e-12,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": 0.00014150667728053679,
+      "angle_between_X_axes_deg": 2.9735670352066967,
+      "mixed_frame_field_GEO_nT": [
+        7.6861748266329535,
+        1.011964311081622,
+        1.8306450140484887
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        7.552547787604626,
+        1.2055335043371578,
+        2.258344546188142
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.526273630106722,
+      "difference_norm_nT": 0.48811075375323937,
+      "difference_relative_to_consistent_norm": 0.06120810124716675
+    },
+    {
+      "date_UTC": "2023-03-21T11:40:00Z",
+      "GSM_position_RE": [
+        6,
+        1,
+        2
+      ],
+      "velocity_GSE_km_s": [
+        -407.4,
+        8.969999999999999,
+        3.9
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": 0.0368,
+      "reference_GSW_tilt_rad": 0.018653241920203192,
+      "reference_GSM_tilt_rad": 0.033371033053571184,
+      "GSW_rotation_orthogonality_error": 3.1399327582448677e-12,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": 0.018146758079796807,
+      "angle_between_X_axes_deg": 1.375333786579968,
+      "mixed_frame_field_GEO_nT": [
+        2.6180690827140936,
+        -0.698539234184802,
+        13.240576174308607
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        2.6414961649751705,
+        -0.7908025713519387,
+        13.08230442861673
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.19957315588264643,
+      "difference_norm_nT": 0.18469243907869712,
+      "difference_relative_to_consistent_norm": 0.013814228207084746
+    },
+    {
+      "date_UTC": "2023-03-21T11:40:00Z",
+      "GSM_position_RE": [
+        -6,
+        0,
+        1
+      ],
+      "velocity_GSE_km_s": [
+        -407.4,
+        8.969999999999999,
+        3.9
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": 0.0368,
+      "reference_GSW_tilt_rad": 0.018653241920203192,
+      "reference_GSM_tilt_rad": 0.033371033053571184,
+      "GSW_rotation_orthogonality_error": 3.1399327582448677e-12,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": 0.018146758079796807,
+      "angle_between_X_axes_deg": 1.375333786579968,
+      "mixed_frame_field_GEO_nT": [
+        10.106695734196535,
+        8.053715414148199,
+        -29.716053275298336
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        9.783386612478242,
+        7.944085900378832,
+        -29.89128316427856
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.475386967906161,
+      "difference_norm_nT": 0.38373549805508284,
+      "difference_relative_to_consistent_norm": 0.011829318419594795
+    },
+    {
+      "date_UTC": "2023-03-21T11:40:00Z",
+      "GSM_position_RE": [
+        -10,
+        5,
+        2
+      ],
+      "velocity_GSE_km_s": [
+        -407.4,
+        8.969999999999999,
+        3.9
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": 0.0368,
+      "reference_GSW_tilt_rad": 0.018653241920203192,
+      "reference_GSM_tilt_rad": 0.033371033053571184,
+      "GSW_rotation_orthogonality_error": 3.1399327582448677e-12,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": 0.018146758079796807,
+      "angle_between_X_axes_deg": 1.375333786579968,
+      "mixed_frame_field_GEO_nT": [
+        20.782824424707364,
+        -0.2721881321743791,
+        -12.168831595228102
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        20.53533753618781,
+        -0.2911183054819295,
+        -12.568167911377927
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.6127927767100537,
+      "difference_norm_nT": 0.4701889033640163,
+      "difference_relative_to_consistent_norm": 0.019527846970783892
+    },
+    {
+      "date_UTC": "2023-03-21T11:40:00Z",
+      "GSM_position_RE": [
+        -20,
+        -5,
+        0.5
+      ],
+      "velocity_GSE_km_s": [
+        -407.4,
+        8.969999999999999,
+        3.9
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": 0.0368,
+      "reference_GSW_tilt_rad": 0.018653241920203192,
+      "reference_GSM_tilt_rad": 0.033371033053571184,
+      "GSW_rotation_orthogonality_error": 3.1399327582448677e-12,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": 0.018146758079796807,
+      "angle_between_X_axes_deg": 1.375333786579968,
+      "mixed_frame_field_GEO_nT": [
+        2.0960646334225315,
+        2.3250698196579043,
+        1.679890918623932
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        0.5708267765188746,
+        1.8451299560728969,
+        1.6605682959191725
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 1.9805305160405953,
+      "difference_norm_nT": 1.59908291108943,
+      "difference_relative_to_consistent_norm": 0.6277996795940239
+    },
+    {
+      "date_UTC": "2023-03-21T11:40:00Z",
+      "GSM_position_RE": [
+        3,
+        3,
+        3
+      ],
+      "velocity_GSE_km_s": [
+        -407.4,
+        8.969999999999999,
+        3.9
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": 0.0368,
+      "reference_GSW_tilt_rad": 0.018653241920203192,
+      "reference_GSM_tilt_rad": 0.033371033053571184,
+      "GSW_rotation_orthogonality_error": 3.1399327582448677e-12,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": 0.018146758079796807,
+      "angle_between_X_axes_deg": 1.375333786579968,
+      "mixed_frame_field_GEO_nT": [
+        6.1491461484305985,
+        -1.3615167409637283,
+        -6.274696149341539
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        6.0071580058179865,
+        -1.5183058228143698,
+        -6.627618415336946
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.45450584757482976,
+      "difference_norm_nT": 0.4114578649940716,
+      "difference_relative_to_consistent_norm": 0.0453504762444187
+    },
+    {
+      "date_UTC": "2023-03-21T11:40:00Z",
+      "GSM_position_RE": [
+        -40,
+        10,
+        4
+      ],
+      "velocity_GSE_km_s": [
+        -407.4,
+        8.969999999999999,
+        3.9
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": 0.0368,
+      "reference_GSW_tilt_rad": 0.018653241920203192,
+      "reference_GSM_tilt_rad": 0.033371033053571184,
+      "GSW_rotation_orthogonality_error": 3.1399327582448677e-12,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": 0.018146758079796807,
+      "angle_between_X_axes_deg": 1.375333786579968,
+      "mixed_frame_field_GEO_nT": [
+        7.6861748266329535,
+        1.011964311081622,
+        1.8306450140484887
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        7.272164638216448,
+        0.9574187688037263,
+        1.699961568264677
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.5386323303185461,
+      "difference_norm_nT": 0.4375589277994345,
+      "difference_relative_to_consistent_norm": 0.058113880916488496
+    },
+    {
+      "date_UTC": "2023-06-21T12:25:00Z",
+      "GSM_position_RE": [
+        6,
+        1,
+        2
+      ],
+      "velocity_GSE_km_s": [
+        -417.7,
+        50.4,
+        -8.0
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": 0.5024,
+      "reference_GSW_tilt_rad": 0.5024298748619163,
+      "reference_GSM_tilt_rad": 0.4672910238303874,
+      "GSW_rotation_orthogonality_error": 3.5140779175435455e-12,
+      "GSM_rotation_orthogonality_error": 1.1102230246251565e-16,
+      "source_minus_reference_tilt_rad": -2.98748619163014e-05,
+      "angle_between_X_axes_deg": 6.965384603958041,
+      "mixed_frame_field_GEO_nT": [
+        10.759792563843368,
+        -1.798411197541443,
+        7.5279269868013206
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        10.68820070322472,
+        -3.9562965899547047,
+        7.521064398825239
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 2.1667699212921074,
+      "difference_norm_nT": 2.159083568649233,
+      "difference_relative_to_consistent_norm": 0.15811784630769313
+    },
+    {
+      "date_UTC": "2023-06-21T12:25:00Z",
+      "GSM_position_RE": [
+        -6,
+        0,
+        1
+      ],
+      "velocity_GSE_km_s": [
+        -417.7,
+        50.4,
+        -8.0
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": 0.5024,
+      "reference_GSW_tilt_rad": 0.5024298748619163,
+      "reference_GSM_tilt_rad": 0.4672910238303874,
+      "GSW_rotation_orthogonality_error": 3.5140779175435455e-12,
+      "GSM_rotation_orthogonality_error": 1.1102230246251565e-16,
+      "source_minus_reference_tilt_rad": -2.98748619163014e-05,
+      "angle_between_X_axes_deg": 6.965384603958041,
+      "mixed_frame_field_GEO_nT": [
+        -10.856886321786646,
+        5.034510628681423,
+        -23.84613350901227
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        -10.038197505539362,
+        5.022078849256489,
+        -23.489929171169003
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.8951803198355619,
+      "difference_norm_nT": 0.8929095459711529,
+      "difference_relative_to_consistent_norm": 0.03429796802655964
+    },
+    {
+      "date_UTC": "2023-06-21T12:25:00Z",
+      "GSM_position_RE": [
+        -10,
+        5,
+        2
+      ],
+      "velocity_GSE_km_s": [
+        -417.7,
+        50.4,
+        -8.0
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": 0.5024,
+      "reference_GSW_tilt_rad": 0.5024298748619163,
+      "reference_GSM_tilt_rad": 0.4672910238303874,
+      "GSW_rotation_orthogonality_error": 3.5140779175435455e-12,
+      "GSM_rotation_orthogonality_error": 1.1102230246251565e-16,
+      "source_minus_reference_tilt_rad": -2.98748619163014e-05,
+      "angle_between_X_axes_deg": 6.965384603958041,
+      "mixed_frame_field_GEO_nT": [
+        -2.260361865862728,
+        3.8150437923980935,
+        -10.706405492262437
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        -0.022998361753862273,
+        2.8916636339148156,
+        -9.94220337669842
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 2.544707602137751,
+      "difference_norm_nT": 2.538194484280396,
+      "difference_relative_to_consistent_norm": 0.24513648010885344
+    },
+    {
+      "date_UTC": "2023-06-21T12:25:00Z",
+      "GSM_position_RE": [
+        -20,
+        -5,
+        0.5
+      ],
+      "velocity_GSE_km_s": [
+        -417.7,
+        50.4,
+        -8.0
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": 0.5024,
+      "reference_GSW_tilt_rad": 0.5024298748619163,
+      "reference_GSM_tilt_rad": 0.4672910238303874,
+      "GSW_rotation_orthogonality_error": 3.5140779175435455e-12,
+      "GSM_rotation_orthogonality_error": 1.1102230246251565e-16,
+      "source_minus_reference_tilt_rad": -2.98748619163014e-05,
+      "angle_between_X_axes_deg": 6.965384603958041,
+      "mixed_frame_field_GEO_nT": [
+        -9.60659517074147,
+        0.08137172729092265,
+        -3.74650056674155
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        -8.453943913746738,
+        0.5466359993640676,
+        -3.1689151144042356
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 1.3736253832837202,
+      "difference_norm_nT": 1.3706497429580573,
+      "difference_relative_to_consistent_norm": 0.1515386061704779
+    },
+    {
+      "date_UTC": "2023-06-21T12:25:00Z",
+      "GSM_position_RE": [
+        3,
+        3,
+        3
+      ],
+      "velocity_GSE_km_s": [
+        -417.7,
+        50.4,
+        -8.0
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": 0.5024,
+      "reference_GSW_tilt_rad": 0.5024298748619163,
+      "reference_GSM_tilt_rad": 0.4672910238303874,
+      "GSW_rotation_orthogonality_error": 3.5140779175435455e-12,
+      "GSM_rotation_orthogonality_error": 1.1102230246251565e-16,
+      "source_minus_reference_tilt_rad": -2.98748619163014e-05,
+      "angle_between_X_axes_deg": 6.965384603958041,
+      "mixed_frame_field_GEO_nT": [
+        13.70345410768439,
+        -3.765441434621483,
+        -5.3456428196207915
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        13.406181896334717,
+        -6.288138300757921,
+        -5.81795458588296
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 2.5929134392550277,
+      "difference_norm_nT": 2.5836889616602496,
+      "difference_relative_to_consistent_norm": 0.16239823141206736
+    },
+    {
+      "date_UTC": "2023-06-21T12:25:00Z",
+      "GSM_position_RE": [
+        -40,
+        10,
+        4
+      ],
+      "velocity_GSE_km_s": [
+        -417.7,
+        50.4,
+        -8.0
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": 0.5024,
+      "reference_GSW_tilt_rad": 0.5024298748619163,
+      "reference_GSM_tilt_rad": 0.4672910238303874,
+      "GSW_rotation_orthogonality_error": 3.5140779175435455e-12,
+      "GSM_rotation_orthogonality_error": 1.1102230246251565e-16,
+      "source_minus_reference_tilt_rad": -2.98748619163014e-05,
+      "angle_between_X_axes_deg": 6.965384603958041,
+      "mixed_frame_field_GEO_nT": [
+        1.2581636137558725,
+        -0.08000506675196012,
+        3.2569955504311183
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        3.77862874452654,
+        -0.7312215558132726,
+        4.035015281655511
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 2.726872449996926,
+      "difference_norm_nT": 2.7170097705438265,
+      "difference_relative_to_consistent_norm": 0.4872506474277301
+    },
+    {
+      "date_UTC": "2023-06-21T12:25:00Z",
+      "GSM_position_RE": [
+        6,
+        1,
+        2
+      ],
+      "velocity_GSE_km_s": [
+        -417.7,
+        80.17,
+        -8.0
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": 0.5024,
+      "reference_GSW_tilt_rad": 0.5082880204780221,
+      "reference_GSM_tilt_rad": 0.4672910238303874,
+      "GSW_rotation_orthogonality_error": 3.43836070726411e-12,
+      "GSM_rotation_orthogonality_error": 1.1102230246251565e-16,
+      "source_minus_reference_tilt_rad": -0.005888020478022171,
+      "angle_between_X_axes_deg": 10.917434320210258,
+      "mixed_frame_field_GEO_nT": [
+        10.759792563843368,
+        -1.798411197541443,
+        7.5279269868013206
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        10.429453528417516,
+        -5.21910919740607,
+        7.293352267292185
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 3.4522640534623323,
+      "difference_norm_nT": 3.4446079579012663,
+      "difference_relative_to_consistent_norm": 0.2504221962453015
+    },
+    {
+      "date_UTC": "2023-06-21T12:25:00Z",
+      "GSM_position_RE": [
+        -6,
+        0,
+        1
+      ],
+      "velocity_GSE_km_s": [
+        -417.7,
+        80.17,
+        -8.0
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": 0.5024,
+      "reference_GSW_tilt_rad": 0.5082880204780221,
+      "reference_GSM_tilt_rad": 0.4672910238303874,
+      "GSW_rotation_orthogonality_error": 3.43836070726411e-12,
+      "GSM_rotation_orthogonality_error": 1.1102230246251565e-16,
+      "source_minus_reference_tilt_rad": -0.005888020478022171,
+      "angle_between_X_axes_deg": 10.917434320210258,
+      "mixed_frame_field_GEO_nT": [
+        -10.856886321786646,
+        5.034510628681423,
+        -23.84613350901227
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        -9.941675998088357,
+        5.0416874193924865,
+        -23.282172502634126
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 1.0772392155712593,
+      "difference_norm_nT": 1.0750411432330795,
+      "difference_relative_to_consistent_norm": 0.04164714751047469
+    },
+    {
+      "date_UTC": "2023-06-21T12:25:00Z",
+      "GSM_position_RE": [
+        -10,
+        5,
+        2
+      ],
+      "velocity_GSE_km_s": [
+        -417.7,
+        80.17,
+        -8.0
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": 0.5024,
+      "reference_GSW_tilt_rad": 0.5082880204780221,
+      "reference_GSM_tilt_rad": 0.4672910238303874,
+      "GSW_rotation_orthogonality_error": 3.43836070726411e-12,
+      "GSM_rotation_orthogonality_error": 1.1102230246251565e-16,
+      "source_minus_reference_tilt_rad": -0.005888020478022171,
+      "angle_between_X_axes_deg": 10.917434320210258,
+      "mixed_frame_field_GEO_nT": [
+        -2.260361865862728,
+        3.8150437923980935,
+        -10.706405492262437
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        0.769288225650727,
+        2.4303662668383548,
+        -9.595031112167787
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 3.518064267196484,
+      "difference_norm_nT": 3.511590030104382,
+      "difference_relative_to_consistent_norm": 0.35370941140089235
+    },
+    {
+      "date_UTC": "2023-06-21T12:25:00Z",
+      "GSM_position_RE": [
+        -20,
+        -5,
+        0.5
+      ],
+      "velocity_GSE_km_s": [
+        -417.7,
+        80.17,
+        -8.0
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": 0.5024,
+      "reference_GSW_tilt_rad": 0.5082880204780221,
+      "reference_GSM_tilt_rad": 0.4672910238303874,
+      "GSW_rotation_orthogonality_error": 3.43836070726411e-12,
+      "GSM_rotation_orthogonality_error": 1.1102230246251565e-16,
+      "source_minus_reference_tilt_rad": -0.005888020478022171,
+      "angle_between_X_axes_deg": 10.917434320210258,
+      "mixed_frame_field_GEO_nT": [
+        -9.60659517074147,
+        0.08137172729092265,
+        -3.74650056674155
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        -8.600412431614938,
+        0.7642121654451836,
+        -2.9430669785445556
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 1.4604623235529228,
+      "difference_norm_nT": 1.457456791516637,
+      "difference_relative_to_consistent_norm": 0.15977202200112003
+    },
+    {
+      "date_UTC": "2023-06-21T12:25:00Z",
+      "GSM_position_RE": [
+        3,
+        3,
+        3
+      ],
+      "velocity_GSE_km_s": [
+        -417.7,
+        80.17,
+        -8.0
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": 0.5024,
+      "reference_GSW_tilt_rad": 0.5082880204780221,
+      "reference_GSM_tilt_rad": 0.4672910238303874,
+      "GSW_rotation_orthogonality_error": 3.43836070726411e-12,
+      "GSM_rotation_orthogonality_error": 1.1102230246251565e-16,
+      "source_minus_reference_tilt_rad": -0.005888020478022171,
+      "angle_between_X_axes_deg": 10.917434320210258,
+      "mixed_frame_field_GEO_nT": [
+        13.70345410768439,
+        -3.765441434621483,
+        -5.3456428196207915
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        12.95252562784004,
+        -7.779060684624726,
+        -6.377955282484804
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 4.220951362265627,
+      "difference_norm_nT": 4.21173385754873,
+      "difference_relative_to_consistent_norm": 0.2568130310901749
+    },
+    {
+      "date_UTC": "2023-06-21T12:25:00Z",
+      "GSM_position_RE": [
+        -40,
+        10,
+        4
+      ],
+      "velocity_GSE_km_s": [
+        -417.7,
+        80.17,
+        -8.0
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": 0.5024,
+      "reference_GSW_tilt_rad": 0.5082880204780221,
+      "reference_GSM_tilt_rad": 0.4672910238303874,
+      "GSW_rotation_orthogonality_error": 3.43836070726411e-12,
+      "GSM_rotation_orthogonality_error": 1.1102230246251565e-16,
+      "source_minus_reference_tilt_rad": -0.005888020478022171,
+      "angle_between_X_axes_deg": 10.917434320210258,
+      "mixed_frame_field_GEO_nT": [
+        1.2581636137558725,
+        -0.08000506675196012,
+        3.2569955504311183
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        4.120687231932222,
+        -0.8298036928888564,
+        4.077140890514109
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 3.080523303126189,
+      "difference_norm_nT": 3.0706477856038847,
+      "difference_relative_to_consistent_norm": 0.5243670569834518
+    },
+    {
+      "date_UTC": "2023-09-23T10:50:00Z",
+      "GSM_position_RE": [
+        6,
+        1,
+        2
+      ],
+      "velocity_GSE_km_s": [
+        -361.5,
+        -7.0,
+        18.4
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": -0.0495,
+      "reference_GSW_tilt_rad": -0.04974819912398702,
+      "reference_GSM_tilt_rad": 0.0034925458919235486,
+      "GSW_rotation_orthogonality_error": 1.658628789868999e-11,
+      "GSM_rotation_orthogonality_error": 3.3306690738754696e-16,
+      "source_minus_reference_tilt_rad": 0.0002481991239870196,
+      "angle_between_X_axes_deg": 3.11713084118652,
+      "mixed_frame_field_GEO_nT": [
+        2.536491596238703,
+        -0.4400821462135463,
+        3.8286197333852225
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        2.3060180945174995,
+        -0.41259144246284335,
+        3.489642913864963
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.38269475402193076,
+      "difference_norm_nT": 0.4108272848295413,
+      "difference_relative_to_consistent_norm": 0.09774523368247305
+    },
+    {
+      "date_UTC": "2023-09-23T10:50:00Z",
+      "GSM_position_RE": [
+        -6,
+        0,
+        1
+      ],
+      "velocity_GSE_km_s": [
+        -361.5,
+        -7.0,
+        18.4
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": -0.0495,
+      "reference_GSW_tilt_rad": -0.04974819912398702,
+      "reference_GSM_tilt_rad": 0.0034925458919235486,
+      "GSW_rotation_orthogonality_error": 1.658628789868999e-11,
+      "GSM_rotation_orthogonality_error": 3.3306690738754696e-16,
+      "source_minus_reference_tilt_rad": 0.0002481991239870196,
+      "angle_between_X_axes_deg": 3.11713084118652,
+      "mixed_frame_field_GEO_nT": [
+        10.316722665672064,
+        9.95727955690414,
+        -47.07195875631925
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        9.188094605895818,
+        9.6748629343599,
+        -47.5167355087706
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 1.1717160187835227,
+      "difference_norm_nT": 1.2455467897773893,
+      "difference_relative_to_consistent_norm": 0.025236754887977608
+    },
+    {
+      "date_UTC": "2023-09-23T10:50:00Z",
+      "GSM_position_RE": [
+        -10,
+        5,
+        2
+      ],
+      "velocity_GSE_km_s": [
+        -361.5,
+        -7.0,
+        18.4
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": -0.0495,
+      "reference_GSW_tilt_rad": -0.04974819912398702,
+      "reference_GSM_tilt_rad": 0.0034925458919235486,
+      "GSW_rotation_orthogonality_error": 1.658628789868999e-11,
+      "GSM_rotation_orthogonality_error": 3.3306690738754696e-16,
+      "source_minus_reference_tilt_rad": 0.0002481991239870196,
+      "angle_between_X_axes_deg": 3.11713084118652,
+      "mixed_frame_field_GEO_nT": [
+        23.55804318691066,
+        -1.5012792814763383,
+        -14.004899038925506
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        21.601783534617358,
+        -1.3243972511474391,
+        -14.832790661458791
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 2.013893248248668,
+      "difference_norm_nT": 2.131582421231883,
+      "difference_relative_to_consistent_norm": 0.0812420416692701
+    },
+    {
+      "date_UTC": "2023-09-23T10:50:00Z",
+      "GSM_position_RE": [
+        -20,
+        -5,
+        0.5
+      ],
+      "velocity_GSE_km_s": [
+        -361.5,
+        -7.0,
+        18.4
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": -0.0495,
+      "reference_GSW_tilt_rad": -0.04974819912398702,
+      "reference_GSM_tilt_rad": 0.0034925458919235486,
+      "GSW_rotation_orthogonality_error": 1.658628789868999e-11,
+      "GSM_rotation_orthogonality_error": 3.3306690738754696e-16,
+      "source_minus_reference_tilt_rad": 0.0002481991239870196,
+      "angle_between_X_axes_deg": 3.11713084118652,
+      "mixed_frame_field_GEO_nT": [
+        3.86348715047911,
+        1.2996626501295312,
+        -0.6175897042440516
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        -1.6172831448136156,
+        -1.4894803215065147,
+        -0.6826109357683295
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 5.78618030338362,
+      "difference_norm_nT": 6.149991000525025,
+      "difference_relative_to_consistent_norm": 2.671356632092099
+    },
+    {
+      "date_UTC": "2023-09-23T10:50:00Z",
+      "GSM_position_RE": [
+        3,
+        3,
+        3
+      ],
+      "velocity_GSE_km_s": [
+        -361.5,
+        -7.0,
+        18.4
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": -0.0495,
+      "reference_GSW_tilt_rad": -0.04974819912398702,
+      "reference_GSM_tilt_rad": 0.0034925458919235486,
+      "GSW_rotation_orthogonality_error": 1.658628789868999e-11,
+      "GSM_rotation_orthogonality_error": 3.3306690738754696e-16,
+      "source_minus_reference_tilt_rad": 0.0002481991239870196,
+      "angle_between_X_axes_deg": 3.11713084118652,
+      "mixed_frame_field_GEO_nT": [
+        -0.33347680887887066,
+        1.6705007034599175,
+        -16.955051154564188
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        -1.1815344550042584,
+        1.657912120952306,
+        -17.524217013551837
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.9497445599143518,
+      "difference_norm_nT": 1.021425483624935,
+      "difference_relative_to_consistent_norm": 0.05789712220396073
+    },
+    {
+      "date_UTC": "2023-09-23T10:50:00Z",
+      "GSM_position_RE": [
+        -40,
+        10,
+        4
+      ],
+      "velocity_GSE_km_s": [
+        -361.5,
+        -7.0,
+        18.4
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": -0.0495,
+      "reference_GSW_tilt_rad": -0.04974819912398702,
+      "reference_GSM_tilt_rad": 0.0034925458919235486,
+      "GSW_rotation_orthogonality_error": 1.658628789868999e-11,
+      "GSM_rotation_orthogonality_error": 3.3306690738754696e-16,
+      "source_minus_reference_tilt_rad": 0.0002481991239870196,
+      "angle_between_X_axes_deg": 3.11713084118652,
+      "mixed_frame_field_GEO_nT": [
+        7.669860643445974,
+        0.10899967057303557,
+        -0.998205646876698
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        5.87565413258169,
+        -0.13227226270295428,
+        -1.092400697798057
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 1.7416723044447575,
+      "difference_norm_nT": 1.812804969386558,
+      "difference_relative_to_consistent_norm": 0.30325598090710854
+    },
+    {
+      "date_UTC": "2023-09-23T10:50:00Z",
+      "GSM_position_RE": [
+        6,
+        1,
+        2
+      ],
+      "velocity_GSE_km_s": [
+        -361.5,
+        22.77,
+        18.4
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": -0.0495,
+      "reference_GSW_tilt_rad": -0.005301361186876101,
+      "reference_GSM_tilt_rad": 0.0034925458919235486,
+      "GSW_rotation_orthogonality_error": 1.6527001989175005e-11,
+      "GSM_rotation_orthogonality_error": 3.3306690738754696e-16,
+      "source_minus_reference_tilt_rad": -0.0441986388131239,
+      "angle_between_X_axes_deg": 4.629844204463978,
+      "mixed_frame_field_GEO_nT": [
+        2.536491596238703,
+        -0.4400821462135463,
+        3.8286197333852225
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        2.3252111530365456,
+        -0.6345445838471995,
+        3.3176779866703514
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.5598730395589078,
+      "difference_norm_nT": 0.5861028355725351,
+      "difference_relative_to_consistent_norm": 0.14292538200823546
+    },
+    {
+      "date_UTC": "2023-09-23T10:50:00Z",
+      "GSM_position_RE": [
+        -6,
+        0,
+        1
+      ],
+      "velocity_GSE_km_s": [
+        -361.5,
+        22.77,
+        18.4
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": -0.0495,
+      "reference_GSW_tilt_rad": -0.005301361186876101,
+      "reference_GSM_tilt_rad": 0.0034925458919235486,
+      "GSW_rotation_orthogonality_error": 1.6527001989175005e-11,
+      "GSM_rotation_orthogonality_error": 3.3306690738754696e-16,
+      "source_minus_reference_tilt_rad": -0.0441986388131239,
+      "angle_between_X_axes_deg": 4.629844204463978,
+      "mixed_frame_field_GEO_nT": [
+        10.316722665672064,
+        9.95727955690414,
+        -47.07195875631925
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        10.173970708686705,
+        9.5381867743701,
+        -46.977757915993955
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.4259354863367446,
+      "difference_norm_nT": 0.45264851696792896,
+      "difference_relative_to_consistent_norm": 0.009236962316616274
+    },
+    {
+      "date_UTC": "2023-09-23T10:50:00Z",
+      "GSM_position_RE": [
+        -10,
+        5,
+        2
+      ],
+      "velocity_GSE_km_s": [
+        -361.5,
+        22.77,
+        18.4
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": -0.0495,
+      "reference_GSW_tilt_rad": -0.005301361186876101,
+      "reference_GSM_tilt_rad": 0.0034925458919235486,
+      "GSW_rotation_orthogonality_error": 1.6527001989175005e-11,
+      "GSM_rotation_orthogonality_error": 3.3306690738754696e-16,
+      "source_minus_reference_tilt_rad": -0.0441986388131239,
+      "angle_between_X_axes_deg": 4.629844204463978,
+      "mixed_frame_field_GEO_nT": [
+        23.55804318691066,
+        -1.5012792814763383,
+        -14.004899038925506
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        23.950667333756133,
+        -1.8726107448238638,
+        -14.292201746761494
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.6655976111563922,
+      "difference_norm_nT": 0.6120323702941225,
+      "difference_relative_to_consistent_norm": 0.021894519541727508
+    },
+    {
+      "date_UTC": "2023-09-23T10:50:00Z",
+      "GSM_position_RE": [
+        -20,
+        -5,
+        0.5
+      ],
+      "velocity_GSE_km_s": [
+        -361.5,
+        22.77,
+        18.4
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": -0.0495,
+      "reference_GSW_tilt_rad": -0.005301361186876101,
+      "reference_GSM_tilt_rad": 0.0034925458919235486,
+      "GSW_rotation_orthogonality_error": 1.6527001989175005e-11,
+      "GSM_rotation_orthogonality_error": 3.3306690738754696e-16,
+      "source_minus_reference_tilt_rad": -0.0441986388131239,
+      "angle_between_X_axes_deg": 4.629844204463978,
+      "mixed_frame_field_GEO_nT": [
+        3.86348715047911,
+        1.2996626501295312,
+        -0.6175897042440516
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        2.886037809598533,
+        0.7580979476360707,
+        -0.6005727815303197
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.7550280941712841,
+      "difference_norm_nT": 1.1175818165276985,
+      "difference_relative_to_consistent_norm": 0.36716870079507213
+    },
+    {
+      "date_UTC": "2023-09-23T10:50:00Z",
+      "GSM_position_RE": [
+        3,
+        3,
+        3
+      ],
+      "velocity_GSE_km_s": [
+        -361.5,
+        22.77,
+        18.4
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": -0.0495,
+      "reference_GSW_tilt_rad": -0.005301361186876101,
+      "reference_GSM_tilt_rad": 0.0034925458919235486,
+      "GSW_rotation_orthogonality_error": 1.6527001989175005e-11,
+      "GSM_rotation_orthogonality_error": 3.3306690738754696e-16,
+      "source_minus_reference_tilt_rad": -0.0441986388131239,
+      "angle_between_X_axes_deg": 4.629844204463978,
+      "mixed_frame_field_GEO_nT": [
+        -0.33347680887887066,
+        1.6705007034599175,
+        -16.955051154564188
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        -0.9993270709687261,
+        1.001359904201212,
+        -18.17627016051536
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 1.4807071820723243,
+      "difference_norm_nT": 1.543529021837322,
+      "difference_relative_to_consistent_norm": 0.08466395481535989
+    },
+    {
+      "date_UTC": "2023-09-23T10:50:00Z",
+      "GSM_position_RE": [
+        -40,
+        10,
+        4
+      ],
+      "velocity_GSE_km_s": [
+        -361.5,
+        22.77,
+        18.4
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": -0.0495,
+      "reference_GSW_tilt_rad": -0.005301361186876101,
+      "reference_GSM_tilt_rad": 0.0034925458919235486,
+      "GSW_rotation_orthogonality_error": 1.6527001989175005e-11,
+      "GSM_rotation_orthogonality_error": 3.3306690738754696e-16,
+      "source_minus_reference_tilt_rad": -0.0441986388131239,
+      "angle_between_X_axes_deg": 4.629844204463978,
+      "mixed_frame_field_GEO_nT": [
+        7.669860643445974,
+        0.10899967057303557,
+        -0.998205646876698
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        7.466511606250718,
+        -0.06031543693214349,
+        -1.1870668845223862
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.27072739992486305,
+      "difference_norm_nT": 0.3250953762248689,
+      "difference_relative_to_consistent_norm": 0.04299903918483416
+    },
+    {
+      "date_UTC": "2023-12-21T12:30:00Z",
+      "GSM_position_RE": [
+        6,
+        1,
+        2
+      ],
+      "velocity_GSE_km_s": [
+        -354.6,
+        -3.7,
+        30.3
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": -0.4217,
+      "reference_GSW_tilt_rad": -0.4216418831419646,
+      "reference_GSM_tilt_rad": -0.3358342022188689,
+      "GSW_rotation_orthogonality_error": 1.604882893246895e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": -5.811685803541744e-05,
+      "angle_between_X_axes_deg": 4.920069888503812,
+      "mixed_frame_field_GEO_nT": [
+        -0.34552002283688754,
+        0.9769191305067224,
+        -4.987180070385827
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        -0.4070923219230822,
+        0.9927158288054381,
+        -4.658505109830289
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.33351426485200525,
+      "difference_norm_nT": 0.3347654602674614,
+      "difference_relative_to_consistent_norm": 0.07002775204994553
+    },
+    {
+      "date_UTC": "2023-12-21T12:30:00Z",
+      "GSM_position_RE": [
+        -6,
+        0,
+        1
+      ],
+      "velocity_GSE_km_s": [
+        -354.6,
+        -3.7,
+        30.3
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": -0.4217,
+      "reference_GSW_tilt_rad": -0.4216418831419646,
+      "reference_GSM_tilt_rad": -0.3358342022188689,
+      "GSW_rotation_orthogonality_error": 1.604882893246895e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": -5.811685803541744e-05,
+      "angle_between_X_axes_deg": 4.920069888503812,
+      "mixed_frame_field_GEO_nT": [
+        13.259913775064538,
+        1.8907552874458906,
+        -30.4014352159165
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        11.835213963949414,
+        2.029537969062731,
+        -29.57852420707541
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 1.6480696307436602,
+      "difference_norm_nT": 1.6511246812340037,
+      "difference_relative_to_consistent_norm": 0.0517220396833873
+    },
+    {
+      "date_UTC": "2023-12-21T12:30:00Z",
+      "GSM_position_RE": [
+        -10,
+        5,
+        2
+      ],
+      "velocity_GSE_km_s": [
+        -354.6,
+        -3.7,
+        30.3
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": -0.4217,
+      "reference_GSW_tilt_rad": -0.4216418831419646,
+      "reference_GSM_tilt_rad": -0.3358342022188689,
+      "GSW_rotation_orthogonality_error": 1.604882893246895e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": -5.811685803541744e-05,
+      "angle_between_X_axes_deg": 4.920069888503812,
+      "mixed_frame_field_GEO_nT": [
+        13.374893317470516,
+        -8.470120714867527,
+        -21.74813946870787
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        11.902674161308104,
+        -7.599627604077812,
+        -22.814641874327627
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 2.0101168074850255,
+      "difference_norm_nT": 2.0155929353162185,
+      "difference_relative_to_consistent_norm": 0.07512005886363407
+    },
+    {
+      "date_UTC": "2023-12-21T12:30:00Z",
+      "GSM_position_RE": [
+        -20,
+        -5,
+        0.5
+      ],
+      "velocity_GSE_km_s": [
+        -354.6,
+        -3.7,
+        30.3
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": -0.4217,
+      "reference_GSW_tilt_rad": -0.4216418831419646,
+      "reference_GSM_tilt_rad": -0.3358342022188689,
+      "GSW_rotation_orthogonality_error": 1.604882893246895e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": -5.811685803541744e-05,
+      "angle_between_X_axes_deg": 4.920069888503812,
+      "mixed_frame_field_GEO_nT": [
+        9.830526569815175,
+        0.8872815531638336,
+        -5.196834124339599
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        7.104096353618177,
+        0.8570733349283539,
+        -4.529123876676903
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 2.8025944976286157,
+      "difference_norm_nT": 2.8071642693427745,
+      "difference_relative_to_consistent_norm": 0.33148252432772707
+    },
+    {
+      "date_UTC": "2023-12-21T12:30:00Z",
+      "GSM_position_RE": [
+        3,
+        3,
+        3
+      ],
+      "velocity_GSE_km_s": [
+        -354.6,
+        -3.7,
+        30.3
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": -0.4217,
+      "reference_GSW_tilt_rad": -0.4216418831419646,
+      "reference_GSM_tilt_rad": -0.3358342022188689,
+      "GSW_rotation_orthogonality_error": 1.604882893246895e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": -5.811685803541744e-05,
+      "angle_between_X_axes_deg": 4.920069888503812,
+      "mixed_frame_field_GEO_nT": [
+        -2.1353996736859164,
+        0.1876640841463808,
+        -15.987509887376802
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        -2.313634771175348,
+        0.4739637870161437,
+        -15.241854820761972
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.8120547319596357,
+      "difference_norm_nT": 0.8183744547630679,
+      "difference_relative_to_consistent_norm": 0.05305941196004143
+    },
+    {
+      "date_UTC": "2023-12-21T12:30:00Z",
+      "GSM_position_RE": [
+        -40,
+        10,
+        4
+      ],
+      "velocity_GSE_km_s": [
+        -354.6,
+        -3.7,
+        30.3
+      ],
+      "added_to_source_Vy_km_s": 0.0,
+      "source_GSW_tilt_rad": -0.4217,
+      "reference_GSW_tilt_rad": -0.4216418831419646,
+      "reference_GSM_tilt_rad": -0.3358342022188689,
+      "GSW_rotation_orthogonality_error": 1.604882893246895e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": -5.811685803541744e-05,
+      "angle_between_X_axes_deg": 4.920069888503812,
+      "mixed_frame_field_GEO_nT": [
+        5.114168301822827,
+        -1.8806600224513967,
+        -2.653561978941416
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        3.9040461157843716,
+        -1.3824893362935147,
+        -2.2816977424631517
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 1.3586805770803054,
+      "difference_norm_nT": 1.3604604911797573,
+      "difference_relative_to_consistent_norm": 0.28771318920964023
+    },
+    {
+      "date_UTC": "2023-12-21T12:30:00Z",
+      "GSM_position_RE": [
+        6,
+        1,
+        2
+      ],
+      "velocity_GSE_km_s": [
+        -354.6,
+        26.07,
+        30.3
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": -0.4217,
+      "reference_GSW_tilt_rad": -0.4068130914901433,
+      "reference_GSM_tilt_rad": -0.3358342022188689,
+      "GSW_rotation_orthogonality_error": 1.596489607180729e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": -0.014886908509856744,
+      "angle_between_X_axes_deg": 6.431419715526902,
+      "mixed_frame_field_GEO_nT": [
+        -0.34552002283688754,
+        0.9769191305067224,
+        -4.987180070385827
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        -0.3822118757454507,
+        1.1842891020080208,
+        -4.807322903120934
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.2774436683502742,
+      "difference_norm_nT": 0.2769425892976104,
+      "difference_relative_to_consistent_norm": 0.055770198901383405
+    },
+    {
+      "date_UTC": "2023-12-21T12:30:00Z",
+      "GSM_position_RE": [
+        -6,
+        0,
+        1
+      ],
+      "velocity_GSE_km_s": [
+        -354.6,
+        26.07,
+        30.3
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": -0.4217,
+      "reference_GSW_tilt_rad": -0.4068130914901433,
+      "reference_GSM_tilt_rad": -0.3358342022188689,
+      "GSW_rotation_orthogonality_error": 1.596489607180729e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": -0.014886908509856744,
+      "angle_between_X_axes_deg": 6.431419715526902,
+      "mixed_frame_field_GEO_nT": [
+        13.259913775064538,
+        1.8907552874458906,
+        -30.4014352159165
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        11.913567192405738,
+        1.3419389086619038,
+        -29.849804423622267
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 1.556180255675227,
+      "difference_norm_nT": 1.5550386070016913,
+      "difference_relative_to_consistent_norm": 0.04834199497494377
+    },
+    {
+      "date_UTC": "2023-12-21T12:30:00Z",
+      "GSM_position_RE": [
+        -10,
+        5,
+        2
+      ],
+      "velocity_GSE_km_s": [
+        -354.6,
+        26.07,
+        30.3
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": -0.4217,
+      "reference_GSW_tilt_rad": -0.4068130914901433,
+      "reference_GSM_tilt_rad": -0.3358342022188689,
+      "GSW_rotation_orthogonality_error": 1.596489607180729e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": -0.014886908509856744,
+      "angle_between_X_axes_deg": 6.431419715526902,
+      "mixed_frame_field_GEO_nT": [
+        13.374893317470516,
+        -8.470120714867527,
+        -21.74813946870787
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        12.632970222100141,
+        -8.212317522464797,
+        -23.643523451288623
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 2.055785590815062,
+      "difference_norm_nT": 2.0516804836232847,
+      "difference_relative_to_consistent_norm": 0.07317867795355922
+    },
+    {
+      "date_UTC": "2023-12-21T12:30:00Z",
+      "GSM_position_RE": [
+        -20,
+        -5,
+        0.5
+      ],
+      "velocity_GSE_km_s": [
+        -354.6,
+        26.07,
+        30.3
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": -0.4217,
+      "reference_GSW_tilt_rad": -0.4068130914901433,
+      "reference_GSM_tilt_rad": -0.3358342022188689,
+      "GSW_rotation_orthogonality_error": 1.596489607180729e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": -0.014886908509856744,
+      "angle_between_X_axes_deg": 6.431419715526902,
+      "mixed_frame_field_GEO_nT": [
+        9.830526569815175,
+        0.8872815531638336,
+        -5.196834124339599
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        7.646567961314823,
+        0.7793220867640481,
+        -4.832136206267693
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 2.2123988061030784,
+      "difference_norm_nT": 2.2168299487047047,
+      "difference_relative_to_consistent_norm": 0.24417316725971142
+    },
+    {
+      "date_UTC": "2023-12-21T12:30:00Z",
+      "GSM_position_RE": [
+        3,
+        3,
+        3
+      ],
+      "velocity_GSE_km_s": [
+        -354.6,
+        26.07,
+        30.3
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": -0.4217,
+      "reference_GSW_tilt_rad": -0.4068130914901433,
+      "reference_GSM_tilt_rad": -0.3358342022188689,
+      "GSW_rotation_orthogonality_error": 1.596489607180729e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": -0.014886908509856744,
+      "angle_between_X_axes_deg": 6.431419715526902,
+      "mixed_frame_field_GEO_nT": [
+        -2.1353996736859164,
+        0.1876640841463808,
+        -15.987509887376802
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        -2.360814676583382,
+        0.2981191268231216,
+        -15.804332494574842
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 0.3066816751888039,
+      "difference_norm_nT": 0.31075102126575355,
+      "difference_relative_to_consistent_norm": 0.01944324516481358
+    },
+    {
+      "date_UTC": "2023-12-21T12:30:00Z",
+      "GSM_position_RE": [
+        -40,
+        10,
+        4
+      ],
+      "velocity_GSE_km_s": [
+        -354.6,
+        26.07,
+        30.3
+      ],
+      "added_to_source_Vy_km_s": 29.77,
+      "source_GSW_tilt_rad": -0.4217,
+      "reference_GSW_tilt_rad": -0.4068130914901433,
+      "reference_GSM_tilt_rad": -0.3358342022188689,
+      "GSW_rotation_orthogonality_error": 1.596489607180729e-11,
+      "GSM_rotation_orthogonality_error": 2.220446049250313e-16,
+      "source_minus_reference_tilt_rad": -0.014886908509856744,
+      "angle_between_X_axes_deg": 6.431419715526902,
+      "mixed_frame_field_GEO_nT": [
+        5.114168301822827,
+        -1.8806600224513967,
+        -2.653561978941416
+      ],
+      "consistent_GSW_field_GEO_nT": [
+        4.033630401725514,
+        -1.5392367294591418,
+        -2.428160462485494
+      ],
+      "gt_wrapper_vs_consistent_GSW_norm_nT": 1.1538622678604187,
+      "difference_norm_nT": 1.1553951108452098,
+      "difference_relative_to_consistent_norm": 0.23325666810825924
+    }
+  ],
+  "wrapper_comparisons": [
+    {
+      "date_UTC": "2023-01-01T11:35:00Z",
+      "GEO_position_RE": [
+        6.230923355392931,
+        1.4269580904621069,
+        -0.3733426673762883
+      ],
+      "gt_wrapper_nT": [
+        1.5309620215779247,
+        -1.2104532782715784,
+        10.132929765093385
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        1.530961921639919,
+        -1.2104531168866712,
+        10.132928513720902
+      ],
+      "port_only_difference_norm_nT": 1.2656878700460069e-06,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.004156084249396772,
+      "GT_GSM_tilt_rad": -0.3670163348578012,
+      "GEOPACK_GSM_tilt_rad": -0.36758035481237517
+    },
+    {
+      "date_UTC": "2023-01-01T11:35:00Z",
+      "GEO_position_RE": [
+        -5.077504375228882,
+        -0.8049330814091998,
+        3.25131235872296
+      ],
+      "gt_wrapper_nT": [
+        15.78424986476241,
+        4.302744324784133,
+        -22.867776284757245
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        15.78424946353082,
+        4.302744224750815,
+        -22.86777586074662
+      ],
+      "port_only_difference_norm_nT": 5.922655353088545e-07,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.011549994531143845,
+      "GT_GSM_tilt_rad": -0.3670163348578012,
+      "GEOPACK_GSM_tilt_rad": -0.36758035481237517
+    },
+    {
+      "date_UTC": "2023-01-01T11:35:00Z",
+      "GEO_position_RE": [
+        -8.607808552440513,
+        3.5482503259188203,
+        6.505040472521978
+      ],
+      "gt_wrapper_nT": [
+        13.569524585605109,
+        -1.9061378128520572,
+        -17.060389507077417
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        13.569524278039294,
+        -1.9061374320608353,
+        -17.06038941157421
+      ],
+      "port_only_difference_norm_nT": 4.987179037735921e-07,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.01879532131320372,
+      "GT_GSM_tilt_rad": -0.3670163348578012,
+      "GEOPACK_GSM_tilt_rad": -0.36758035481237517
+    },
+    {
+      "date_UTC": "2023-01-01T11:35:00Z",
+      "GEO_position_RE": [
+        -17.78750812391059,
+        -7.269561116543861,
+        7.4838516764195875
+      ],
+      "gt_wrapper_nT": [
+        10.268844884252186,
+        3.108123778519948,
+        -4.595049613798594
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        10.268844677909525,
+        3.1081236752244252,
+        -4.595049704422229
+      ],
+      "port_only_difference_norm_nT": 2.4791107646870535e-07,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.023815860572617507,
+      "GT_GSM_tilt_rad": -0.3670163348578012,
+      "GEOPACK_GSM_tilt_rad": -0.36758035481237517
+    },
+    {
+      "date_UTC": "2023-01-01T11:35:00Z",
+      "GEO_position_RE": [
+        3.7818605676518544,
+        2.935921723989428,
+        2.019379676397417
+      ],
+      "gt_wrapper_nT": [
+        0.3066773549832249,
+        -0.645140919640432,
+        -6.559519942699091
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        0.306677205332721,
+        -0.6451408327577118,
+        -6.559520663766786
+      ],
+      "port_only_difference_norm_nT": 7.415406270848772e-07,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.009098799103938408,
+      "GT_GSM_tilt_rad": -0.3670163348578012,
+      "GEOPACK_GSM_tilt_rad": -0.36758035481237517
+    },
+    {
+      "date_UTC": "2023-01-01T11:35:00Z",
+      "GEO_position_RE": [
+        -35.48435808925289,
+        4.817863202368252,
+        20.824229281222845
+      ],
+      "gt_wrapper_nT": [
+        8.219919560481273,
+        -0.7002769345418017,
+        -2.2966261921123
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        8.219919673445622,
+        -0.7002769612385952,
+        -2.2966261262915455
+      ],
+      "port_only_difference_norm_nT": 1.3343925457415528e-07,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.012597123092177606,
+      "GT_GSM_tilt_rad": -0.3670163348578012,
+      "GEOPACK_GSM_tilt_rad": -0.36758035481237517
+    },
+    {
+      "date_UTC": "2023-03-21T11:40:00Z",
+      "GEO_position_RE": [
+        5.869346637837598,
+        1.3758085468452768,
+        2.158221695593845
+      ],
+      "gt_wrapper_nT": [
+        2.6234009584179576,
+        -0.7047944257382222,
+        13.261482013533763
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        2.6234017770986573,
+        -0.7047947107329156,
+        13.261485231083102
+      ],
+      "port_only_difference_norm_nT": 3.3322790708815863e-06,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.022463535643337744,
+      "GT_GSM_tilt_rad": 0.036876778487556765,
+      "GEOPACK_GSM_tilt_rad": 0.033371033053571184
+    },
+    {
+      "date_UTC": "2023-03-21T11:40:00Z",
+      "GEO_position_RE": [
+        -5.942826183596624,
+        -0.8697833928138943,
+        0.9624415832368847
+      ],
+      "gt_wrapper_nT": [
+        10.193648127835509,
+        8.058275279539336,
+        -29.68000362442978
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        10.19364849844464,
+        8.058274578038759,
+        -29.679999136238088
+      ],
+      "port_only_difference_norm_nT": 4.557775647387525e-06,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.09423952705567412,
+      "GT_GSM_tilt_rad": 0.036876778487556765,
+      "GEOPACK_GSM_tilt_rad": 0.033371033053571184
+    },
+    {
+      "date_UTC": "2023-03-21T11:40:00Z",
+      "GEO_position_RE": [
+        -10.48862652336483,
+        3.3990432097140055,
+        2.7267597825743417
+      ],
+      "gt_wrapper_nT": [
+        20.931368321009302,
+        -0.31046776120247577,
+        -12.100941838448547
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        20.931366629251873,
+        -0.3104680773133479,
+        -12.10093928725847
+      ],
+      "port_only_difference_norm_nT": 3.0774242625562496e-06,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.16774873532362836,
+      "GT_GSM_tilt_rad": 0.036876778487556765,
+      "GEOPACK_GSM_tilt_rad": 0.033371033053571184
+    },
+    {
+      "date_UTC": "2023-03-21T11:40:00Z",
+      "GEO_position_RE": [
+        -19.262410955170907,
+        -7.352751691809571,
+        -0.3828403749650515
+      ],
+      "gt_wrapper_nT": [
+        2.461141169341453,
+        2.4349200781046063,
+        1.697449635505138
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        2.4611408863158744,
+        2.434920041882262,
+        1.6974498148474364
+      ],
+      "port_only_difference_norm_nT": 3.3701512770115793e-07,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.3816494004945915,
+      "GT_GSM_tilt_rad": 0.036876778487556765,
+      "GEOPACK_GSM_tilt_rad": 0.033371033053571184
+    },
+    {
+      "date_UTC": "2023-03-21T11:40:00Z",
+      "GEO_position_RE": [
+        2.6697800213054856,
+        2.822425818843689,
+        3.450534326008454
+      ],
+      "gt_wrapper_nT": [
+        6.187291452974698,
+        -1.376680034617094,
+        -6.235101354799885
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        6.187292209307778,
+        -1.3766802084344039,
+        -6.235097928878661
+      ],
+      "port_only_difference_norm_nT": 3.512718095441343e-06,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.057032775559112285,
+      "GT_GSM_tilt_rad": 0.036876778487556765,
+      "GEOPACK_GSM_tilt_rad": 0.033371033053571184
+    },
+    {
+      "date_UTC": "2023-03-21T11:40:00Z",
+      "GEO_position_RE": [
+        -40.8358824061219,
+        4.425753086013572,
+        5.370606831171455
+      ],
+      "gt_wrapper_nT": [
+        7.79164231992659,
+        1.0096927448900013,
+        1.8323819477142747
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        7.791641891882936,
+        1.009692741247769,
+        1.8323817471605148
+      ],
+      "port_only_difference_norm_nT": 4.727118001914399e-07,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.10550625144116077,
+      "GT_GSM_tilt_rad": 0.036876778487556765,
+      "GEOPACK_GSM_tilt_rad": 0.033371033053571184
+    },
+    {
+      "date_UTC": "2023-06-21T12:25:00Z",
+      "GEO_position_RE": [
+        4.696863693084184,
+        0.17954631155083672,
+        4.348244998915778
+      ],
+      "gt_wrapper_nT": [
+        10.759582478536887,
+        -1.7907152774889101,
+        7.528420557361915
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        10.759581367150938,
+        -1.7907147144330609,
+        7.528418095441695
+      ],
+      "port_only_difference_norm_nT": 2.75921398021995e-06,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.007714592224431705,
+      "GT_GSM_tilt_rad": 0.4672103344768978,
+      "GEOPACK_GSM_tilt_rad": 0.4672910238303874
+    },
+    {
+      "date_UTC": "2023-06-21T12:25:00Z",
+      "GEO_position_RE": [
+        -5.883748431383801,
+        0.4317106619032549,
+        -1.4815972126687136
+      ],
+      "gt_wrapper_nT": [
+        -10.859128040234255,
+        5.034258210966295,
+        -23.846681922209267
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        -10.859128070188367,
+        5.034257880920936,
+        -23.846679544136425
+      ],
+      "port_only_difference_norm_nT": 2.4010534423011237e-06,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.002321588537166246,
+      "GT_GSM_tilt_rad": 0.4672103344768978,
+      "GEOPACK_GSM_tilt_rad": 0.4672910238303874
+    },
+    {
+      "date_UTC": "2023-06-21T12:25:00Z",
+      "GEO_position_RE": [
+        -9.771358284622584,
+        5.616378029946881,
+        -1.4060067916861534
+      ],
+      "gt_wrapper_nT": [
+        -2.266514058786316,
+        3.81676477537904,
+        -10.707946137427005
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        -2.26651445643566,
+        3.8167651292777984,
+        -10.707947048776754
+      ],
+      "port_only_difference_norm_nT": 1.0554277319940685e-06,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.006571517915433513,
+      "GT_GSM_tilt_rad": 0.4672103344768978,
+      "GEOPACK_GSM_tilt_rad": 0.4672910238303874
+    },
+    {
+      "date_UTC": "2023-06-21T12:25:00Z",
+      "GEO_position_RE": [
+        -18.62988737357225,
+        -3.1440902784696396,
+        -8.263896948101783
+      ],
+      "gt_wrapper_nT": [
+        -9.6088572819829,
+        0.07974102195918398,
+        -3.747733639975803
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        -9.608857311795896,
+        0.07974116594674763,
+        -3.747734384570886
+      ],
+      "port_only_difference_norm_nT": 7.589750132660706e-07,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.0030490681770990666,
+      "GT_GSM_tilt_rad": 0.4672103344768978,
+      "GEOPACK_GSM_tilt_rad": 0.4672910238303874
+    },
+    {
+      "date_UTC": "2023-06-21T12:25:00Z",
+      "GEO_position_RE": [
+        1.619712297986239,
+        2.3081313617247714,
+        4.364523076897942
+      ],
+      "gt_wrapper_nT": [
+        13.704190769944297,
+        -3.7565464463267144,
+        -5.343156210467824
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        13.704189423721964,
+        -3.7565455101309384,
+        -5.343157531557014
+      ],
+      "port_only_difference_norm_nT": 2.1057192952958993e-06,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.009265350135254473,
+      "GT_GSM_tilt_rad": 0.4672103344768978,
+      "GEOPACK_GSM_tilt_rad": 0.4672910238303874
+    },
+    {
+      "date_UTC": "2023-06-21T12:25:00Z",
+      "GEO_position_RE": [
+        -37.7985493422256,
+        13.090104188852566,
+        -10.766561194193843
+      ],
+      "gt_wrapper_nT": [
+        1.2486802329297253,
+        -0.07800263466278676,
+        3.254951868674044
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        1.2486800926269024,
+        -0.07800251349830002,
+        3.254951593919257
+      ],
+      "port_only_difference_norm_nT": 3.3144518083747387e-07,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.009905598482155734,
+      "GT_GSM_tilt_rad": 0.4672103344768978,
+      "GEOPACK_GSM_tilt_rad": 0.4672910238303874
+    },
+    {
+      "date_UTC": "2023-09-23T10:50:00Z",
+      "GEO_position_RE": [
+        5.601711506422968,
+        2.2566101624996526,
+        2.128036365599
+      ],
+      "gt_wrapper_nT": [
+        2.5213492101072665,
+        -0.44035272021121274,
+        3.8047890654717222
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        2.5213493068620783,
+        -0.44035198976918055,
+        3.804784896972396
+      ],
+      "port_only_difference_norm_nT": 4.233118671641838e-06,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.02823589561613496,
+      "GT_GSM_tilt_rad": 0.00026369010993662785,
+      "GEOPACK_GSM_tilt_rad": 0.0034925458919235486
+    },
+    {
+      "date_UTC": "2023-09-23T10:50:00Z",
+      "GEO_position_RE": [
+        -5.734076014768026,
+        -1.7699710645191102,
+        0.9937679244306068
+      ],
+      "gt_wrapper_nT": [
+        10.251662095639638,
+        9.938257626342425,
+        -47.10156583301216
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        10.251662208812617,
+        9.938256715854045,
+        -47.10156091126354
+      ],
+      "port_only_difference_norm_nT": 5.0065363960173825e-06,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.0739681729228108,
+      "GT_GSM_tilt_rad": 0.00026369010993662785,
+      "GEOPACK_GSM_tilt_rad": 0.0034925458919235486
+    },
+    {
+      "date_UTC": "2023-09-23T10:50:00Z",
+      "GEO_position_RE": [
+        -10.869686484284465,
+        1.7514046918000794,
+        2.789712769964738
+      ],
+      "gt_wrapper_nT": [
+        23.454120799225965,
+        -1.494459597356805,
+        -14.060980145926877
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        23.45412261601695,
+        -1.4944597422550725,
+        -14.060981584085203
+      ],
+      "port_only_difference_norm_nT": 2.3216425997942187e-06,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.11828550763334107,
+      "GT_GSM_tilt_rad": 0.00026369010993662785,
+      "GEOPACK_GSM_tilt_rad": 0.0034925458919235486
+    },
+    {
+      "date_UTC": "2023-09-23T10:50:00Z",
+      "GEO_position_RE": [
+        -17.91167153011461,
+        -10.214641666197469,
+        -0.2883030150107333
+      ],
+      "gt_wrapper_nT": [
+        3.538679546676129,
+        1.1361107862492725,
+        -0.6356794739955648
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        3.5386798051630093,
+        1.136110925912272,
+        -0.6356798543103156
+      ],
+      "port_only_difference_norm_nT": 4.8058353112296e-07,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.36411046598059205,
+      "GT_GSM_tilt_rad": 0.00026369010993662785,
+      "GEOPACK_GSM_tilt_rad": 0.0034925458919235486
+    },
+    {
+      "date_UTC": "2023-09-23T10:50:00Z",
+      "GEO_position_RE": [
+        2.225793013119166,
+        3.1954631922371393,
+        3.440183200035652
+      ],
+      "gt_wrapper_nT": [
+        -0.3890323762311545,
+        1.663475015161076,
+        -17.000839292937712
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        -0.3890322341255059,
+        1.6634757208881332,
+        -17.000842256675394
+      ],
+      "port_only_difference_norm_nT": 3.0499156942471885e-06,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.07233488076730077,
+      "GT_GSM_tilt_rad": 0.00026369010993662785,
+      "GEOPACK_GSM_tilt_rad": 0.0034925458919235486
+    },
+    {
+      "date_UTC": "2023-09-23T10:50:00Z",
+      "GEO_position_RE": [
+        -41.000930271874275,
+        -1.8816030338659928,
+        5.6020787984327916
+      ],
+      "gt_wrapper_nT": [
+        7.600457860106451,
+        0.09528824621095722,
+        -1.010603800733188
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        7.600458574165768,
+        0.09528823408978648,
+        -1.01060369646865
+      ],
+      "port_only_difference_norm_nT": 7.217331391964256e-07,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.07182244574197448,
+      "GT_GSM_tilt_rad": 0.00026369010993662785,
+      "GEOPACK_GSM_tilt_rad": 0.0034925458919235486
+    },
+    {
+      "date_UTC": "2023-12-21T12:30:00Z",
+      "GEO_position_RE": [
+        6.3850269333146885,
+        -0.21212761240582828,
+        -0.43177880552551606
+      ],
+      "gt_wrapper_nT": [
+        -0.34569092973503107,
+        0.9750723488033157,
+        -4.9858433775451365
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        -0.3456908201312273,
+        0.9750719140510534,
+        -4.985840469825167
+      ],
+      "port_only_difference_norm_nT": 2.9420839460348844e-06,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.0022861670057598253,
+      "GT_GSM_tilt_rad": -0.3360126261624021,
+      "GEOPACK_GSM_tilt_rad": -0.3358342022188689
+    },
+    {
+      "date_UTC": "2023-12-21T12:30:00Z",
+      "GEO_position_RE": [
+        -5.083677468757976,
+        0.5601710737448651,
+        3.292784803442525
+      ],
+      "gt_wrapper_nT": [
+        13.259014457075901,
+        1.899312235452346,
+        -30.398260092503122
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        13.259014807924384,
+        1.8993123237277043,
+        -30.398260456851656
+      ],
+      "port_only_difference_norm_nT": 5.13455987037846e-07,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.009171234416371996,
+      "GT_GSM_tilt_rad": -0.3360126261624021,
+      "GEOPACK_GSM_tilt_rad": -0.3358342022188689
+    },
+    {
+      "date_UTC": "2023-12-21T12:30:00Z",
+      "GEO_position_RE": [
+        -7.358276541080086,
+        5.713943564110765,
+        6.4966618575348125
+      ],
+      "gt_wrapper_nT": [
+        13.365637175957332,
+        -8.46177277925377,
+        -21.73899579200173
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        13.365637887607292,
+        -8.461773200075733,
+        -21.738995354737867
+      ],
+      "port_only_difference_norm_nT": 9.352734770043757e-07,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.015458687150915354,
+      "GT_GSM_tilt_rad": -0.3360126261624021,
+      "GEOPACK_GSM_tilt_rad": -0.3358342022188689
+    },
+    {
+      "date_UTC": "2023-12-21T12:30:00Z",
+      "GEO_position_RE": [
+        -18.979240589516674,
+        -2.394888002004483,
+        7.7008400907367145
+      ],
+      "gt_wrapper_nT": [
+        9.826210499199277,
+        0.8892572860396748,
+        -5.195152922482213
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        9.82621031904007,
+        0.8892570367617167,
+        -5.195151689109053
+      ],
+      "port_only_difference_norm_nT": 1.2711436551559746e-06,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.00503571500815716,
+      "GT_GSM_tilt_rad": -0.3360126261624021,
+      "GEOPACK_GSM_tilt_rad": -0.3358342022188689
+    },
+    {
+      "date_UTC": "2023-12-21T12:30:00Z",
+      "GEO_position_RE": [
+        4.423801597073992,
+        1.9040852725849797,
+        1.9504970403593491
+      ],
+      "gt_wrapper_nT": [
+        -2.1348379927121135,
+        0.19038795295623923,
+        -15.981482663698158
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        -2.134837495933352,
+        0.19038760401844596,
+        -15.98148002965402
+      ],
+      "port_only_difference_norm_nT": 2.7030973427654542e-06,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.006637949388332969,
+      "GT_GSM_tilt_rad": -0.3360126261624021,
+      "GEOPACK_GSM_tilt_rad": -0.3358342022188689
+    },
+    {
+      "date_UTC": "2023-12-21T12:30:00Z",
+      "GEO_position_RE": [
+        -32.887651027095934,
+        13.986057631880353,
+        20.94737696795658
+      ],
+      "gt_wrapper_nT": [
+        5.11354755062996,
+        -1.878401133953986,
+        -2.652090343068097
+      ],
+      "official_kernel_with_GT_geometry_nT": [
+        5.113547178384432,
+        -1.8784010827467168,
+        -2.652089920977805
+      ],
+      "port_only_difference_norm_nT": 5.651098406248752e-07,
+      "gt_wrapper_minus_official_GSM_geometry_norm_nT": 0.0027665179252664815,
+      "GT_GSM_tilt_rad": -0.3360126261624021,
+      "GEOPACK_GSM_tilt_rad": -0.3358342022188689
+    }
+  ],
+  "summary": {
+    "kernel_cases": 54,
+    "kernel_cases_within_tolerance": 53,
+    "kernel_max_abs_error_nT": 7.240092259053199e-06,
+    "promoted_literal_cases_within_same_tolerance": 54,
+    "promoted_literal_max_abs_error_nT": 1.2066426080536985e-08,
+    "frame_cases": 60,
+    "max_frame_difference_nT": 6.149991000525025,
+    "max_port_only_difference_nT": 5.0065363960173825e-06
+  },
+  "promoted_literal_experiment": {
+    "compiler_flags": "-fdefault-real-8 -fdefault-double-8",
+    "purpose": "Sensitivity to unmarked Fortran real literal precision; official source bytes unchanged."
+  },
+  "limitations": [
+    "Finite selected cases, not a global error bound.",
+    "The two Vy conventions bracket an unresolved provenance choice for the supplied annual driver velocities; neither is silently certified as truth.",
+    "GSW frame sensitivity is compared using the same official kernel/IGRF14 frames. Published source tilt may use different ephemeris/IGRF versions and is recorded separately.",
+    "Differences are not validation against spacecraft observations."
+  ]
+}
