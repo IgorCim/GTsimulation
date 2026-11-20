@@ -114,5 +114,25 @@
       }
     }
   ],
-  "interpretation": "106 tests pass from source and installed wheel. All four model input preparations pass replay with original source SHA256 and independent arithmetic. Fresh 89/96/15B passed in the first live run. Fresh NRLMSIS could not be confirmed due TLS errors/verification timeout; not counted as a live pass."
+  "interpretation": "106 tests pass from source and installed wheel. All four model input preparations pass replay with original source SHA256 and independent arithmetic. Fresh 89/96/15B passed in the first live run. Fresh NRLMSIS could not be confirmed due TLS errors/verification timeout; not counted as a live pass.",
+  "visible_verification": {
+    "report": "results/visible-jtdfxpg5/report.html",
+    "mode": "live network",
+    "timeout_seconds_per_source": 45,
+    "unit_tests": {
+      "tests": 111,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "status": "PASS"
+    },
+    "source_statuses": {
+      "89": "PASS",
+      "96": "PASS",
+      "15B": "PASS",
+      "nrlmsis": "TIMEOUT"
+    },
+    "overall_status": "FAIL",
+    "note": "Five additional tests verify reporting and process deadlines; the original 106 downloader tests remain. Runtime fetcher and GT unchanged. NRLMSIS timeout is not a successful live download."
+  }
 }
