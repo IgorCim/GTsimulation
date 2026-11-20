@@ -33,14 +33,18 @@ jobs:
           gfortran -std=legacy -ffixed-line-length-none -fallow-argument-mismatch -O2 -fno-fast-math verification/ta15-audit/TA_2015_B.f verification/ta15-audit/geopack08.for verification/ta15-audit/reference_driver.f90 -o verification/ta15-audit/reference
           gfortran -std=legacy -ffixed-line-length-none -fallow-argument-mismatch -O2 -fno-fast-math -fdefault-real-8 -fdefault-double-8 verification/ta15-audit/TA_2015_B.f verification/ta15-audit/geopack08.for verification/ta15-audit/reference_driver.f90 -o verification/ta15-audit/reference-promoted
       - name: Compare kernel and frames
-        run: python verification/check_ta15_reference.py --reference verification/ta15-audit/reference --promoted-reference verification/ta15-audit/reference-promoted
+        run: |
+          python verification/check_ta15_reference.py --reference verification/ta15-audit/reference --promoted-reference verification/ta15-audit/reference-promoted
+          cp verification/ta15-audit/audit_result.json verification/ta15-audit/audit_nojit.json
+          NUMBA_DISABLE_JIT=0 python verification/check_ta15_reference.py --reference verification/ta15-audit/reference --promoted-reference verification/ta15-audit/reference-promoted
+          cp verification/ta15-audit/audit_result.json verification/ta15-audit/audit_jit.json
       - name: Preserve audit evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ta15-reference-audit
           path: |
-            verification/ta15-audit/audit_result.json
+            verification/ta15-audit/audit_*.json
             verification/ta15-audit/compiler.txt
             verification/ta15-audit/sources.json
           if-no-files-found: warn
