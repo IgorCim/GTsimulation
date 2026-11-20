@@ -54,11 +54,9 @@ Data contract
 Scope
 -----
 
-This version supports T89/T96. T15B inputs require a separate source and
-interpretation. Gauss coefficient updates, IRI and atmospheric F10.7/Ap
-preparation require separate implementations. GTnrlmsis already uses pymsis
-for F10.7/Ap. OMNI availability does not extend the validity of IGRF or other
-coefficients used by GT. Model validity must also be respected.
+This addon supports T89/T96, T15B and observed NRLMSIS atmospheric inputs.
+It does not update coefficient versions or enable inactive GT models.
+Detailed source-specific contracts are below.
 
 References and verification
 ---------------------------
@@ -73,8 +71,67 @@ T89 bins and T96 parameter order follow GT Functions/t89.py and Functions/t96.py
 
 .. code-block:: console
 
-   python -m pytest tests/test_input_data.py tests/test_input_data_integration.py
+   python -m pytest tests/test_input_data.py tests/test_input_data_integration.py tests/test_atmosphere_inputs.py tests/test_ta15_inputs.py
 
 Integration checks use actual field classes and a short proton trajectory
 written to HDF5. They require an installed GT build; Geant4 is optional.
 A live NASA download is an additional network-dependent check.
+
+TA15 B-index inputs
+------------------
+
+.. code-block:: console
+
+   python -m gtsimulation.input_data --model 15B --start 2023-01-01T00:30 --end 2023-01-01T01:30 --allow-provider-interpolation --output-dir inputs
+
+The explicit interpolation option accepts the provider's quality flag 2. Without
+it, both IMF and solar-wind flags must be 1 (observed). The addon never fills gaps.
+All five-minute slots must exist. B-index must be in GT's supported 0..2 range.
+Pass the returned input_file to Tsyganenko(..., ModCode="15B", input_file=...).
+
+The official source's IMF is GSW and is averaged over a trailing 30-minute window.
+GT currently uses GSM positions/tilt with these same drivers. The addon preserves
+this existing convention and emits a compatibility warning; it does not implement
+a new GSW transformation. Source quality flags and the limitation are saved in the
+manifest. Source: https://geo.phys.spbu.ru/~tsyganenko/empirical-models/magnetic_field/ta15/
+
+Atmospheric inputs
+------------------
+
+.. code-block:: console
+
+   python -m gtsimulation.input_data --model nrlmsis --start 2024-09-10 --end 2024-09-11 --output-dir inputs
+
+.. code-block:: python
+
+   from datetime import datetime
+   from gtsimulation.input_data import download_atmosphere_inputs
+   from gtsimulation.medium.magnetosphere import GTnrlmsis
+
+   prepared = download_atmosphere_inputs("2024-09-10", "2024-09-11", "inputs")
+   medium = GTnrlmsis(datetime(2024, 9, 10), input_file=prepared["input_file"])
+   medium.calculate_model(6478137, 0, 0)
+   print(medium.get_density())  # kg/m3
+
+The numeric bundle works offline and does not change global pymsis configuration.
+Daily F10.7/F10.7a and Ap plus three-hourly ap history are prepared using pymsis,
+without interpolation. Hourly storage does not create new hourly measurements.
+Only observed provider rows with complete preceding history are accepted.
+F10.7 is in sfu; Ap/ap are indices. The API retains GT's existing atmosphere
+settings, including the geomagnetic-activity mode; it does not change model physics.
+
+For callers such as GT's Geant4 atmospheric helpers, the returned
+space_weather_file can be selected explicitly using
+pymsis.utils.use_space_weather_file(prepared["space_weather_file"]). This changes
+pymsis configuration for the process; do it before starting concurrent calculations.
+The addon never does this in the parent process automatically. Geant4 execution
+was not tested in this environment.
+
+Source: https://celestrak.org/SpaceData/
+
+Input coverage inventory
+------------------------
+
+See input_inventory.md in this directory for all audited input families, including
+bundled coefficients, generated turbulence, and the disabled IRI module.
+Downloading new drivers does not extend the validity of bundled field coefficients.

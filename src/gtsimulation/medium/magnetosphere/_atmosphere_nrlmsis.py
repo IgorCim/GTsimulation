@@ -24,6 +24,10 @@ class GTnrlmsis(GTGeneralMedium):
     version : {0, 2.0, 2.1}, optional
         NRLMSIS version: 0 for NRLMSISE-00, 2.0 or 2.1 for NRLMSIS 2.x.
         Default is 0.
+    input_file : path-like, optional
+        Prepared atmospheric inputs.npy. Uses the containing UTC hour without
+        network access or changes to the global pymsis data source.
+        Omitting this option preserves the default pymsis lookup.
 
     Notes
     -----
@@ -38,7 +42,7 @@ class GTnrlmsis(GTGeneralMedium):
     are treated as zero.
     """
 
-    def __init__(self, date: datetime, version=0):
+    def __init__(self, date: datetime, version=0, *, input_file=None):
         super().__init__()
         self.region = Regions.Magnetosphere
         self.model = "NRLMSIS"
@@ -48,7 +52,11 @@ class GTnrlmsis(GTGeneralMedium):
         self.element_list = ['H', 'He', 'N', 'O', 'Ar']
         self.element_mass = np.array([1.008, 4.0026, 14.007, 15.999, 39.948])  # g/mol
         self.date = date
-        f107, f107a, ap = get_f107_ap(self.date)
+        if input_file is None:
+            f107, f107a, ap = get_f107_ap(self.date)
+        else:
+            from gtsimulation.input_data.atmosphere import atmosphere_at
+            self.date, f107, f107a, ap = atmosphere_at(input_file, date)
         self.f107 = f107
         self.f107a = f107a
         self.ap = ap

@@ -21,9 +21,36 @@ HTTP 404, size limits, write cleanup, concurrent outputs, repeated calls,
 unsafe object NPY files, time-range checks, preserved bundled T89/T96/T15B
 behavior and matching field results for identical old/new drivers.
 
-## Current scope
+## Expanded addon verification
 
-T89/T96 hourly OMNI inputs are implemented. T15B, Gauss coefficient updates,
-IRI and atmospheric input preparation are not part of this first version.
-The repository's existing Geant4 interaction benchmarks, all operating systems
-and all historical OMNI periods have not been exercised in this verification.
+The current addon also prepares T15B and observed NRLMSIS atmospheric inputs.
+
+- addon-expanded-tests.xml: 86 deterministic tests, JIT disabled, warnings as errors.
+- addon-expanded-jit.xml: the same 86 tests with JIT enabled.
+- addon-expanded-wheel.xml: 86 tests after installation of the built wheel.
+  New modules and GT consumers resolve from site-packages. The original OMNI
+  parser-only tests still load the source module directly.
+- expanded_wheel.json: wheel SHA256 and byte-for-byte equality of the seven
+  changed/new runtime modules with source.
+- expanded_live_result.json: real CelesTrak download (24 hours), NRLMSIS density
+  evaluation, real TA15 download (12 slots), T15B field evaluation, and comparison
+  of all 96,104 source records for 2023 with the bundled inputs at float16 precision.
+- check_expanded_live.py: rerunnable network smoke check. It saves fresh bundles
+  and a report; outages or missing data fail the run rather than being hidden.
+
+The extended deterministic tests include previous-day F107, 57-hour Ap history,
+observed/interpolated flags, missing days and slots, corrupted arrays, UTC bounds,
+GT's B-index range, pymsis process isolation, default-path preservation,
+CLI dispatch/errors, worker timeout cleanup, and matching T15B fields for identical
+old/new inputs. Historical v1 reports above are retained as earlier evidence.
+
+## Limits
+
+GT's existing GSM/GSW convention for T15B is preserved and reported, not corrected.
+T15B inputs with B-index outside 0..2 are rejected. Atmospheric forecasts are not
+accepted. Field coefficient versions are not changed. See the input inventory in
+../docs/user_guide/input_inventory.md for the complete scope distinction.
+
+Geant4 execution, all operating systems and all historical periods were not tested.
+A short field/medium/trajectory smoke check is not scientific model validation.
+Passing this suite does not prove the absence of every possible defect.

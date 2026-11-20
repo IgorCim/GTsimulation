@@ -29,13 +29,15 @@ def _utc_hour(value):
     return value
 
 
-def _download(url, timeout, attempts):
+def _download(url, timeout, attempts, *, max_bytes=None):
+    if max_bytes is None:
+        max_bytes = MAX_BYTES
     for attempt in range(attempts):
         try:
             with urlopen(url, timeout=timeout) as response:
-                body = response.read(MAX_BYTES + 1)
-            if len(body) > MAX_BYTES:
-                raise ValueError("OMNI annual response exceeds the size limit.")
+                body = response.read(max_bytes + 1)
+            if len(body) > max_bytes:
+                raise ValueError("Input response exceeds the size limit.")
             return body
         except (URLError, TimeoutError) as exc:
             if isinstance(exc, HTTPError) and exc.code not in (408, 429, 500, 502, 503, 504):
