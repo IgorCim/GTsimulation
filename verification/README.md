@@ -97,3 +97,30 @@ Disk errors are injected OSError for NPY writing; the atmosphere case injects a
 nonzero worker exit. This is not a physical full-disk/crash test. No GT runtime
 code changes were necessary. recovery-tests.xml records the 28-case run;
 all-addon-tests.xml records the combined 134-case suite with JIT enabled.
+
+## Full workflows and clean installation
+
+check_full_workflow.py executes four saved-input simulations (89,96,15B and a
+separate NRLMSIS medium case with a uniform 10 nT field), one 1 GeV proton and
+10 steps of 1e-6 s each. It reopens the HDF5 files and verifies completion,
+event count, PDG, initial energy/position, track shape, finite coordinates,
+unit-norm direction vectors and nonzero displacement. Per-case reports link
+input, manifest and HDF5 SHA256. Track/Velocities contains dimensionless Vm/V_norm,
+not m/s; this was checked against the actual GT writer implementation.
+
+- workflow-jj_zisea/report.json: four cases passed in the working installation,
+  JIT disabled for this recorded repeat.
+- workflow-bukw2eh9/report.json: four cases passed with JIT in a newly created
+  environment without system-site packages, launched with Python -I. GT and
+  eight dependencies were checked to reside under the new environment prefix.
+- clean_install.json: wheel SHA256, environment config, installed distributions,
+  and successful pip check. Dependencies selected by pip include numpy 2.5.5,
+  numba 0.68.1 and h5py 3.16.0, rather than the prior environment's versions.
+
+No runtime GT or addon changes were made for this step. These are engineering
+smokes, not convergence/accuracy validation. External magnetic fields are used
+alone, without adding Earth's internal field. Geant4 is disabled. The NRLMSIS
+case preserves GT's existing date/index handling and interaction defaults.
+Input downloads and failure handling were exercised by preceding stages; this
+workflow reuses their saved bundles. First clean execution was slow and eventually
+passed; its delay was not conclusively attributed to a particular import.

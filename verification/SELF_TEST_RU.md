@@ -163,3 +163,52 @@ get_f107_ap установленного pymsis 0.13.0; расчёт в этой
 
 Для записи XML добавьте `--junitxml=verification/my-addon-tests.xml`.
 Эти тесты не имитируют аварийное выключение компьютера или повреждение диска ОС.
+
+## Полный сценарий с HDF5
+
+```text
+.venv\Scripts\python.exe verification\check_full_workflow.py
+```
+
+Используются входы последнего успешного reuse-прогона, сеть для загрузки входов
+не нужна. Четыре сценария: протон 1 ГэВ в T89/T96/T15B; отдельно протон с
+атмосферой NRLMSIS и постоянным полем 10 нТ. По 10 шагов длительностью 1e-6 с.
+Результаты пишутся в уникальный verification/workflow-...; затем каждый HDF5
+открывается заново. Проверяются complete, один event, PDG=2212, начальная
+энергия 1000 МэВ, начальные координаты, 10 конечных трёхмерных точек,
+нормы направлений и ненулевое перемещение. Inputs.npy и манифест связаны с
+результатом через SHA256 в report.json. Конечность не означает физическую
+точность или сходимость расчёта: это короткий инженерный сценарий.
+
+ВАЖНО: Track/Velocities в текущем GT содержит Vm/V_norm, то есть безразмерное
+нормированное направление. Track/Coordinates — метры. В HDF5 нет автоматически
+добавленных нами атрибутов единиц; эти соглашения записываются в отчёте.
+Поля T89/T96/T15B здесь не складываются с внутренним полем Земли. NRLMSIS
+использует неизменные во времени дату/индексы согласно существующему API GT.
+Geant4, распады и ядерные взаимодействия отключены.
+
+Ожидается `PASS: four saved-input -> simulation -> HDF5 read-back workflows.`
+Первый JIT-запуск может занять несколько минут.
+
+## Новая установка в чистое окружение Windows
+
+Следующие команды предназначены для этой локальной поставки с уже собранным
+Windows/Python 3.12 wheel. Используйте новое имя каталога, если такое окружение
+уже существует, и замените его во всех командах. Старое окружение удалять не надо.
+
+```text
+.venv\Scripts\python.exe -m venv verification\my-clean-check
+verification\my-clean-check\Scripts\python.exe -m pip install verification\wheels-expanded\gtsimulation-0.4.1-cp312-cp312-win_amd64.whl
+verification\my-clean-check\Scripts\python.exe -I verification\check_full_workflow.py --require-clean
+verification\my-clean-check\Scripts\python.exe -m pip check
+```
+
+Установка требует интернета для зависимостей. Ключ -I исключает пользовательские
+пути/PYTHONPATH. Проверка дополнительно требует include-system-site-packages=false
+и проверяет, что GT и восемь основных зависимостей загружены внутри нового
+окружения. Отчёт сохраняет пути и версии. Успех pip check означает согласованность
+заявленных зависимостей, а не проверку научной точности.
+
+В копии GitHub бинарный wheel не хранится. На другом компьютере сначала соберите
+wheel командой `python -m pip wheel . --no-deps --config-settings=cmake.define.BUILD_GEANT4_COMPONENTS=OFF --wheel-dir verification/wheels-expanded`.
+Имя wheel зависит от ОС и версии Python; в командах установки укажите фактическое.

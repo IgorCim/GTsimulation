@@ -1,0 +1,37 @@
+{
+    "Particles": {
+        "Number of particles": "1",
+        "Particles": "['proton']",
+        "V": "Isotropic",
+        "Spectrum": "Monolines",
+        "Energy": "1000.0",
+        "Distribution": "User Input",
+        "R0 shape": "(1, 3)",
+        "V0 shape": "(1, 3)"
+    },
+    "Num": 10,
+    "Step": 1e-06,
+    "Bfield": [
+        "Tsyganenko",
+        {
+            "Mode": "89",
+            "Psi": "0.028637922358479662"
+        }
+    ],
+    "Efield": null,
+    "Medium": null,
+    "Region": "Regions.Undefined",
+    "BreakCondition": null,
+    "UseDecay": false,
+    "InteractNUC": null,
+    "RadLosses": false,
+    "Date": "2024-09-10T00:00:00",
+    "Save": 1,
+    "Nfiles": 1,
+    "Output": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\verification\\workflow-bukw2eh9\\89.h5",
+    "Verbose": 0,
+    "ForwardTrck": null,
+    "TrackParams": false,
+    "ParticleOrigin": false,
+    "IsFirstRun": true
+}
