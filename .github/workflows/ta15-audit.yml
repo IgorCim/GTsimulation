@@ -31,8 +31,9 @@ jobs:
         run: |
           gfortran --version | tee verification/ta15-audit/compiler.txt
           gfortran -std=legacy -ffixed-line-length-none -fallow-argument-mismatch -O2 -fno-fast-math verification/ta15-audit/TA_2015_B.f verification/ta15-audit/geopack08.for verification/ta15-audit/reference_driver.f90 -o verification/ta15-audit/reference
+          gfortran -std=legacy -ffixed-line-length-none -fallow-argument-mismatch -O2 -fno-fast-math -fdefault-real-8 -fdefault-double-8 verification/ta15-audit/TA_2015_B.f verification/ta15-audit/geopack08.for verification/ta15-audit/reference_driver.f90 -o verification/ta15-audit/reference-promoted
       - name: Compare kernel and frames
-        run: python verification/check_ta15_reference.py --reference verification/ta15-audit/reference
+        run: python verification/check_ta15_reference.py --reference verification/ta15-audit/reference --promoted-reference verification/ta15-audit/reference-promoted
       - name: Preserve audit evidence
         if: always()
         uses: actions/upload-artifact@v4

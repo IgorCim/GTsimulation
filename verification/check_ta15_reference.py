@@ -34,6 +34,7 @@ def frame(exe,date,velocity):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--reference',type=Path,required=True)
+    parser.add_argument('--promoted-reference',type=Path)
     args=parser.parse_args();exe=args.reference.resolve()
     root=Path(__file__).resolve().parent/'ta15-audit'
     from gtsimulation.magnetic_field.magnetosphere.Functions.t15B import t15B
@@ -44,12 +45,21 @@ def main():
     points=[[6,1,2],[-6,0,1],[-10,5,2],[-20,-5,.5],[3,3,3],[-40,10,4]]
     cases=list(itertools.product([[2,0,0,0],[2,3,-5,1],[5,-6,-10,2]],[-.4,0,.4],points))
     official=reference(exe,[(0,[*p,ps,*x]) for p,ps,x in cases])
+    promoted=None
+    if args.promoted_reference:
+        promoted=reference(args.promoted_reference.resolve(),[(0,[*p,ps,*x]) for p,ps,x in cases])
     kernel=[]
     for (p,ps,x),expected in zip(cases,official):
         actual=np.array(t15B(np.array(p,dtype=float),ps,*x))
         kernel.append({'parameters':p,'tilt_rad':ps,'position_RE':x,'official_nT':expected.tolist(),'gt_kernel_nT':actual.tolist(),
                        'max_abs_error_nT':float(np.max(abs(actual-expected))),
                        'within_1e-6nT_plus_1e-6relative':bool(np.allclose(actual,expected,atol=1e-6,rtol=1e-6))})
+    if promoted is not None:
+        for item,values in zip(kernel,promoted):
+            actual=np.array(item['gt_kernel_nT'])
+            item['official_with_promoted_literals_nT']=values.tolist()
+            item['promoted_literal_max_abs_error_nT']=float(np.max(abs(actual-values)))
+            item['promoted_literals_within_same_tolerance']=bool(np.allclose(actual,values,atol=1e-6,rtol=1e-6))
     raw=np.loadtxt(root.parent/'live/ta15-zm2iaaf6/2023_OMNI_5m_with_TA15_drivers.dat')
     chosen=[]
     for target in [datetime(2023,1,1),datetime(2023,3,21),datetime(2023,6,21),datetime(2023,9,23),datetime(2023,12,21)]:
@@ -90,6 +100,7 @@ def main():
                     'source_minus_reference_tilt_rad':float(r[15]-ps),
                     'angle_between_X_axes_deg':float(np.degrees(np.arccos(np.clip(gsm[0]@gsw[0],-1,1)))),
                     'mixed_frame_field_GEO_nT':base_geo.tolist(),'consistent_GSW_field_GEO_nT':correct_geo.tolist(),
+                    'gt_wrapper_vs_consistent_GSW_norm_nT':float(np.linalg.norm(np.array(gt.calc_field(*geo))-correct_geo)),
                     'difference_norm_nT':delta,'difference_relative_to_consistent_norm':delta/max(float(np.linalg.norm(correct_geo)),1e-15)})
                 if vy_correction==0:
                     actual=np.array(gt.calc_field(*geo))
@@ -118,8 +129,11 @@ def main():
         'wrapper_comparisons':wrapper_comparison,
         'summary':{'kernel_cases':len(kernel),'kernel_cases_within_tolerance':sum(c['within_1e-6nT_plus_1e-6relative'] for c in kernel),
             'kernel_max_abs_error_nT':max(c['max_abs_error_nT'] for c in kernel),
+            'promoted_literal_cases_within_same_tolerance':sum(c.get('promoted_literals_within_same_tolerance',False) for c in kernel) if promoted is not None else None,
+            'promoted_literal_max_abs_error_nT':max(c['promoted_literal_max_abs_error_nT'] for c in kernel) if promoted is not None else None,
             'frame_cases':len(coordinate),'max_frame_difference_nT':max(c['difference_norm_nT'] for c in coordinate),
             'max_port_only_difference_nT':max(c['port_only_difference_norm_nT'] for c in wrapper_comparison)},
+        'promoted_literal_experiment':{'compiler_flags':'-fdefault-real-8 -fdefault-double-8','purpose':'Sensitivity to unmarked Fortran real literal precision; official source bytes unchanged.'} if promoted is not None else None,
         'limitations':['Finite selected cases, not a global error bound.',
             'The two Vy conventions bracket an unresolved provenance choice for the supplied annual driver velocities; neither is silently certified as truth.',
             'GSW frame sensitivity is compared using the same official kernel/IGRF14 frames. Published source tilt may use different ephemeris/IGRF versions and is recorded separately.',
