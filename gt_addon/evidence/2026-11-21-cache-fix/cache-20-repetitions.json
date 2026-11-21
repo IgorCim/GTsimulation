@@ -1,0 +1,122 @@
+[
+  {
+    "round": 1,
+    "returncode": 0,
+    "seconds": 1.62,
+    "log": ".................                                                        [100%]\n17 passed in 1.27s\n"
+  },
+  {
+    "round": 2,
+    "returncode": 0,
+    "seconds": 1.41,
+    "log": ".................                                                        [100%]\n17 passed in 1.10s\n"
+  },
+  {
+    "round": 3,
+    "returncode": 0,
+    "seconds": 1.38,
+    "log": ".................                                                        [100%]\n17 passed in 1.08s\n"
+  },
+  {
+    "round": 4,
+    "returncode": 0,
+    "seconds": 1.38,
+    "log": ".................                                                        [100%]\n17 passed in 1.04s\n"
+  },
+  {
+    "round": 5,
+    "returncode": 0,
+    "seconds": 1.33,
+    "log": ".................                                                        [100%]\n17 passed in 1.03s\n"
+  },
+  {
+    "round": 6,
+    "returncode": 0,
+    "seconds": 1.34,
+    "log": ".................                                                        [100%]\n17 passed in 1.06s\n"
+  },
+  {
+    "round": 7,
+    "returncode": 0,
+    "seconds": 1.44,
+    "log": ".................                                                        [100%]\n17 passed in 1.14s\n"
+  },
+  {
+    "round": 8,
+    "returncode": 0,
+    "seconds": 1.36,
+    "log": ".................                                                        [100%]\n17 passed in 1.05s\n"
+  },
+  {
+    "round": 9,
+    "returncode": 0,
+    "seconds": 1.33,
+    "log": ".................                                                        [100%]\n17 passed in 1.03s\n"
+  },
+  {
+    "round": 10,
+    "returncode": 0,
+    "seconds": 1.34,
+    "log": ".................                                                        [100%]\n17 passed in 1.05s\n"
+  },
+  {
+    "round": 11,
+    "returncode": 0,
+    "seconds": 1.45,
+    "log": ".................                                                        [100%]\n17 passed in 1.14s\n"
+  },
+  {
+    "round": 12,
+    "returncode": 0,
+    "seconds": 1.36,
+    "log": ".................                                                        [100%]\n17 passed in 1.07s\n"
+  },
+  {
+    "round": 13,
+    "returncode": 0,
+    "seconds": 1.27,
+    "log": ".................                                                        [100%]\n17 passed in 0.98s\n"
+  },
+  {
+    "round": 14,
+    "returncode": 0,
+    "seconds": 1.45,
+    "log": ".................                                                        [100%]\n17 passed in 1.12s\n"
+  },
+  {
+    "round": 15,
+    "returncode": 0,
+    "seconds": 1.34,
+    "log": ".................                                                        [100%]\n17 passed in 1.02s\n"
+  },
+  {
+    "round": 16,
+    "returncode": 0,
+    "seconds": 1.42,
+    "log": ".................                                                        [100%]\n17 passed in 1.11s\n"
+  },
+  {
+    "round": 17,
+    "returncode": 0,
+    "seconds": 1.42,
+    "log": ".................                                                        [100%]\n17 passed in 1.08s\n"
+  },
+  {
+    "round": 18,
+    "returncode": 0,
+    "seconds": 1.41,
+    "log": ".................                                                        [100%]\n17 passed in 1.12s\n"
+  },
+  {
+    "round": 19,
+    "returncode": 0,
+    "seconds": 1.38,
+    "log": ".................                                                        [100%]\n17 passed in 1.07s\n"
+  },
+  {
+    "round": 20,
+    "returncode": 0,
+    "seconds": 1.44,
+    "log": ".................                                                        [100%]\n17 passed in 1.11s\n"
+  }
+]

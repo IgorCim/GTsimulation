@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "models": {
+    "15B": {
+      "status": "PASS",
+      "rows": 12,
+      "values_compared": 48,
+      "start": "2023-01-01T00:30:00Z",
+      "end_exclusive": "2023-01-01T01:30:00Z",
+      "max_absolute_error_by_component": {
+        "Pdyn_nPa": 0.0,
+        "By_GSW_nT": 0.0,
+        "Bz_GSW_nT": 0.0,
+        "B_index": 0.0
+      },
+      "first_expected": {
+        "Pdyn_nPa": 1.79,
+        "By_GSW_nT": 4.15,
+        "Bz_GSW_nT": -0.41,
+        "B_index": 0.3126
+      },
+      "source_and_input_sha256_verified": true,
+      "bundle": {
+        "input_file": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\live-ugzqj07v\\ta15-5vm8y0zi\\inputs.npy",
+        "manifest": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\live-ugzqj07v\\ta15-5vm8y0zi\\manifest.json",
+        "rows": 12,
+        "model": "15B",
+        "compatibility_note": "TA15 source IMF is GSW (30-minute trailing averages). This addon prepares inputs only; coordinate handling and model execution belong to GT."
+      }
+    }
+  },
+  "scope": "Download/prepare/integrity/independent arithmetic only; no GT import or simulation.",
+  "mode": "live network",
+  "replay_sources": {}
+}

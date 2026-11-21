@@ -1,0 +1,9 @@
+{
+  "version": "1.0.3",
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "installed_matches_source": true,
+  "GT_installed": false,
+  "fetcher_sha256": "e411d25a3c3a0094881c7ba85b559e4705368a94a816e9a96f899e98c1de84d9",
+  "wheel_sha256": "b994309ef689ae4a7d21f63dd5c3d02ca5aa7afef10802cef984ee7dbe2fbd53"
+}

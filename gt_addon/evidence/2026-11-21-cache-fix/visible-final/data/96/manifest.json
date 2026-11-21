@@ -1,0 +1,26 @@
+{
+  "schema": "gt-omni-inputs-v1",
+  "model": "96",
+  "rows": 24,
+  "start": "2024-09-10T00:00:00Z",
+  "end_exclusive": "2024-09-11T00:00:00Z",
+  "time_system": "UTC",
+  "sampling": "hourly interval start",
+  "selection": "containing hour; no interpolation",
+  "units": {
+    "pressure": "nPa",
+    "Dst": "nT",
+    "By": "nT",
+    "Bz": "nT"
+  },
+  "imf_coordinates": "GSM",
+  "sources": [
+    {
+      "url": "https://spdf.gsfc.nasa.gov/pub/data/omni/low_res_omni/omni2_2024.dat",
+      "file": "omni2_2024.dat",
+      "sha256": "41f3b5891ce3f1220719d5c1ea808f3014f28a1704557d3363eefb5ee7c249b1"
+    }
+  ],
+  "retrieved_at": "2026-11-21T12:15:30.682501+00:00",
+  "input_sha256": "ebe4eb04b9477f3be390e3f442cfb1d1488dbc95cd95f9641707fb15f097ceb7"
+}

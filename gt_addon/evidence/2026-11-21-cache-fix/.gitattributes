@@ -1,0 +1,3 @@
+# Preserve original pytest traceback formatting, including trailing spaces.
+original-failure.log -whitespace
+original-failure.xml -whitespace

@@ -417,14 +417,30 @@ def _cached_weather(cache_dir,url,now):
     key=hashlib.sha256(url.encode()).hexdigest()[:16]
     entry=root/(key+".json")
     if not entry.is_file():return None
-    meta=json.loads(entry.read_text(encoding="utf-8"))
+    meta=json.loads(_cache_file_operation(entry.read_text, encoding="utf-8"))
     age=(now-datetime.fromisoformat(meta["retrieved_at"])).total_seconds()
     if meta["url"]!=url or not 0<=age<3*3600:return None
     if not re.fullmatch(r"[0-9a-f]{64}",meta["sha256"]):raise ValueError("Invalid CelesTrak cache digest.")
     raw=root/(key+"-"+meta["sha256"]+".csv")
-    body=raw.read_bytes()
+    body=_cache_file_operation(raw.read_bytes)
     if hashlib.sha256(body).hexdigest()!=meta["sha256"]:raise ValueError("CelesTrak cache SHA256 mismatch; refusing cached data.")
     return body,meta["retrieved_at"]
+
+
+def _cache_file_operation(operation, *args, **kwargs):
+    """Bound transient Windows file conflicts without hiding persistent errors."""
+    for attempt in range(8):
+        try:
+            return operation(*args, **kwargs)
+        except PermissionError as exc:
+            winerror = getattr(exc, "winerror", None)
+            # Python io.open can expose Windows sharing failures as errno 13
+            # without winerror; preserve the original error if retries exhaust.
+            transient = winerror in (5, 32, 33) or (
+                winerror is None and sys.platform == "win32" and exc.errno == 13)
+            if not transient or attempt == 7:
+                raise
+            time.sleep(0.01 * (attempt + 1))
 
 
 def _save_weather_cache(cache_dir,url,body,retrieved_at):
@@ -438,8 +454,13 @@ def _save_weather_cache(cache_dir,url,body,retrieved_at):
     try:
         (temporary/"data.csv").write_bytes(body)
         (temporary/"meta.json").write_text(json.dumps({"url":url,"retrieved_at":retrieved_at,"sha256":hashlib.sha256(body).hexdigest()},indent=2),encoding="utf-8")
-        (temporary/"data.csv").replace(root/(key+"-"+digest+".csv"))
-        (temporary/"meta.json").replace(root/(key+".json"))
+        raw = root/(key+"-"+digest+".csv")
+        if raw.is_file():
+            if _cache_file_operation(raw.read_bytes) != body:
+                raise ValueError("Existing CelesTrak cache content does not match its digest.")
+        else:
+            _cache_file_operation((temporary/"data.csv").replace, raw)
+        _cache_file_operation((temporary/"meta.json").replace, root/(key+".json"))
     finally:
         if temporary.resolve().parent!=root:raise RuntimeError("Unexpected cache staging directory.")
         shutil.rmtree(temporary)

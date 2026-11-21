@@ -539,5 +539,23 @@
       "fetcher_sha256": "d4d674c7e1332f20350c67d3ec3e9f6b761e726be15dd7c19ba8bd4dd5f77911",
       "wheel_sha256": "47f7ae55da6e4244502ee63bcf8b2520b1be5691f114f2687c4ae3317e4e3e40"
     }
+  },
+  "cache_concurrency_fix_1_0_3": {
+    "original_result": "173 passed, 1 failed; all four sources PASS",
+    "original_failure": "Windows WinError 5 during simultaneous replacement of cache metadata",
+    "fix": "Bound cache read/replace retries for Windows sharing/access conflicts; reuse identical immutable CSV; propagate persistent error and preserve published cache",
+    "unit_source": 190,
+    "unit_installed": 190,
+    "cache_repeat_rounds": 20,
+    "cache_repeat_status": "PASS",
+    "visible_report": "evidence/2026-11-21-cache-fix/visible-final/report.json",
+    "visible_status": "PASS",
+    "source_modes": {
+      "89": "network",
+      "96": "network",
+      "15B": "network",
+      "nrlmsis": "validated_cache"
+    },
+    "evidence": "evidence/2026-11-21-cache-fix"
   }
 }
