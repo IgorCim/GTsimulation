@@ -1,0 +1,202 @@
+# Как пользоваться аддоном загрузки входных данных GT
+
+Аддон получает данные из NASA OMNI, официального архива TA15 и CelesTrak,
+проверяет их и сохраняет готовые числовые входы для T89, T96, T15B и NRLMSIS.
+Текущая версия — **1.0.3**. Ниже — обычное использование, без тестового стенда.
+
+[Реальные пользовательские запуски всех четырёх моделей](evidence/2026-11-21-user-runs/README.md)
+с командами, выводом чисел, CSV и манифестами.
+[Автоматические проверки и известные границы](TESTING.md).
+
+## 1. Получить нужную ветку
+
+Откройте [папку аддона на GitHub](https://github.com/IgorCim/GTsimulation/tree/codex/input-data-addon/gt_addon).
+Аддон опубликован в ветке **codex/input-data-addon**, а не в основной ветке GT.
+
+При наличии Git выполните в удобной папке:
+
+```bat
+git clone --branch codex/input-data-addon --single-branch https://github.com/IgorCim/GTsimulation.git GTsimulation-with-addon
+cd GTsimulation-with-addon
+```
+
+Без Git: [скачайте ZIP именно этой ветки](https://github.com/IgorCim/GTsimulation/archive/refs/heads/codex/input-data-addon.zip),
+распакуйте его и откройте командную строку в распакованном корне, где находится
+папка `gt_addon`. Не запускайте команды изнутри ZIP.
+
+Папка `gt_addon` самостоятельна. Устанавливать или собирать GT, Geant4, C++ и
+Fortran для скачивания входов не требуется. Сам GT при этом не изменяется.
+
+## 2. Установить в отдельное окружение
+
+Команды ниже предназначены для **cmd Windows**. Проверенная среда — Python 3.12
+на Windows 11. Проверьте, что команда `python` указывает на нужный Python:
+
+```bat
+python --version
+python -m venv gt_addon\.venv
+gt_addon\.venv\Scripts\python.exe -m pip install ./gt_addon
+gt_addon\.venv\Scripts\python.exe -m pip show gt-input-addon
+gt_addon\.venv\Scripts\python.exe -m pip check
+```
+
+Ожидается `Version: 1.0.3` и `No broken requirements found.`.
+Включите интернет. Веса языковой модели, GPU и логины к источникам не нужны.
+Если используете готовое окружение этого проекта, повторно создавать его не нужно.
+
+Все последующие команды выполняются из того же корня. Они используют файл
+`gt_addon\fetcher.py` и окружение аддона; активировать venv отдельно не требуется.
+
+## 3. Скачать нужные входы
+
+### T96: давление, Dst и компоненты IMF
+
+```bat
+gt_addon\.venv\Scripts\python.exe gt_addon\fetcher.py --model 96 --start 2024-09-10 --end 2024-09-11 --output-dir "gt_addon\inputs\мой_первый_запуск"
+```
+
+Ожидается JSON с `rows: 24`, `model: "96"`, путями `input_file` и `manifest`.
+Порядок входов: Pdyn в nPa, Dst в nT, By и Bz в nT, система **GSM**.
+
+### T89: категория активности
+
+```bat
+gt_addon\.venv\Scripts\python.exe gt_addon\fetcher.py --model 89 --start 2024-09-10 --end 2024-09-11 --output-dir "gt_addon\inputs\мой_T89"
+```
+
+Ожидается 24 строки. Вход — категория активности T89 от 1 до 7, полученная из
+Kp источника. Это не сами значения Kp. Почасовое хранение не повышает исходное
+трёхчасовое разрешение Kp.
+
+### T15B: пятиминутные драйверы
+
+```bat
+gt_addon\.venv\Scripts\python.exe gt_addon\fetcher.py --model 15B --start 2023-01-01T00:30 --end 2023-01-01T01:30 --output-dir "gt_addon\inputs\мой_T15B" --allow-provider-interpolation
+```
+
+Ожидается 12 строк, от 00:30 до 01:25 UTC. Порядок: Pdyn в nPa, By/Bz в nT
+в системе **GSW**, безразмерный B-index; отдельно сохраняются флаги IMF и SW.
+В первой строке примера SW flag=2. Параметр `--allow-provider-interpolation`
+явно разрешает такие интерполированные записи **поставщика**. Без него они
+отклоняются. Аддон не заполняет пропуски и не выполняет собственную интерполяцию.
+
+### NRLMSIS: солнечная активность и история Ap
+
+```bat
+gt_addon\.venv\Scripts\python.exe gt_addon\fetcher.py --model nrlmsis --start 2024-09-10 --end 2024-09-11 --output-dir "gt_addon\inputs\мой_NRLMSIS"
+```
+
+Ожидается 24 строки, `source_mode` и исходное время `source_retrieved_at`.
+`network` означает новую загрузку. `validated_cache` означает проверенный кэш
+младше трёх часов. Его использование сохраняет исходное время получения и не
+выдаётся за новое скачивание. Не удаляйте кэш ради повторных запросов к сайту.
+
+F107 — наблюдённый поток предыдущего дня, F107a — центрированное 81-дневное
+среднее источника; оба в sfu. Массив `ap` содержит семь входов: суточный Ap,
+текущий трёхчасовой ap, ap за -3/-6/-9 часов, средние за 12–33 и 36–57 часов назад.
+Аддон готовит эти входы; плотность атмосферы здесь не рассчитывается.
+
+## 4. Открыть папки и проверить состав
+
+```bat
+explorer "gt_addon\inputs\мой_первый_запуск"
+explorer "gt_addon\inputs\мой_T89"
+explorer "gt_addon\inputs\мой_T15B"
+explorer "gt_addon\inputs\мой_NRLMSIS"
+```
+
+Каждый успешный вызов создаёт новую папку с автоматически выбранным суффиксом.
+Откройте папку, соответствующую пути из JSON: `omni-...`, `ta15-...` или `msis-...`.
+Повторный запуск не должен перезаписывать предыдущий пакет.
+
+| Модель | Файлы внутри пакета |
+|---|---|
+| T89/T96 | `inputs.npy`, `manifest.json`, исходный `omni2_2024.dat` для примера |
+| T15B | `inputs.npy`, `manifest.json`, исходный `2023_OMNI_5m_with_TA15_drivers.dat` для примера |
+| NRLMSIS | `inputs.npy`, `manifest.json`, `selected.csv` с нужной историей, исходный `SW-Last5Years.csv` либо `SW-All.csv` |
+
+`manifest.json`, `.dat` и `.csv` можно открыть Блокнотом. Там видны источник,
+временной интервал, единицы, время получения и SHA256. У NRLMSIS рядом с пакетами
+может находиться `.celestrak-cache`; это служебный кэш, не отдельный результат.
+`inputs.npy` — бинарный числовой файл, его содержимое смотрят через Python.
+Последовательности `\u043c...` в JSON — обычная запись кириллицы, а не ошибка пути.
+
+## 5. Увидеть все подготовленные числа
+
+Следующие команды читают последнее по времени `inputs.npy` из соответствующей
+папки примера. Выполняйте их после успешного шага 3. Если в одном каталоге
+сохраняли другие интервалы, сверяйте путь и даты: последним будет именно последний
+созданный пакет, а не обязательно пакет из этого примера.
+
+**T96:**
+
+```bat
+gt_addon\.venv\Scripts\python.exe -c "from pathlib import Path; from fetcher import load_inputs; p=max(Path('gt_addon/inputs/мой_первый_запуск').glob('omni-*/inputs.npy'),key=lambda p:p.stat().st_mtime); a=load_inputs(p,'96'); print('Файл:',p); print('UTC | Pdyn, nPa | Dst, nT | By GSM, nT | Bz GSM, nT'); [print(str(r['date']), *r['T96_input']) for r in a]; print('Всего строк:',len(a))"
+```
+
+**T89:**
+
+```bat
+gt_addon\.venv\Scripts\python.exe -c "from pathlib import Path; from fetcher import load_inputs; p=max(Path('gt_addon/inputs/мой_T89').glob('omni-*/inputs.npy'),key=lambda p:p.stat().st_mtime); a=load_inputs(p,'89'); print('Файл:',p); print('UTC | категория активности T89'); [print(str(r['date']),int(r['T89_input'])) for r in a]; print('Всего строк:',len(a))"
+```
+
+**T15B:**
+
+```bat
+gt_addon\.venv\Scripts\python.exe -c "from pathlib import Path; from fetcher import load_ta15_inputs; p=max(Path('gt_addon/inputs/мой_T15B').glob('ta15-*/inputs.npy'),key=lambda p:p.stat().st_mtime); a=load_ta15_inputs(p); print('Файл:',p); print('UTC | Pdyn nPa | By GSW nT | Bz GSW nT | B-index | IMF flag | SW flag'); [print(str(r['date']),*r['T15B_input'],int(r['imf_flag']),int(r['sw_flag'])) for r in a]; print('Всего строк:',len(a))"
+```
+
+**NRLMSIS:**
+
+```bat
+gt_addon\.venv\Scripts\python.exe -c "from pathlib import Path; from fetcher import load_atmosphere_inputs; p=max(Path('gt_addon/inputs/мой_NRLMSIS').glob('msis-*/inputs.npy'),key=lambda p:p.stat().st_mtime); a=load_atmosphere_inputs(p); print('Файл:',p); print('UTC | F107 sfu | F107a sfu | Ap: суточный, текущий, -3ч, -6ч, -9ч, средние 12-33ч и 36-57ч'); [print(str(r['date']),r['f107'],r['f107a'],r['ap'].tolist()) for r in a]; print('Всего строк:',len(a))"
+```
+
+У примера T96 первая строка: `1.25 1.0 -4.9 -0.7`. У T89 — категория `3`.
+У T15B: `1.79 4.15 -0.41 0.3126`, флаги `1 2`.
+У NRLMSIS: F107=`214.8`, F107a=`221.6`, ap=`[6,9,9,12,12,6.375,6.375]`.
+Это значения конкретных архивных примеров; для других дат они будут другими.
+
+## 6. Использовать файл в своём Python-скрипте
+
+Из окружения, где установлен аддон:
+
+```python
+from fetcher import download_tsyganenko_inputs, load_inputs
+
+result = download_tsyganenko_inputs(
+    "2024-09-10", "2024-09-11", "my_inputs", model="96"
+)
+rows = load_inputs(result["input_file"], "96")
+print(rows["date"])
+print(rows["T96_input"])
+```
+
+Для T15B используйте `download_ta15_inputs` / `load_ta15_inputs`, для атмосферы —
+`download_atmosphere_inputs` / `load_atmosphere_inputs`.
+В Python API общий кэш CelesTrak включается явно аргументом `cache_dir`.
+Аддон выдаёт файлы и числовые массивы; автоматическое подключение к классам GT
+и запуск симуляции в эту поставку не входят. Согласование координат и применение
+драйверов в научном расчёте контролирует пользователь GT.
+
+## Даты и возможные отказы
+
+- Интервал `[start, end)` — начало включено, конец исключён. Без зоны время считается UTC; зональное время переводится в UTC.
+- T89/T96/NRLMSIS требуют целых часов, T15B — границ, кратных пяти минутам. За один вызов — не более 366 дней.
+- Наличие данных на любую дату не гарантируется. Прогнозные, пропущенные или некорректные записи не заменяются вымышленными значениями.
+- При HTTP 503, TLS-ошибке или таймауте сохраните сообщение. Это не успешная загрузка. Проверка сертификатов не отключается; постоянно повторять запросы не нужно.
+- Если скачивание не завершилось, не запускайте просмотр «последнего пакета» как доказательство нового результата: он может показать старый файл.
+
+## Проверить установку и увидеть HTML с данными
+
+Для запуска тестового стенда дополнительно установите pytest:
+
+```bat
+gt_addon\.venv\Scripts\python.exe -m pip install pytest
+gt_addon\.venv\Scripts\python.exe gt_addon\tests\run_visible_checks.py
+```
+
+При успешном прогоне видны **190 passed**, четыре источника PASS и `ИТОГ: PASS`.
+Первой строкой выводится путь к локальному HTML с таблицами, независимой сверкой,
+CSV и журналами. Сетевой отказ честно даёт FAIL/TIMEOUT; внешние сайты могут быть
+недоступны и после успешных прежних запусков.

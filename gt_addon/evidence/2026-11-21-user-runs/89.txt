@@ -1,0 +1,37 @@
+C:\Users\User\Desktop\GTsimulation-addon-dev>gt_addon\.venv\Scripts\python.exe gt_addon\fetcher.py --model 89 --start 2024-09-10 --end 2024-09-11 --output-dir "gt_addon\inputs\мой_T89"
+{
+  "input_file": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\inputs\\\u043c\u043e\u0439_T89\\omni-5iem2gq3\\inputs.npy",
+  "manifest": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\inputs\\\u043c\u043e\u0439_T89\\omni-5iem2gq3\\manifest.json",
+  "rows": 24,
+  "model": "89"
+}
+
+C:\Users\User\Desktop\GTsimulation-addon-dev>gt_addon\.venv\Scripts\python.exe -c "from pathlib import Path; from fetcher import load_inputs; p=max(Path('gt_addon/inputs/мой_T89').glob('omni-*/inputs.npy'),key=lambda p:p.stat().st_mtime); a=load_inputs(p,'89'); print('Файл:',p); print('UTC | категория активности T89'); [print(str(r['date']),int(r['T89_input'])) for r in a]; print('Всего строк:',len(a))"
+Файл: gt_addon\inputs\мой_T89\omni-5iem2gq3\inputs.npy
+UTC | категория активности T89
+2024-09-10T00:00:00 3
+2024-09-10T01:00:00 3
+2024-09-10T02:00:00 3
+2024-09-10T03:00:00 2
+2024-09-10T04:00:00 2
+2024-09-10T05:00:00 2
+2024-09-10T06:00:00 3
+2024-09-10T07:00:00 3
+2024-09-10T08:00:00 3
+2024-09-10T09:00:00 2
+2024-09-10T10:00:00 2
+2024-09-10T11:00:00 2
+2024-09-10T12:00:00 2
+2024-09-10T13:00:00 2
+2024-09-10T14:00:00 2
+2024-09-10T15:00:00 2
+2024-09-10T16:00:00 2
+2024-09-10T17:00:00 2
+2024-09-10T18:00:00 3
+2024-09-10T19:00:00 3
+2024-09-10T20:00:00 3
+2024-09-10T21:00:00 2
+2024-09-10T22:00:00 2
+2024-09-10T23:00:00 2
+Всего строк: 24
+

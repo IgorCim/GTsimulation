@@ -1,0 +1,26 @@
+C:\Users\User\Desktop\GTsimulation-addon-dev>gt_addon\.venv\Scripts\python.exe gt_addon\fetcher.py --model 15B --start 2023-01-01T00:30 --end 2023-01-01T01:30 --output-dir "gt_addon\inputs\мой_T15B" --allow-provider-interpolation
+{
+  "input_file": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\inputs\\\u043c\u043e\u0439_T15B\\ta15-44b_l__r\\inputs.npy",
+  "manifest": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\inputs\\\u043c\u043e\u0439_T15B\\ta15-44b_l__r\\manifest.json",
+  "rows": 12,
+  "model": "15B",
+  "compatibility_note": "TA15 source IMF is GSW (30-minute trailing averages). This addon prepares inputs only; coordinate handling and model execution belong to GT."
+}
+
+C:\Users\User\Desktop\GTsimulation-addon-dev>gt_addon\.venv\Scripts\python.exe -c "from pathlib import Path; from fetcher import load_ta15_inputs; p=max(Path('gt_addon/inputs/мой_T15B').glob('ta15-*/inputs.npy'),key=lambda p:p.stat().st_mtime); a=load_ta15_inputs(p); print('Файл:',p); print('UTC | Pdyn nPa | By GSW nT | Bz GSW nT | B-index | IMF flag | SW flag'); [print(str(r['date']),*r['T15B_input'],int(r['imf_flag']),int(r['sw_flag'])) for r in a]; print('Всего строк:',len(a))"
+Файл: gt_addon\inputs\мой_T15B\ta15-44b_l__r\inputs.npy
+UTC | Pdyn nPa | By GSW nT | Bz GSW nT | B-index | IMF flag | SW flag
+2023-01-01T00:30:00 1.79 4.15 -0.41 0.3126 1 2
+2023-01-01T00:35:00 1.68 4.41 -0.44 0.3276 1 1
+2023-01-01T00:40:00 1.77 4.63 -0.3 0.3238 1 1
+2023-01-01T00:45:00 1.89 4.76 -0.11 0.3118 1 1
+2023-01-01T00:50:00 1.69 4.39 -0.1 0.2946 1 1
+2023-01-01T00:55:00 1.74 3.61 0.15 0.2402 1 1
+2023-01-01T01:00:00 1.76 2.57 0.71 0.1269 1 1
+2023-01-01T01:05:00 1.42 1.72 1.0 0.0629 1 1
+2023-01-01T01:10:00 1.53 0.97 0.97 0.0393 1 1
+2023-01-01T01:15:00 1.77 -0.07 1.07 0.021 1 1
+2023-01-01T01:20:00 1.81 -1.03 1.03 0.0119 1 1
+2023-01-01T01:25:00 1.69 -1.56 1.18 0.012 1 1
+Всего строк: 12
+

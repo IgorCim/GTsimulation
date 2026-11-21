@@ -1,0 +1,2 @@
+# Preserve the exact spacing and blank separators of the supplied transcript.
+*.txt -whitespace

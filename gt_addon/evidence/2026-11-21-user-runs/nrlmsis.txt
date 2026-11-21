@@ -1,0 +1,47 @@
+C:\Users\User\Desktop\GTsimulation-addon-dev>gt_addon\.venv\Scripts\python.exe gt_addon\fetcher.py --model nrlmsis --start 2024-09-10 --end 2024-09-11 --output-dir "gt_addon\inputs\мой_NRLMSIS"
+{
+  "input_file": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\inputs\\\u043c\u043e\u0439_NRLMSIS\\msis-r86gmb_f\\inputs.npy",
+  "manifest": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\inputs\\\u043c\u043e\u0439_NRLMSIS\\msis-r86gmb_f\\manifest.json",
+  "rows": 24,
+  "model": "nrlmsis",
+  "source_mode": "network",
+  "source_retrieved_at": "2026-11-21T13:02:54.153166+00:00",
+  "space_weather_file": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\inputs\\\u043c\u043e\u0439_NRLMSIS\\msis-r86gmb_f\\selected.csv"
+}
+
+C:\Users\User\Desktop\GTsimulation-addon-dev>gt_addon\.venv\Scripts\python.exe -c "from pathlib import Path; from fetcher import load_atmosphere_inputs; p=max(Path('gt_addon/inputs/мой_NRLMSIS').glob('msis-*/inputs.npy'),key=lambda p:p.stat().st_mtime); a=load_atmosphere_inputs(p); print('Файл:',p); print('UTC | F107 sfu | F107a sfu | Ap: суточный, текущий, -3ч, -6ч, -9ч, средние 12-33ч и 36-57ч'); [print(str(r['date']),r['f107'],r['f107a'],r['ap'].tolist()) for r in a]; print('Всего строк:',len(a))"
+Файл: gt_addon\inputs\мой_NRLMSIS\msis-r86gmb_f\inputs.npy
+UTC | F107 sfu | F107a sfu | Ap: суточный, текущий, -3ч, -6ч, -9ч, средние 12-33ч и 36-57ч
+2024-09-10T00:00:00 214.8 221.6 [6.0, 9.0, 9.0, 12.0, 12.0, 6.375, 6.375]
+2024-09-10T01:00:00 214.8 221.6 [6.0, 9.0, 9.0, 12.0, 12.0, 6.375, 6.375]
+2024-09-10T02:00:00 214.8 221.6 [6.0, 9.0, 9.0, 12.0, 12.0, 6.375, 6.375]
+2024-09-10T03:00:00 214.8 221.6 [6.0, 5.0, 9.0, 9.0, 12.0, 7.0, 6.375]
+2024-09-10T04:00:00 214.8 221.6 [6.0, 5.0, 9.0, 9.0, 12.0, 7.0, 6.375]
+2024-09-10T05:00:00 214.8 221.6 [6.0, 5.0, 9.0, 9.0, 12.0, 7.0, 6.375]
+2024-09-10T06:00:00 214.8 221.6 [6.0, 6.0, 5.0, 9.0, 9.0, 7.75, 6.25]
+2024-09-10T07:00:00 214.8 221.6 [6.0, 6.0, 5.0, 9.0, 9.0, 7.75, 6.25]
+2024-09-10T08:00:00 214.8 221.6 [6.0, 6.0, 5.0, 9.0, 9.0, 7.75, 6.25]
+2024-09-10T09:00:00 214.8 221.6 [6.0, 5.0, 6.0, 5.0, 9.0, 8.125, 6.5]
+2024-09-10T10:00:00 214.8 221.6 [6.0, 5.0, 6.0, 5.0, 9.0, 8.125, 6.5]
+2024-09-10T11:00:00 214.8 221.6 [6.0, 5.0, 6.0, 5.0, 9.0, 8.125, 6.5]
+2024-09-10T12:00:00 214.8 221.6 [6.0, 5.0, 5.0, 6.0, 5.0, 8.125, 6.75]
+2024-09-10T13:00:00 214.8 221.6 [6.0, 5.0, 5.0, 6.0, 5.0, 8.125, 6.75]
+2024-09-10T14:00:00 214.8 221.6 [6.0, 5.0, 5.0, 6.0, 5.0, 8.125, 6.75]
+2024-09-10T15:00:00 214.8 221.6 [6.0, 3.0, 5.0, 5.0, 6.0, 8.125, 6.5]
+2024-09-10T16:00:00 214.8 221.6 [6.0, 3.0, 5.0, 5.0, 6.0, 8.125, 6.5]
+2024-09-10T17:00:00 214.8 221.6 [6.0, 3.0, 5.0, 5.0, 6.0, 8.125, 6.5]
+2024-09-10T18:00:00 214.8 221.6 [6.0, 9.0, 3.0, 5.0, 5.0, 7.75, 7.0]
+2024-09-10T19:00:00 214.8 221.6 [6.0, 9.0, 3.0, 5.0, 5.0, 7.75, 7.0]
+2024-09-10T20:00:00 214.8 221.6 [6.0, 9.0, 3.0, 5.0, 5.0, 7.75, 7.0]
+2024-09-10T21:00:00 214.8 221.6 [6.0, 5.0, 9.0, 3.0, 5.0, 7.75, 7.0]
+2024-09-10T22:00:00 214.8 221.6 [6.0, 5.0, 9.0, 3.0, 5.0, 7.75, 7.0]
+2024-09-10T23:00:00 214.8 221.6 [6.0, 5.0, 9.0, 3.0, 5.0, 7.75, 7.0]
+Всего строк: 24
+
+C:\Users\User\Desktop\GTsimulation-addon-dev>explorer "gt_addon\inputs\мой_T89"
+
+C:\Users\User\Desktop\GTsimulation-addon-dev>explorer "gt_addon\inputs\мой_T15B"
+
+C:\Users\User\Desktop\GTsimulation-addon-dev>explorer "gt_addon\inputs\мой_NRLMSIS"
+
+C:\Users\User\Desktop\GTsimulation-addon-dev>
