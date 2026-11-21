@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "models": {
+    "96": {
+      "status": "PASS",
+      "rows": 24,
+      "values_compared": 96,
+      "start": "2024-09-10T00:00:00Z",
+      "end_exclusive": "2024-09-11T00:00:00Z",
+      "max_absolute_error_by_component": {
+        "Pdyn_nPa": 0.0,
+        "Dst_nT": 0.0,
+        "By_GSM_nT": 0.0,
+        "Bz_GSM_nT": 0.0
+      },
+      "first_expected": {
+        "Pdyn_nPa": 1.25,
+        "Dst_nT": 1.0,
+        "By_GSM_nT": -4.9,
+        "Bz_GSM_nT": -0.7
+      },
+      "source_and_input_sha256_verified": true,
+      "bundle": {
+        "input_file": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\live-zpfmb07z\\omni-81aq2e7z\\inputs.npy",
+        "manifest": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\live-zpfmb07z\\omni-81aq2e7z\\manifest.json",
+        "rows": 24,
+        "model": "96"
+      }
+    }
+  },
+  "scope": "Download/prepare/integrity/independent arithmetic only; no GT import or simulation.",
+  "mode": "live network",
+  "replay_sources": {}
+}

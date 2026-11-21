@@ -476,6 +476,9 @@ def download_atmosphere_inputs(start, end, output_dir, *, timeout=30, attempts=3
         if worker.returncode:
             raise ValueError("pymsis input preparation failed: " + worker.stderr[-2000:])
         rows = load_atmosphere_inputs(staging / "inputs.npy")
+        expected_dates = np.arange(np.datetime64(start), np.datetime64(end), np.timedelta64(1, "h"))
+        if not np.array_equal(rows["date"], expected_dates):
+            raise ValueError("Prepared atmospheric timestamps do not match the requested UTC interval.")
         manifest = {"schema":"gt-msis-inputs-v1", "rows":len(rows),
             "start":start.isoformat()+"Z", "end_exclusive":end.isoformat()+"Z",
             "source":url, "source_file":url.rsplit("/",1)[-1], "source_sha256":hashlib.sha256(body).hexdigest(),

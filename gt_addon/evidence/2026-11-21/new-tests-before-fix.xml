@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="31" time="1.590" timestamp="2026-11-21T17:16:00.574021+07:00" hostname="DESKTOP-TASNTGV"><testcase classname="tests.test_extended_contract" name="test_unicode_spaces_output_and_roundtrip[89]" time="0.024" /><testcase classname="tests.test_extended_contract" name="test_unicode_spaces_output_and_roundtrip[96]" time="0.008" /><testcase classname="tests.test_extended_contract" name="test_unicode_spaces_output_and_roundtrip[15B]" time="0.010" /><testcase classname="tests.test_extended_contract" name="test_unicode_spaces_output_and_roundtrip[nrlmsis]" time="0.215" /><testcase classname="tests.test_extended_contract" name="test_final_rename_failure_preserves_old_bundle[89]" time="0.010" /><testcase classname="tests.test_extended_contract" name="test_final_rename_failure_preserves_old_bundle[96]" time="0.011" /><testcase classname="tests.test_extended_contract" name="test_final_rename_failure_preserves_old_bundle[15B]" time="0.013" /><testcase classname="tests.test_extended_contract" name="test_final_rename_failure_preserves_old_bundle[nrlmsis]" time="0.452" /><testcase classname="tests.test_extended_contract" name="test_omni_leap_day_and_exclusive_end[2024-02-29-60]" time="0.005" /><testcase classname="tests.test_extended_contract" name="test_omni_leap_day_and_exclusive_end[2024-03-01-61]" time="0.005" /><testcase classname="tests.test_extended_contract" name="test_ta15_year_boundary_with_timezone" time="0.247" /><testcase classname="tests.test_extended_contract" name="test_permanent_http_failure_not_retried[401]" time="0.001" /><testcase classname="tests.test_extended_contract" name="test_permanent_http_failure_not_retried[403]" time="0.001" /><testcase classname="tests.test_extended_contract" name="test_permanent_http_failure_not_retried[404]" time="0.000" /><testcase classname="tests.test_extended_contract" name="test_permanent_http_failure_not_retried[410]" time="0.000" /><testcase classname="tests.test_extended_contract" name="test_short_retry_after_respected" time="0.000" /><testcase classname="tests.test_extended_contract" name="test_full_response_truncation_or_oversize_rejected[bad-4-20]" time="0.001" /><testcase classname="tests.test_extended_contract" name="test_full_response_truncation_or_oversize_rejected[too large-9-4]" time="0.001" /><testcase classname="tests.test_extended_contract" name="test_concurrent_cache_publish_never_mixes_body_and_metadata" time="0.057" /><testcase classname="tests.test_extended_contract" name="test_cache_url_isolation" time="0.006" /><testcase classname="tests.test_extended_contract" name="test_expired_cache_does_not_hide_network_failure" time="0.007" /><testcase classname="tests.test_extended_contract" name="test_broken_cache_never_accepted[missing_body]" time="0.006" /><testcase classname="tests.test_extended_contract" name="test_broken_cache_never_accepted[invalid_json]" time="0.005" /><testcase classname="tests.test_extended_contract" name="test_broken_cache_never_accepted[path_digest]" time="0.005" /><testcase classname="tests.test_extended_contract" name="test_atmosphere_bom_reversed_days_and_timezone" time="0.233" /><testcase classname="tests.test_extended_contract" name="test_atmosphere_required_days_not_invented[duplicate]" time="0.002" /><testcase classname="tests.test_extended_contract" name="test_atmosphere_required_days_not_invented[missing_first_history]" time="0.002" /><testcase classname="tests.test_extended_contract" name="test_atmosphere_required_days_not_invented[missing_previous_day]" time="0.002" /><testcase classname="tests.test_extended_contract" name="test_worker_success_with_wrong_interval_is_rejected[shifted]" time="0.006"><failure message="Failed: DID NOT RAISE ValueError">tmp_path = WindowsPath('C:/Users/User/AppData/Local/Temp/pytest-of-User/pytest-966/test_worker_success_with_wrong0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000019FFB458E60&gt;
+mutation = 'shifted'
+
+    @pytest.mark.parametrize('mutation',['shifted','short','long'])
+    def test_worker_success_with_wrong_interval_is_rejected(tmp_path,monkeypatch,mutation):
+        monkeypatch.setattr(f,'_download',lambda *a,**k:ATM['source']())
+        def wrong_output(command,**kwargs):
+            start=np.datetime64(command[4]);end=np.datetime64(command[5])
+            if mutation=='shifted':start+=np.timedelta64(1,'D');end+=np.timedelta64(1,'D')
+            if mutation=='short':end-=np.timedelta64(1,'h')
+            if mutation=='long':end+=np.timedelta64(1,'h')
+            dates=np.arange(start,end,np.timedelta64(1,'h'))
+            rows=np.empty(len(dates),dtype=f.MSIS_DTYPE)
+            rows['date']=dates;rows['f107']=100;rows['f107a']=110;rows['ap']=4
+            np.save(command[6],rows,allow_pickle=False)
+            return CompletedProcess(command,0,'test-version','')
+        monkeypatch.setattr(f.subprocess,'run',wrong_output)
+&gt;       with pytest.raises(ValueError,match='requested UTC interval'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+gt_addon\tests\test_extended_contract.py:175: Failed</failure></testcase><testcase classname="tests.test_extended_contract" name="test_worker_success_with_wrong_interval_is_rejected[short]" time="0.007"><failure message="Failed: DID NOT RAISE ValueError">tmp_path = WindowsPath('C:/Users/User/AppData/Local/Temp/pytest-of-User/pytest-966/test_worker_success_with_wrong1')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000019FFB42B710&gt;
+mutation = 'short'
+
+    @pytest.mark.parametrize('mutation',['shifted','short','long'])
+    def test_worker_success_with_wrong_interval_is_rejected(tmp_path,monkeypatch,mutation):
+        monkeypatch.setattr(f,'_download',lambda *a,**k:ATM['source']())
+        def wrong_output(command,**kwargs):
+            start=np.datetime64(command[4]);end=np.datetime64(command[5])
+            if mutation=='shifted':start+=np.timedelta64(1,'D');end+=np.timedelta64(1,'D')
+            if mutation=='short':end-=np.timedelta64(1,'h')
+            if mutation=='long':end+=np.timedelta64(1,'h')
+            dates=np.arange(start,end,np.timedelta64(1,'h'))
+            rows=np.empty(len(dates),dtype=f.MSIS_DTYPE)
+            rows['date']=dates;rows['f107']=100;rows['f107a']=110;rows['ap']=4
+            np.save(command[6],rows,allow_pickle=False)
+            return CompletedProcess(command,0,'test-version','')
+        monkeypatch.setattr(f.subprocess,'run',wrong_output)
+&gt;       with pytest.raises(ValueError,match='requested UTC interval'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+gt_addon\tests\test_extended_contract.py:175: Failed</failure></testcase><testcase classname="tests.test_extended_contract" name="test_worker_success_with_wrong_interval_is_rejected[long]" time="0.008"><failure message="Failed: DID NOT RAISE ValueError">tmp_path = WindowsPath('C:/Users/User/AppData/Local/Temp/pytest-of-User/pytest-966/test_worker_success_with_wrong2')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000019FFB42ABA0&gt;
+mutation = 'long'
+
+    @pytest.mark.parametrize('mutation',['shifted','short','long'])
+    def test_worker_success_with_wrong_interval_is_rejected(tmp_path,monkeypatch,mutation):
+        monkeypatch.setattr(f,'_download',lambda *a,**k:ATM['source']())
+        def wrong_output(command,**kwargs):
+            start=np.datetime64(command[4]);end=np.datetime64(command[5])
+            if mutation=='shifted':start+=np.timedelta64(1,'D');end+=np.timedelta64(1,'D')
+            if mutation=='short':end-=np.timedelta64(1,'h')
+            if mutation=='long':end+=np.timedelta64(1,'h')
+            dates=np.arange(start,end,np.timedelta64(1,'h'))
+            rows=np.empty(len(dates),dtype=f.MSIS_DTYPE)
+            rows['date']=dates;rows['f107']=100;rows['f107a']=110;rows['ap']=4
+            np.save(command[6],rows,allow_pickle=False)
+            return CompletedProcess(command,0,'test-version','')
+        monkeypatch.setattr(f.subprocess,'run',wrong_output)
+&gt;       with pytest.raises(ValueError,match='requested UTC interval'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+gt_addon\tests\test_extended_contract.py:175: Failed</failure></testcase></testsuite></testsuites>

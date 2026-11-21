@@ -1,0 +1,24 @@
+{
+  "schema": "gt-msis-inputs-v1",
+  "rows": 24,
+  "start": "2024-09-10T00:00:00Z",
+  "end_exclusive": "2024-09-11T00:00:00Z",
+  "source": "https://celestrak.org/SpaceData/SW-Last5Years.csv",
+  "source_file": "SW-Last5Years.csv",
+  "source_sha256": "efbf9eba437a36e4185dc3eb75a868070e28b7c251ff60981f9fa7f0f12ceb26",
+  "source_mode": "validated_cache",
+  "source_retrieved_at": "2026-11-21T09:53:52.147128+00:00",
+  "cache_max_age_seconds": 10800,
+  "retrieved_at": "2026-11-21T09:53:52.147128+00:00",
+  "created_at": "2026-11-21T10:57:46.638789+00:00",
+  "input_sha256": "24b2bf6b513766e05da5b83b904ebb106a56bcae69b87e72f570791fa6bbc40f",
+  "pymsis_version": "0.13.0",
+  "time_system": "UTC",
+  "policy": "observed only; no interpolation; previous-day F107 and 57-hour Ap history via pymsis",
+  "units": {
+    "f107": "sfu",
+    "f107a": "sfu",
+    "ap": "index"
+  },
+  "sampling": "hourly stored; daily F107/F107a/Ap; 3-hourly ap"
+}

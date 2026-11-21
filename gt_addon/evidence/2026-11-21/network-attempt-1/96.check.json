@@ -1,0 +1,13 @@
+{
+  "status": "FAIL",
+  "models": {
+    "96": {
+      "status": "FAIL",
+      "error_type": "URLError",
+      "error": "<urlopen error _ssl.c:993: The handshake operation timed out>"
+    }
+  },
+  "scope": "Download/prepare/integrity/independent arithmetic only; no GT import or simulation.",
+  "mode": "live network",
+  "replay_sources": {}
+}

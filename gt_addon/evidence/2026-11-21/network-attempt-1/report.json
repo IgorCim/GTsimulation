@@ -1,0 +1,267 @@
+{
+  "status": "FAIL",
+  "mode": "live network",
+  "created_UTC": "2026-11-21T10:43:04.489736+00:00",
+  "timeout": 180,
+  "fetcher_sha256": "d4d674c7e1332f20350c67d3ec3e9f6b761e726be15dd7c19ba8bd4dd5f77911",
+  "unit": {
+    "tests": 169,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "status": "PASS"
+  },
+  "models": {
+    "89": {
+      "status": "FAIL",
+      "phase": "Завершено",
+      "log": "89.log",
+      "seconds": 61.5,
+      "returncode": 1,
+      "check": {
+        "status": "FAIL",
+        "error_type": "URLError",
+        "error": "<urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>"
+      },
+      "report_link": "../live-zax_ezvo/report.json",
+      "error": "<urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>"
+    },
+    "96": {
+      "status": "FAIL",
+      "phase": "Завершено",
+      "log": "96.log",
+      "seconds": 60.9,
+      "returncode": 1,
+      "check": {
+        "status": "FAIL",
+        "error_type": "URLError",
+        "error": "<urlopen error _ssl.c:993: The handshake operation timed out>"
+      },
+      "report_link": "../live-puc1x6tn/report.json",
+      "error": "<urlopen error _ssl.c:993: The handshake operation timed out>"
+    },
+    "15B": {
+      "status": "PASS",
+      "phase": "Завершено",
+      "log": "15B.log",
+      "seconds": 71.8,
+      "returncode": 0,
+      "check": {
+        "status": "PASS",
+        "rows": 12,
+        "values_compared": 48,
+        "start": "2023-01-01T00:30:00Z",
+        "end_exclusive": "2023-01-01T01:30:00Z",
+        "max_absolute_error_by_component": {
+          "Pdyn_nPa": 0.0,
+          "By_GSW_nT": 0.0,
+          "Bz_GSW_nT": 0.0,
+          "B_index": 0.0
+        },
+        "first_expected": {
+          "Pdyn_nPa": 1.79,
+          "By_GSW_nT": 4.15,
+          "Bz_GSW_nT": -0.41,
+          "B_index": 0.3126
+        },
+        "source_and_input_sha256_verified": true,
+        "bundle": {
+          "input_file": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\live-261uqr64\\ta15-toy78v5u\\inputs.npy",
+          "manifest": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\live-261uqr64\\ta15-toy78v5u\\manifest.json",
+          "rows": 12,
+          "model": "15B",
+          "compatibility_note": "TA15 source IMF is GSW (30-minute trailing averages). This addon prepares inputs only; coordinate handling and model execution belong to GT."
+        }
+      },
+      "report_link": "../live-261uqr64/report.json",
+      "error": "",
+      "csv": "15B.csv",
+      "preview": {
+        "headers": [
+          "UTC",
+          "Pdyn_nPa",
+          "By_GSW_nT",
+          "Bz_GSW_nT",
+          "B_index",
+          "imf_flag",
+          "sw_flag"
+        ],
+        "rows": [
+          [
+            "2023-01-01T00:30:00Z",
+            1.79,
+            4.15,
+            -0.41,
+            0.3126,
+            1.0,
+            2.0
+          ],
+          [
+            "2023-01-01T00:35:00Z",
+            1.68,
+            4.41,
+            -0.44,
+            0.3276,
+            1.0,
+            1.0
+          ],
+          [
+            "2023-01-01T00:40:00Z",
+            1.77,
+            4.63,
+            -0.3,
+            0.3238,
+            1.0,
+            1.0
+          ],
+          [
+            "2023-01-01T00:45:00Z",
+            1.89,
+            4.76,
+            -0.11,
+            0.3118,
+            1.0,
+            1.0
+          ],
+          [
+            "2023-01-01T00:50:00Z",
+            1.69,
+            4.39,
+            -0.1,
+            0.2946,
+            1.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    "nrlmsis": {
+      "status": "PASS",
+      "phase": "Завершено",
+      "log": "nrlmsis.log",
+      "seconds": 0.7,
+      "returncode": 0,
+      "check": {
+        "status": "PASS",
+        "rows": 24,
+        "values_compared": 216,
+        "start": "2024-09-10T00:00:00Z",
+        "end_exclusive": "2024-09-11T00:00:00Z",
+        "max_absolute_error_by_component": {
+          "previous_day_F107_sfu": 0.0,
+          "center81_F107_sfu": 0.0,
+          "daily_Ap": 0.0,
+          "ap_now": 0.0,
+          "ap_minus3h": 0.0,
+          "ap_minus6h": 0.0,
+          "ap_minus9h": 0.0,
+          "ap_mean12_33h": 0.0,
+          "ap_mean36_57h": 0.0
+        },
+        "first_expected": {
+          "previous_day_F107_sfu": 214.8,
+          "center81_F107_sfu": 221.6,
+          "daily_Ap": 6.0,
+          "ap_now": 9.0,
+          "ap_minus3h": 9.0,
+          "ap_minus6h": 12.0,
+          "ap_minus9h": 12.0,
+          "ap_mean12_33h": 6.375,
+          "ap_mean36_57h": 6.375
+        },
+        "source_and_input_sha256_verified": true,
+        "bundle": {
+          "input_file": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\live-a4biz8rl\\msis-3q1xejcp\\inputs.npy",
+          "manifest": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\live-a4biz8rl\\msis-3q1xejcp\\manifest.json",
+          "rows": 24,
+          "model": "nrlmsis",
+          "source_mode": "validated_cache",
+          "source_retrieved_at": "2026-11-21T09:53:52.147128+00:00",
+          "space_weather_file": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\live-a4biz8rl\\msis-3q1xejcp\\selected.csv"
+        },
+        "source_mode": "validated_cache",
+        "source_retrieved_at": "2026-11-21T09:53:52.147128+00:00",
+        "source_url": "https://celestrak.org/SpaceData/SW-Last5Years.csv"
+      },
+      "report_link": "../live-a4biz8rl/report.json",
+      "error": "",
+      "csv": "nrlmsis.csv",
+      "preview": {
+        "headers": [
+          "UTC",
+          "previous_day_F107_sfu",
+          "center81_F107_sfu",
+          "daily_Ap",
+          "ap_now",
+          "ap_minus3h",
+          "ap_minus6h",
+          "ap_minus9h",
+          "ap_mean12_33h",
+          "ap_mean36_57h"
+        ],
+        "rows": [
+          [
+            "2024-09-10T00:00:00Z",
+            214.8,
+            221.6,
+            6.0,
+            9.0,
+            9.0,
+            12.0,
+            12.0,
+            6.375,
+            6.375
+          ],
+          [
+            "2024-09-10T01:00:00Z",
+            214.8,
+            221.6,
+            6.0,
+            9.0,
+            9.0,
+            12.0,
+            12.0,
+            6.375,
+            6.375
+          ],
+          [
+            "2024-09-10T02:00:00Z",
+            214.8,
+            221.6,
+            6.0,
+            9.0,
+            9.0,
+            12.0,
+            12.0,
+            6.375,
+            6.375
+          ],
+          [
+            "2024-09-10T03:00:00Z",
+            214.8,
+            221.6,
+            6.0,
+            5.0,
+            9.0,
+            9.0,
+            12.0,
+            7.0,
+            6.375
+          ],
+          [
+            "2024-09-10T04:00:00Z",
+            214.8,
+            221.6,
+            6.0,
+            5.0,
+            9.0,
+            9.0,
+            12.0,
+            7.0,
+            6.375
+          ]
+        ]
+      }
+    }
+  }
+}

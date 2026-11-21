@@ -1,0 +1,13 @@
+{
+  "status": "FAIL",
+  "models": {
+    "89": {
+      "status": "FAIL",
+      "error_type": "URLError",
+      "error": "<urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>"
+    }
+  },
+  "scope": "Download/prepare/integrity/independent arithmetic only; no GT import or simulation.",
+  "mode": "live network",
+  "replay_sources": {}
+}

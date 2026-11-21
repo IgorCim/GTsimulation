@@ -1,0 +1,4 @@
+# Preserve exact evidence bytes and published SHA256 on every checkout.
+* -text whitespace=cr-at-eol
+# Preserve the generated Windows CSV without newline normalization.
+selected.csv -diff

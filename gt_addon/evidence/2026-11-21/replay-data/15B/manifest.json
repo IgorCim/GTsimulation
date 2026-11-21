@@ -1,0 +1,32 @@
+{
+  "schema": "gt-ta15-inputs-v1",
+  "model": "15B",
+  "rows": 12,
+  "start": "2023-01-01T00:30:00Z",
+  "end_exclusive": "2023-01-01T01:30:00Z",
+  "time_system": "UTC",
+  "sampling": "5 minutes; containing slot; no interpolation by addon",
+  "units": [
+    "nPa",
+    "nT",
+    "nT",
+    "dimensionless"
+  ],
+  "parameter_order": [
+    "Pdyn",
+    "By_GSW",
+    "Bz_GSW",
+    "B_index"
+  ],
+  "allow_provider_interpolation": true,
+  "provider_interpolated_rows": 1,
+  "compatibility_note": "TA15 source IMF is GSW (30-minute trailing averages). This addon prepares inputs only; coordinate handling and model execution belong to GT.",
+  "sources": [
+    {
+      "url": "https://geo.phys.spbu.ru/~tsyganenko/models/ta15/2023_OMNI_5m_with_TA15_drivers.dat",
+      "sha256": "990f7cb50bc302248ea09501a948167d4be7e8701b45c3ddef6d3a6f9d10e872"
+    }
+  ],
+  "retrieved_at": "2026-11-21T10:54:53.274188+00:00",
+  "input_sha256": "651083eb5873e193bbc50a21c5b212657d74272bb2e6115f1a174ac8978794cd"
+}

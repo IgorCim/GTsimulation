@@ -1,0 +1,74 @@
+{
+  "url": "https://spdf.gsfc.nasa.gov/pub/data/omni/low_res_omni/omni2_2024.dat",
+  "created_UTC": "2026-11-20T16:51:59.565285+00:00",
+  "note": "Same interpreter, inherited environment, default TLS validation, URL, timeout and one attempt. Fresh process for each run. Sequential AB/BA reduces order bias; it cannot prove server ownership of a network failure.",
+  "proxy_environment_present": false,
+  "trials": [
+    {
+      "method": "direct",
+      "url": "https://spdf.gsfc.nasa.gov/pub/data/omni/low_res_omni/omni2_2024.dat",
+      "started_UTC": "2026-11-20T16:51:59.755209+00:00",
+      "python": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\.venv\\Scripts\\python.exe",
+      "socket_timeout": 20.0,
+      "attempts": 1,
+      "fetcher_sha256": "0f4819c49e75bde157c8059723f3f56a4e006fa32a50e2f1aa3d333db4c912fc",
+      "status": "FAIL",
+      "error_type": "URLError",
+      "error": "<urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>",
+      "seconds": 5.281,
+      "log": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\nasa-comparison-i1h7xo15\\01-direct\\worker.log"
+    },
+    {
+      "method": "addon",
+      "url": "https://spdf.gsfc.nasa.gov/pub/data/omni/low_res_omni/omni2_2024.dat",
+      "started_UTC": "2026-11-20T16:52:05.331712+00:00",
+      "python": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\.venv\\Scripts\\python.exe",
+      "socket_timeout": 20.0,
+      "attempts": 1,
+      "fetcher_sha256": "0f4819c49e75bde157c8059723f3f56a4e006fa32a50e2f1aa3d333db4c912fc",
+      "status": "FAIL",
+      "error_type": "URLError",
+      "error": "<urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>",
+      "seconds": 3.187,
+      "log": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\nasa-comparison-i1h7xo15\\02-addon\\worker.log"
+    },
+    {
+      "method": "addon",
+      "url": "https://spdf.gsfc.nasa.gov/pub/data/omni/low_res_omni/omni2_2024.dat",
+      "started_UTC": "2026-11-20T16:52:08.767977+00:00",
+      "python": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\.venv\\Scripts\\python.exe",
+      "socket_timeout": 20.0,
+      "attempts": 1,
+      "fetcher_sha256": "0f4819c49e75bde157c8059723f3f56a4e006fa32a50e2f1aa3d333db4c912fc",
+      "status": "FAIL",
+      "error_type": "URLError",
+      "error": "<urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>",
+      "seconds": 0.484,
+      "log": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\nasa-comparison-i1h7xo15\\03-addon\\worker.log"
+    },
+    {
+      "method": "direct",
+      "url": "https://spdf.gsfc.nasa.gov/pub/data/omni/low_res_omni/omni2_2024.dat",
+      "started_UTC": "2026-11-20T16:52:09.457824+00:00",
+      "python": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\.venv\\Scripts\\python.exe",
+      "socket_timeout": 20.0,
+      "attempts": 1,
+      "fetcher_sha256": "0f4819c49e75bde157c8059723f3f56a4e006fa32a50e2f1aa3d333db4c912fc",
+      "http_status": 200,
+      "final_url": "https://spdf.gsfc.nasa.gov/pub/data/omni/low_res_omni/omni2_2024.dat",
+      "headers": {
+        "Content-Length": "2881152",
+        "Content-Type": null,
+        "ETag": "\"2bf680-6459c3bf6ac75\"",
+        "Last-Modified": "Wed, 10 Dec 2025 17:19:43 GMT"
+      },
+      "status": "PASS",
+      "bytes": 2881152,
+      "sha256": "41f3b5891ce3f1220719d5c1ea808f3014f28a1704557d3363eefb5ee7c249b1",
+      "file": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\nasa-comparison-i1h7xo15\\04-direct\\omni2_2024.dat",
+      "seconds": 3.484,
+      "log": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\nasa-comparison-i1h7xo15\\04-direct\\worker.log"
+    }
+  ],
+  "successful_file_hashes_identical": true
+}

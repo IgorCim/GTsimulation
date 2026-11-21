@@ -106,6 +106,33 @@ def compare(model,bundle):
             'source_and_input_sha256_verified':True}
 
 
+def replay_files(directory, models):
+    """Locate only requested sources; preserve the actual CelesTrak dataset URL."""
+    names=[]
+    if any(m in ('89','96') for m in models):names.append('omni2_2024.dat')
+    if '15B' in models:names.append('2023_OMNI_5m_with_TA15_drivers.dat')
+    if 'nrlmsis' in models:
+        recent=list(directory.rglob('SW-Last5Years.csv'))
+        names.append('SW-Last5Years.csv' if any((p.parent/'manifest.json').is_file() for p in recent) else 'SW-All.csv')
+    captured={}
+    for name in names:
+        paths=sorted(p for p in directory.rglob(name) if (p.parent/'manifest.json').is_file())
+        if not paths:raise ValueError('No manifested source found: '+name)
+        path=paths[0];manifest=json.loads((path.parent/'manifest.json').read_text(encoding='utf-8'))
+        if name.startswith('SW-'):
+            url=fetcher.MSIS_RECENT_URL if name=='SW-Last5Years.csv' else fetcher.MSIS_URL
+            if manifest.get('source')!=url:raise ValueError('Replay source URL mismatch.')
+            expected=manifest['source_sha256']
+        else:
+            source=next(x for x in manifest['sources'] if Path(urlsplit(x['url']).path).name==name)
+            url=(fetcher.OMNI_BASE_URL if name.startswith('omni2_') else fetcher.TA15_BASE_URL)+'/'+name
+            if source['url']!=url:raise ValueError('Replay source URL mismatch.')
+            expected=source['sha256']
+        digest(path,expected)
+        captured[name]={'path':str(path.resolve()),'sha256':expected,'url':url,'recorded_retrieved_at':manifest.get('source_retrieved_at',manifest.get('retrieved_at'))}
+    return captured
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--replay-dir',type=Path,help='Explicit offline replay from saved raw responses with original manifests')
@@ -113,15 +140,10 @@ def main():
     args=parser.parse_args()
     replay_sources={}
     if args.replay_dir:
-        for name in ['omni2_2024.dat','2023_OMNI_5m_with_TA15_drivers.dat','SW-All.csv']:
-            paths=[p for p in args.replay_dir.rglob(name) if (p.parent/'manifest.json').is_file()]
-            if not paths:parser.error('No manifested source found: '+name)
-            path=paths[0];manifest=json.loads((path.parent/'manifest.json').read_text(encoding='utf-8'))
-            expected=manifest.get('source_sha256') if name=='SW-All.csv' else next(x['sha256'] for x in manifest['sources'] if Path(urlsplit(x['url']).path).name==name)
-            digest(path,expected)
-            replay_sources[name]={'path':str(path.resolve()),'sha256':expected}
+        try:replay_sources=replay_files(args.replay_dir,args.models)
+        except ValueError as exc:parser.error(str(exc))
         import io
-        allowed={fetcher.OMNI_BASE_URL+'/omni2_2024.dat':'omni2_2024.dat',fetcher.TA15_BASE_URL+'/2023_OMNI_5m_with_TA15_drivers.dat':'2023_OMNI_5m_with_TA15_drivers.dat',fetcher.MSIS_URL:'SW-All.csv'}
+        allowed={v['url']:k for k,v in replay_sources.items()}
         def opening(url,**kwargs):
             if getattr(url,'full_url',url) not in allowed:raise RuntimeError('Unexpected replay URL: '+str(url))
             actual_url=getattr(url,'full_url',url)
@@ -145,12 +167,15 @@ def main():
             elif model=='15B':
                 b=fetcher.download_ta15_inputs('2023-01-01T00:30','2023-01-01T01:30',folder,allow_interpolated=True)
             else:
-                b=fetcher.download_atmosphere_inputs('2024-09-10','2024-09-11',folder,dataset='all' if args.replay_dir else 'auto',cache_dir=None if args.replay_dir else root/'inputs/.celestrak-cache')
+                b=fetcher.download_atmosphere_inputs('2024-09-10','2024-09-11',folder,dataset=('recent' if 'SW-Last5Years.csv' in replay_sources else 'all') if args.replay_dir else 'auto',cache_dir=None if args.replay_dir else root/'inputs/.celestrak-cache')
             checked=compare(model,b)
             checked['bundle']=b
             if model=='nrlmsis':
                 meta=json.loads(Path(b['manifest']).read_text(encoding='utf-8'))
                 checked.update(source_mode=meta.get('source_mode','network'),source_retrieved_at=meta.get('source_retrieved_at'),source_url=meta['source'])
+                if args.replay_dir:
+                    captured=replay_sources[meta['source_file']]
+                    checked.update(source_mode='offline_replay',source_retrieved_at=captured['recorded_retrieved_at'])
                 print('SOURCE nrlmsis: '+checked['source_mode']+'; retrieved '+str(checked['source_retrieved_at']),flush=True)
             result['models'][model]=checked
         except Exception as exc:

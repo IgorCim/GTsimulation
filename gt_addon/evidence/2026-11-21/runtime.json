@@ -1,0 +1,17 @@
+{
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "versions": {
+    "gt-input-addon": "1.0.2",
+    "numpy": "2.5.5",
+    "pymsis": "0.13.0",
+    "pytest": "9.2.0"
+  },
+  "installed_matches_source": true,
+  "GT_installed": false,
+  "changed_functions_since_1_0_1": [
+    "download_atmosphere_inputs"
+  ],
+  "fetcher_sha256": "d4d674c7e1332f20350c67d3ec3e9f6b761e726be15dd7c19ba8bd4dd5f77911",
+  "wheel_sha256": "47f7ae55da6e4244502ee63bcf8b2520b1be5691f114f2687c4ae3317e4e3e40"
+}

@@ -1,0 +1,142 @@
+{
+  "status": "PASS",
+  "models": {
+    "89": {
+      "status": "PASS",
+      "rows": 24,
+      "values_compared": 24,
+      "start": "2024-09-10T00:00:00Z",
+      "end_exclusive": "2024-09-11T00:00:00Z",
+      "max_absolute_error_by_component": {
+        "T89_activity_bin": 0
+      },
+      "first_expected": {
+        "T89_activity_bin": 3
+      },
+      "source_and_input_sha256_verified": true,
+      "bundle": {
+        "input_file": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\replay-y6aqczau\\omni-es8bt8h7\\inputs.npy",
+        "manifest": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\replay-y6aqczau\\omni-es8bt8h7\\manifest.json",
+        "rows": 24,
+        "model": "89"
+      }
+    },
+    "96": {
+      "status": "PASS",
+      "rows": 24,
+      "values_compared": 96,
+      "start": "2024-09-10T00:00:00Z",
+      "end_exclusive": "2024-09-11T00:00:00Z",
+      "max_absolute_error_by_component": {
+        "Pdyn_nPa": 0.0,
+        "Dst_nT": 0.0,
+        "By_GSM_nT": 0.0,
+        "Bz_GSM_nT": 0.0
+      },
+      "first_expected": {
+        "Pdyn_nPa": 1.25,
+        "Dst_nT": 1.0,
+        "By_GSM_nT": -4.9,
+        "Bz_GSM_nT": -0.7
+      },
+      "source_and_input_sha256_verified": true,
+      "bundle": {
+        "input_file": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\replay-y6aqczau\\omni-8o3ee4bj\\inputs.npy",
+        "manifest": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\replay-y6aqczau\\omni-8o3ee4bj\\manifest.json",
+        "rows": 24,
+        "model": "96"
+      }
+    },
+    "15B": {
+      "status": "PASS",
+      "rows": 12,
+      "values_compared": 48,
+      "start": "2023-01-01T00:30:00Z",
+      "end_exclusive": "2023-01-01T01:30:00Z",
+      "max_absolute_error_by_component": {
+        "Pdyn_nPa": 0.0,
+        "By_GSW_nT": 0.0,
+        "Bz_GSW_nT": 0.0,
+        "B_index": 0.0
+      },
+      "first_expected": {
+        "Pdyn_nPa": 1.79,
+        "By_GSW_nT": 4.15,
+        "Bz_GSW_nT": -0.41,
+        "B_index": 0.3126
+      },
+      "source_and_input_sha256_verified": true,
+      "bundle": {
+        "input_file": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\replay-y6aqczau\\ta15-9j8zmyat\\inputs.npy",
+        "manifest": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\replay-y6aqczau\\ta15-9j8zmyat\\manifest.json",
+        "rows": 12,
+        "model": "15B",
+        "compatibility_note": "TA15 source IMF is GSW (30-minute trailing averages). This addon prepares inputs only; coordinate handling and model execution belong to GT."
+      }
+    },
+    "nrlmsis": {
+      "status": "PASS",
+      "rows": 24,
+      "values_compared": 216,
+      "start": "2024-09-10T00:00:00Z",
+      "end_exclusive": "2024-09-11T00:00:00Z",
+      "max_absolute_error_by_component": {
+        "previous_day_F107_sfu": 0.0,
+        "center81_F107_sfu": 0.0,
+        "daily_Ap": 0.0,
+        "ap_now": 0.0,
+        "ap_minus3h": 0.0,
+        "ap_minus6h": 0.0,
+        "ap_minus9h": 0.0,
+        "ap_mean12_33h": 0.0,
+        "ap_mean36_57h": 0.0
+      },
+      "first_expected": {
+        "previous_day_F107_sfu": 214.8,
+        "center81_F107_sfu": 221.6,
+        "daily_Ap": 6.0,
+        "ap_now": 9.0,
+        "ap_minus3h": 9.0,
+        "ap_minus6h": 12.0,
+        "ap_minus9h": 12.0,
+        "ap_mean12_33h": 6.375,
+        "ap_mean36_57h": 6.375
+      },
+      "source_and_input_sha256_verified": true,
+      "bundle": {
+        "input_file": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\replay-y6aqczau\\msis-3e0i4kqw\\inputs.npy",
+        "manifest": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\replay-y6aqczau\\msis-3e0i4kqw\\manifest.json",
+        "rows": 24,
+        "model": "nrlmsis",
+        "source_mode": "network",
+        "source_retrieved_at": "2026-11-21T10:54:53.781692+00:00",
+        "space_weather_file": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\replay-y6aqczau\\msis-3e0i4kqw\\selected.csv"
+      },
+      "source_mode": "offline_replay",
+      "source_retrieved_at": "2026-11-20T14:39:36.184342+00:00",
+      "source_url": "https://celestrak.org/SpaceData/SW-All.csv"
+    }
+  },
+  "scope": "Download/prepare/integrity/independent arithmetic only; no GT import or simulation.",
+  "mode": "offline captured-response replay",
+  "replay_sources": {
+    "omni2_2024.dat": {
+      "path": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\live-dozdk74d\\omni-3rbpshsc\\omni2_2024.dat",
+      "sha256": "41f3b5891ce3f1220719d5c1ea808f3014f28a1704557d3363eefb5ee7c249b1",
+      "url": "https://spdf.gsfc.nasa.gov/pub/data/omni/low_res_omni/omni2_2024.dat",
+      "recorded_retrieved_at": "2026-11-20T14:39:35.042019+00:00"
+    },
+    "2023_OMNI_5m_with_TA15_drivers.dat": {
+      "path": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\live-dozdk74d\\ta15-dgkwopdy\\2023_OMNI_5m_with_TA15_drivers.dat",
+      "sha256": "990f7cb50bc302248ea09501a948167d4be7e8701b45c3ddef6d3a6f9d10e872",
+      "url": "https://geo.phys.spbu.ru/~tsyganenko/models/ta15/2023_OMNI_5m_with_TA15_drivers.dat",
+      "recorded_retrieved_at": "2026-11-20T14:39:35.487354+00:00"
+    },
+    "SW-All.csv": {
+      "path": "C:\\Users\\User\\Desktop\\GTsimulation-addon-dev\\gt_addon\\results\\live-dozdk74d\\msis-qi86hii1\\SW-All.csv",
+      "sha256": "020175d6abdb32b953d5b44558d921b6cdb325e1f8b2a9b450488e97f5ef25ca",
+      "url": "https://celestrak.org/SpaceData/SW-All.csv",
+      "recorded_retrieved_at": "2026-11-20T14:39:36.184342+00:00"
+    }
+  }
+}

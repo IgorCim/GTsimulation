@@ -240,5 +240,304 @@
       "nrlmsis": "PASS"
     },
     "interpretation": "138 tests pass from source and installed wheel. A real complete CelesTrak ranged download succeeded; the subsequent 24-row/216-value independent workflow explicitly used its validated cache, preserving original retrieval time. Full visible run still failed on NASA timeout/TLS; no all-source live success is claimed."
+  },
+  "nasa_direct_addon_comparison": {
+    "reports": [
+      {
+        "report": "results/nasa-comparison-i1h7xo15/report.json",
+        "hashes_identical": true,
+        "trials": [
+          {
+            "method": "direct",
+            "status": "FAIL",
+            "seconds": 5.281,
+            "error": "<urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>"
+          },
+          {
+            "method": "addon",
+            "status": "FAIL",
+            "seconds": 3.187,
+            "error": "<urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>"
+          },
+          {
+            "method": "addon",
+            "status": "FAIL",
+            "seconds": 0.484,
+            "error": "<urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>"
+          },
+          {
+            "method": "direct",
+            "status": "PASS",
+            "seconds": 3.484,
+            "bytes": 2881152,
+            "sha256": "41f3b5891ce3f1220719d5c1ea808f3014f28a1704557d3363eefb5ee7c249b1"
+          }
+        ]
+      },
+      {
+        "report": "results/nasa-comparison-n9wxzvub/report.json",
+        "hashes_identical": true,
+        "trials": [
+          {
+            "method": "direct",
+            "status": "PASS",
+            "seconds": 3.016,
+            "bytes": 2881152,
+            "sha256": "41f3b5891ce3f1220719d5c1ea808f3014f28a1704557d3363eefb5ee7c249b1"
+          },
+          {
+            "method": "addon",
+            "status": "PASS",
+            "seconds": 4.75,
+            "bytes": 2881152,
+            "sha256": "41f3b5891ce3f1220719d5c1ea808f3014f28a1704557d3363eefb5ee7c249b1",
+            "independent_input_check": {
+              "status": "PASS",
+              "rows": 24,
+              "values_compared": 96,
+              "start": "2024-09-10T00:00:00Z",
+              "end_exclusive": "2024-09-11T00:00:00Z",
+              "max_absolute_error_by_component": {
+                "Pdyn_nPa": 0.0,
+                "Dst_nT": 0.0,
+                "By_GSM_nT": 0.0,
+                "Bz_GSM_nT": 0.0
+              },
+              "first_expected": {
+                "Pdyn_nPa": 1.25,
+                "Dst_nT": 1.0,
+                "By_GSM_nT": -4.9,
+                "Bz_GSM_nT": -0.7
+              },
+              "source_and_input_sha256_verified": true
+            }
+          },
+          {
+            "method": "addon",
+            "status": "PASS",
+            "seconds": 3.719,
+            "bytes": 2881152,
+            "sha256": "41f3b5891ce3f1220719d5c1ea808f3014f28a1704557d3363eefb5ee7c249b1",
+            "independent_input_check": {
+              "status": "PASS",
+              "rows": 24,
+              "values_compared": 96,
+              "start": "2024-09-10T00:00:00Z",
+              "end_exclusive": "2024-09-11T00:00:00Z",
+              "max_absolute_error_by_component": {
+                "Pdyn_nPa": 0.0,
+                "Dst_nT": 0.0,
+                "By_GSM_nT": 0.0,
+                "Bz_GSM_nT": 0.0
+              },
+              "first_expected": {
+                "Pdyn_nPa": 1.25,
+                "Dst_nT": 1.0,
+                "By_GSM_nT": -4.9,
+                "Bz_GSM_nT": -0.7
+              },
+              "source_and_input_sha256_verified": true
+            }
+          },
+          {
+            "method": "direct",
+            "status": "PASS",
+            "seconds": 4.891,
+            "bytes": 2881152,
+            "sha256": "41f3b5891ce3f1220719d5c1ea808f3014f28a1704557d3363eefb5ee7c249b1"
+          }
+        ]
+      }
+    ],
+    "conclusion": "Initial TLS EOF failures occurred in both direct urllib and addon. The repeated AB/BA comparison passed all four downloads with identical files, including independent verification of both addon T96 bundles. This demonstrates a transient connection failure shared by both methods, not a reproducible addon-only failure. It does not identify whether the server or network path closed TLS."
+  },
+  "all_sources_fresh_recheck": {
+    "report": "results/visible-ec_vz7dr/report.html",
+    "created_UTC": "2026-11-21T09:49:55.145015+00:00",
+    "status": "PASS",
+    "unit": {
+      "tests": 138,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "status": "PASS"
+    },
+    "models": {
+      "89": {
+        "status": "PASS",
+        "seconds": 71.4,
+        "rows": 24,
+        "values_compared": 24,
+        "max_absolute_error_by_component": {
+          "T89_activity_bin": 0
+        },
+        "source_mode": "network",
+        "source_retrieved_at": "2026-11-21T09:51:15.260929+00:00",
+        "sources": [
+          {
+            "url": "https://spdf.gsfc.nasa.gov/pub/data/omni/low_res_omni/omni2_2024.dat",
+            "file": "omni2_2024.dat",
+            "sha256": "41f3b5891ce3f1220719d5c1ea808f3014f28a1704557d3363eefb5ee7c249b1"
+          }
+        ]
+      },
+      "96": {
+        "status": "PASS",
+        "seconds": 17.7,
+        "rows": 24,
+        "values_compared": 96,
+        "max_absolute_error_by_component": {
+          "Pdyn_nPa": 0.0,
+          "Dst_nT": 0.0,
+          "By_GSM_nT": 0.0,
+          "Bz_GSM_nT": 0.0
+        },
+        "source_mode": "network",
+        "source_retrieved_at": "2026-11-21T09:51:33.128338+00:00",
+        "sources": [
+          {
+            "url": "https://spdf.gsfc.nasa.gov/pub/data/omni/low_res_omni/omni2_2024.dat",
+            "file": "omni2_2024.dat",
+            "sha256": "41f3b5891ce3f1220719d5c1ea808f3014f28a1704557d3363eefb5ee7c249b1"
+          }
+        ]
+      },
+      "15B": {
+        "status": "PASS",
+        "seconds": 53.3,
+        "rows": 12,
+        "values_compared": 48,
+        "max_absolute_error_by_component": {
+          "Pdyn_nPa": 0.0,
+          "By_GSW_nT": 0.0,
+          "Bz_GSW_nT": 0.0,
+          "B_index": 0.0
+        },
+        "source_mode": "network",
+        "source_retrieved_at": "2026-11-21T09:52:26.093834+00:00",
+        "sources": [
+          {
+            "url": "https://geo.phys.spbu.ru/~tsyganenko/models/ta15/2023_OMNI_5m_with_TA15_drivers.dat",
+            "sha256": "990f7cb50bc302248ea09501a948167d4be7e8701b45c3ddef6d3a6f9d10e872"
+          }
+        ]
+      },
+      "nrlmsis": {
+        "status": "PASS",
+        "seconds": 86.0,
+        "rows": 24,
+        "values_compared": 216,
+        "max_absolute_error_by_component": {
+          "previous_day_F107_sfu": 0.0,
+          "center81_F107_sfu": 0.0,
+          "daily_Ap": 0.0,
+          "ap_now": 0.0,
+          "ap_minus3h": 0.0,
+          "ap_minus6h": 0.0,
+          "ap_minus9h": 0.0,
+          "ap_mean12_33h": 0.0,
+          "ap_mean36_57h": 0.0
+        },
+        "source_mode": "network",
+        "source_retrieved_at": "2026-11-21T09:53:52.147128+00:00",
+        "sources": "https://celestrak.org/SpaceData/SW-Last5Years.csv"
+      }
+    }
+  },
+  "extended_acceptance_1_0_2": {
+    "unit_source": 174,
+    "unit_installed": 174,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "new_before_fix": {
+      "passed": 28,
+      "failed": 3,
+      "cause": "Worker output UTC interval not checked; fixed by exact date-array comparison."
+    },
+    "offline_replay": "PASS: 89/96/15B/nrlmsis",
+    "network_final": {
+      "89": {
+        "status": "PASS",
+        "rows": 24,
+        "values_compared": 24,
+        "seconds": 19.4,
+        "source_mode": "network",
+        "source_retrieved_at": "2026-11-21T10:56:44.552134+00:00",
+        "first_expected": {
+          "T89_activity_bin": 3
+        },
+        "max_absolute_error": 0
+      },
+      "96": {
+        "status": "PASS",
+        "rows": 24,
+        "values_compared": 96,
+        "seconds": 18.2,
+        "source_mode": "network",
+        "source_retrieved_at": "2026-11-21T10:57:02.787969+00:00",
+        "first_expected": {
+          "Pdyn_nPa": 1.25,
+          "Dst_nT": 1.0,
+          "By_GSM_nT": -4.9,
+          "Bz_GSM_nT": -0.7
+        },
+        "max_absolute_error": 0.0
+      },
+      "15B": {
+        "status": "PASS",
+        "rows": 12,
+        "values_compared": 48,
+        "seconds": 43.1,
+        "source_mode": "network",
+        "source_retrieved_at": "2026-11-21T10:57:45.472132+00:00",
+        "first_expected": {
+          "Pdyn_nPa": 1.79,
+          "By_GSW_nT": 4.15,
+          "Bz_GSW_nT": -0.41,
+          "B_index": 0.3126
+        },
+        "max_absolute_error": 0.0
+      },
+      "nrlmsis": {
+        "status": "PASS",
+        "rows": 24,
+        "values_compared": 216,
+        "seconds": 0.7,
+        "source_mode": "validated_cache",
+        "source_retrieved_at": "2026-11-21T09:53:52.147128+00:00",
+        "first_expected": {
+          "previous_day_F107_sfu": 214.8,
+          "center81_F107_sfu": 221.6,
+          "daily_Ap": 6.0,
+          "ap_now": 9.0,
+          "ap_minus3h": 9.0,
+          "ap_minus6h": 12.0,
+          "ap_minus9h": 12.0,
+          "ap_mean12_33h": 6.375,
+          "ap_mean36_57h": 6.375
+        },
+        "max_absolute_error": 0.0
+      }
+    },
+    "prior_network_attempt": "FAIL: NASA TLS EOF and handshake timeout; retained in evidence/2026-11-21/network-attempt-1",
+    "evidence": "evidence/2026-11-21",
+    "runtime": {
+      "python": "3.12.10",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "versions": {
+        "gt-input-addon": "1.0.2",
+        "numpy": "2.5.5",
+        "pymsis": "0.13.0",
+        "pytest": "9.2.0"
+      },
+      "installed_matches_source": true,
+      "GT_installed": false,
+      "changed_functions_since_1_0_1": [
+        "download_atmosphere_inputs"
+      ],
+      "fetcher_sha256": "d4d674c7e1332f20350c67d3ec3e9f6b761e726be15dd7c19ba8bd4dd5f77911",
+      "wheel_sha256": "47f7ae55da6e4244502ee63bcf8b2520b1be5691f114f2687c4ae3317e4e3e40"
+    }
   }
 }

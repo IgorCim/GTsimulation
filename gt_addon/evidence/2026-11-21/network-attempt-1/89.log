@@ -1,0 +1,5 @@
+MODE: network (CelesTrak explicit cache allowed)
+Download and independent check: 89
+FAIL 89: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>
+Evidence: C:\Users\User\Desktop\GTsimulation-addon-dev\gt_addon\results\live-zax_ezvo\report.json
+FAIL: live network; independent check for 89.

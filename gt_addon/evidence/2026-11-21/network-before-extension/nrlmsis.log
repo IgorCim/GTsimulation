@@ -1,0 +1,5 @@
+MODE: network (CelesTrak explicit cache allowed)
+Download and independent check: nrlmsis
+SOURCE nrlmsis: network; retrieved 2026-11-21T09:53:52.147128+00:00
+Evidence: C:\Users\User\Desktop\GTsimulation-addon-dev\gt_addon\results\live-z_fvymya\report.json
+PASS: live network; independent check for nrlmsis.

@@ -1,0 +1,8 @@
+MODE: offline captured-response replay
+Download and independent check: 89
+Download and independent check: 96
+Download and independent check: 15B
+Download and independent check: nrlmsis
+SOURCE nrlmsis: offline_replay; retrieved 2026-11-20T14:39:36.184342+00:00
+Evidence: C:\Users\User\Desktop\GTsimulation-addon-dev\gt_addon\results\replay-y6aqczau\report.json
+PASS: offline captured-response replay; independent check for 89,96,15B,nrlmsis.
